@@ -37,15 +37,37 @@ def main() -> int:
         raise SystemExit(f"missing {AUX_PATH}")
 
     cir = json.loads(CIR_PATH.read_text())
+
+    # Rewrite the canonical paper-level fields. The parser sets paper_id /
+    # claim.id prefixes to the rrxiv-meta slug ("rrxiv-paper-euclid-elements")
+    # which is fine for build artefacts but the deployed instance keys
+    # everything off the canonical UUID. Patch both top-level + each
+    # claim so re-ingest finds them by paper_id.
+    cir["id"] = PAPER_ID
+    cir.setdefault("id_slug", "rrxiv:2605.00009")
+    for c in cir.get("claims", []):
+        c["paper_id"] = PAPER_ID
+        # `id` may be either parser-shape ("rrxiv-paper-euclid-elements:prop:I.1")
+        # or already canonical. Normalise to canonical.
+        idx = c["id"].rfind(":prop:")
+        if idx >= 0:
+            short = c["id"][idx + len(":prop:") :]
+            c["id"] = f"{PAPER_ID}:prop:{short}"
+        # Same rewriting for any inter-claim edges already on the claim.
+        for key in ("depends_on", "supports", "contradicts", "extends"):
+            c.setdefault(key, [])
+            c[key] = [
+                t if ":prop:" not in t
+                else f"{PAPER_ID}:prop:{t.rsplit(':prop:', 1)[1]}"
+                for t in c[key]
+            ]
+
     claims_by_short: dict[str, dict] = {}
     for c in cir.get("claims", []):
-        # Canonical id ends with ":prop:<label>" — extract short label.
         idx = c["id"].rfind(":prop:")
         if idx >= 0:
             short = c["id"][idx + len(":prop:") :]
             claims_by_short[short] = c
-            for key in ("depends_on", "supports", "contradicts", "extends"):
-                c.setdefault(key, [])
 
     merged = 0
     skipped = 0
