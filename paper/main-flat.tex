@@ -104,7 +104,7 @@ The whole is greater than the part.
 \end{rrxivremark}
 % [flatten-tex.py] end: common-notions.tex
 % [flatten-tex.py] inlined: definitions.tex
-% definitions.tex — Book I definitions (the 23). Each is a `scope`
+% definitions.tex --- Book I definitions (the 23). Each is a `scope`
 % block: definitions delimit terms used by later claims and edges, but
 % they're not themselves assertions about the world.
 
@@ -252,6 +252,21 @@ quadrilaterals other than these be called trapezia.
 Parallel straight lines are straight lines which, being in the same
 plane and being produced indefinitely in both directions, do not meet
 one another in either direction.
+\end{scope}
+
+% ===== Book II definitions =====
+
+\begin{scope}[Definition II.1: rectangle]
+\label{def:II.1}
+Any rectangular parallelogram is said to be contained by the two
+straight lines containing the right angle.
+\end{scope}
+
+\begin{scope}[Definition II.2: gnomon]
+\label{def:II.2}
+And in any parallelogrammic area let any one whatever of the
+parallelograms about its diameter, with the two complements, be
+called a gnomon.
 \end{scope}
 % [flatten-tex.py] end: definitions.tex
 
@@ -966,15 +981,19 @@ I.47, I.8, and Common Notion 1.
 \end{evidence}
 % [flatten-tex.py] end: books/book01.tex
 % [flatten-tex.py] inlined: books/book02.tex
-% book02.tex — Book II: Geometric algebra. Scaffolded.
+% book02.tex --- Book II of Euclid's Elements: Geometric Algebra.
+%
+% The propositions of Book II are the classical identities of "geometric
+% algebra" --- distributivity, the binomial squares, and the law of
+% cosines in its purely-geometric form (II.12, II.13). All proofs go
+% through the gnomon construction (Definition II.2) and rely on Book I,
+% chiefly I.34, I.41, I.43, I.46, and I.47.
+%
+% Statement wording follows Heath (1908). Proof summaries are condensed
+% to keep the proof DAG legible.
 
 \section{Book II --- Geometric Algebra}
 \label{sec:book-II}
-
-Book II contains the famous identities of geometric algebra, including
-the distributivity of multiplication over addition (II.1) and the
-law of cosines in its purely-geometric form (II.12, II.13). Definitions
-introduce the gnomon construction used throughout.
 
 \begin{claim}[Proposition II.1: Distributivity of multiplication]
 \label{prop:II.1}
@@ -983,12 +1002,226 @@ number of segments whatever, the rectangle contained by the two
 straight lines is equal to the rectangles contained by the
 uncut straight line and each of the segments.
 \end{claim}
-\begin{evidence}[Proof sketch of II.1]
+\begin{evidence}[Proof of II.1]
 \label{ev:II.1}
-Construction follows Heath. To be filled in fully in a later version.
+Erect a perpendicular at the endpoint of the uncut line and draw a
+parallel through the other endpoint (I.31).  At each cut on the second
+line draw a parallel to the first (I.31).  This partitions the big
+rectangle into smaller rectangles, each contained by the uncut line
+and one segment of the cut line.  Their sum equals the whole by
+Common Notion~2.
 \dependson{II.1}{I.31}
 \dependson{II.1}{I.34}
 \dependson{II.1}{cn:2}
+\dependson{II.1}{def:II.1}
+\end{evidence}
+
+\begin{claim}[Proposition II.2: Whole equals sum of rectangles on parts]
+\label{prop:II.2}
+If a straight line be cut at random, the rectangle contained by the
+whole and both of the segments is equal to the square on the whole.
+\end{claim}
+\begin{evidence}[Proof of II.2]
+\label{ev:II.2}
+Let $AB$ be cut at $C$.  Describe the square $ADEB$ on $AB$ (I.46).
+Through $C$ draw $CF$ parallel to $AD$ (I.31).  Then square $ADEB$ is
+decomposed into rectangle $ADFC$ (i.e.\ $AB\cdot AC$) and rectangle
+$CFEB$ (i.e.\ $AB\cdot CB$); their sum is the square (Common Notion 2).
+\dependson{II.2}{I.31}
+\dependson{II.2}{I.46}
+\dependson{II.2}{cn:2}
+\dependson{II.2}{def:II.1}
+\end{evidence}
+
+\begin{claim}[Proposition II.3: Rectangle on a part equals rect on parts plus square]
+\label{prop:II.3}
+If a straight line be cut at random, the rectangle contained by the
+whole and one of the segments is equal to the rectangle contained by
+the segments and the square on the aforesaid segment.
+\end{claim}
+\begin{evidence}[Proof of II.3]
+\label{ev:II.3}
+Apply II.1 to $AB$ cut at $C$, taking $AB$ as the uncut line and the
+two segments $AC$, $CB$ of $AB$ itself as the cut line.  The rectangle
+on $AB$ and $AC$ is then the sum of the rectangle on $AC$, $CB$ and
+the square on $AC$ (the latter being the rectangle on $AC$ with
+itself, by Definition II.1).
+\dependson{II.3}{II.1}
+\dependson{II.3}{def:II.1}
+\dependson{II.3}{cn:2}
+\end{evidence}
+
+\begin{claim}[Proposition II.4: Square of a sum is sum of squares plus twice rectangle]
+\label{prop:II.4}
+If a straight line be cut at random, the square on the whole is equal
+to the squares on the segments and twice the rectangle contained by
+the segments.
+\end{claim}
+\begin{evidence}[Proof of II.4]
+\label{ev:II.4}
+Let $AB$ be cut at $C$.  Describe the square $ADEB$ on $AB$ (I.46) and
+draw $BD$.  Through $C$ draw $CGF$ parallel to $AD$, and through $G$
+draw $HK$ parallel to $AB$ (I.31).  The figure $CBKG$ is the square on
+$CB$, the figure $HDFG$ the square on $AC$ (by I.34 and I.43 the two
+complements $AGHD$ and $GFBK$ are equal rectangles, each contained by
+$AC$ and $CB$).  Adding by Common Notion 2 gives the result.  This is
+$(a+b)^2 = a^2 + 2ab + b^2$ in geometric form.
+\dependson{II.4}{I.31}
+\dependson{II.4}{I.34}
+\dependson{II.4}{I.43}
+\dependson{II.4}{I.46}
+\dependson{II.4}{cn:2}
+\dependson{II.4}{def:II.1}
+\dependson{II.4}{def:II.2}
+\end{evidence}
+
+\begin{claim}[Proposition II.5: Rectangle on unequal parts plus square on difference]
+\label{prop:II.5}
+If a straight line be cut into equal and unequal segments, the
+rectangle contained by the unequal segments of the whole together with
+the square on the straight line between the points of section is equal
+to the square on the half.
+\end{claim}
+\begin{evidence}[Proof of II.5]
+\label{ev:II.5}
+Let $AB$ be bisected at $C$ and cut unequally at $D$.  Construct the
+square on $CB$ (I.46) and draw the gnomon (Definition II.2).  By
+I.36, the rectangle $AD\cdot DB$ equals the rectangle $CD$ extended by
+its complement, which together with the square on $CD$ fills the
+square on $CB$ (Common Notion 2).
+\dependson{II.5}{I.36}
+\dependson{II.5}{I.43}
+\dependson{II.5}{I.46}
+\dependson{II.5}{cn:2}
+\dependson{II.5}{def:II.1}
+\dependson{II.5}{def:II.2}
+\end{evidence}
+
+\begin{claim}[Proposition II.6: Rectangle on bisected-and-produced line]
+\label{prop:II.6}
+If a straight line be bisected and a straight line be added to it in
+a straight line, the rectangle contained by the whole with the added
+straight line and the added straight line, together with the square
+on the half, is equal to the square on the straight line made up of
+the half and the added straight line.
+\end{claim}
+\begin{evidence}[Proof of II.6]
+\label{ev:II.6}
+The construction is the mirror of II.5: $AB$ bisected at $C$ and
+extended by $BD$.  Build the square on $CD$ and the rectangle on
+$AD$, $DB$ by the gnomon construction (Definition II.2); the
+complements are equal rectangles by I.43, and Common Notion 2
+delivers the equality.
+\dependson{II.6}{II.5}
+\dependson{II.6}{I.43}
+\dependson{II.6}{I.46}
+\dependson{II.6}{cn:2}
+\dependson{II.6}{def:II.2}
+\end{evidence}
+
+\begin{claim}[Proposition II.7: Squares on whole and segment equal twice rect plus square on remainder]
+\label{prop:II.7}
+If a straight line be cut at random, the square on the whole and that
+on one of the segments both together are equal to twice the rectangle
+contained by the whole and the said segment together with the square
+on the remaining segment.
+\end{claim}
+\begin{evidence}[Proof of II.7]
+\label{ev:II.7}
+Take II.4 applied to the line $AB$ cut at $C$: square on $AB$ equals
+sum of squares on $AC$ and $CB$ together with twice the rectangle on
+them.  Subtract the square on $CB$ from both sides (Common Notion 3)
+and add the square on $AB$ to both sides (Common Notion 2) --- i.e.\
+arithmetic on the gnomon --- to obtain $a^2 + b^2 = 2ab + (a-b)^2$.
+\dependson{II.7}{II.4}
+\dependson{II.7}{cn:2}
+\dependson{II.7}{cn:3}
+\dependson{II.7}{def:II.2}
+\end{evidence}
+
+\begin{claim}[Proposition II.8: Four-times rectangle plus square on remainder equals square on sum]
+\label{prop:II.8}
+If a straight line be cut at random, four times the rectangle
+contained by the whole and one of the segments together with the
+square on the remaining segment is equal to the square described on
+the whole and the aforesaid segment as on one straight line.
+\end{claim}
+\begin{evidence}[Proof of II.8]
+\label{ev:II.8}
+Extend $AB$ by $BC$ equal to $BC$ itself (the segment under
+consideration).  Apply II.4 to $AB+BC$ cut at $B$: the square on the
+extended line equals the sum of the squares on the two parts plus
+twice the rectangle.  Since one part is $AB$ and the other is $BC$
+(now equal in two copies), simplify by II.1 and Common Notion 2 to
+get $(a+b)^2 = (a-b)^2 + 4ab$.
+\dependson{II.8}{II.1}
+\dependson{II.8}{II.4}
+\dependson{II.8}{cn:2}
+\dependson{II.8}{def:II.2}
+\end{evidence}
+
+\begin{claim}[Proposition II.9: Squares on unequal segments equal double of two squares]
+\label{prop:II.9}
+If a straight line be cut into equal and unequal segments, the
+squares on the unequal segments of the whole are double of the square
+on the half and of the square on the straight line between the points
+of section.
+\end{claim}
+\begin{evidence}[Proof of II.9]
+\label{ev:II.9}
+With $AB$ bisected at $C$ and cut at $D$, erect a perpendicular at
+$C$ equal to $CA$ (I.11), join $AE$ and $EB$ where $E$ is its top.
+By I.47 (Pythagoras), the squares on $AE$ and $EB$ are computed in
+terms of the squares on $CA$, $CE$, $CB$, $CD$, $DE$.  Algebraic
+reduction (Common Notions 2 and 3) gives
+$AD^2 + DB^2 = 2(AC^2 + CD^2)$.
+\dependson{II.9}{I.11}
+\dependson{II.9}{I.47}
+\dependson{II.9}{cn:2}
+\dependson{II.9}{cn:3}
+\end{evidence}
+
+\begin{claim}[Proposition II.10: Squares on whole-with-addition and addition equal double of two squares]
+\label{prop:II.10}
+If a straight line be bisected and a straight line be added to it in
+a straight line, the square on the whole with the added straight line
+and the square on the added straight line both together are double of
+the square on the half and of the square described on the straight
+line made up of the half and the added straight line as on one
+straight line.
+\end{claim}
+\begin{evidence}[Proof of II.10]
+\label{ev:II.10}
+Same construction as II.9 with extension instead of internal cut.
+Apply I.47 to the two triangles formed by the perpendicular at the
+midpoint and the produced line; gather terms by Common Notions 2 and 3.
+\dependson{II.10}{II.9}
+\dependson{II.10}{I.11}
+\dependson{II.10}{I.47}
+\dependson{II.10}{cn:2}
+\dependson{II.10}{cn:3}
+\end{evidence}
+
+\begin{claim}[Proposition II.11: Cut a line in extreme and mean ratio (the golden section)]
+\label{prop:II.11}
+To cut a given straight line so that the rectangle contained by the
+whole and one of the segments is equal to the square on the remaining
+segment.
+\end{claim}
+\begin{evidence}[Proof of II.11]
+\label{ev:II.11}
+Let $AB$ be the given line.  Describe the square $ABDC$ on it (I.46).
+Bisect $AC$ at $E$ (I.10).  Produce $AC$ to $F$ so that $EF = EB$ --- by
+II.6 the rectangle on $CF$ and $FA$ equals the square on $AE$, hence
+the square on $AF$ equals the rectangle on $AB$ and $BF$.  The point
+$H$ such that $AH = AF$ divides $AB$ in the desired ratio.  This is
+the construction of the golden section.
+\dependson{II.11}{II.6}
+\dependson{II.11}{I.10}
+\dependson{II.11}{I.11}
+\dependson{II.11}{I.46}
+\dependson{II.11}{cn:1}
+\dependson{II.11}{cn:2}
 \end{evidence}
 
 \begin{claim}[Proposition II.12: Obtuse-triangle generalisation of Pythagoras]
@@ -999,14 +1232,60 @@ obtuse angle by twice the rectangle contained by one of the sides
 about the obtuse angle (namely that on which the perpendicular falls)
 and the straight line cut off outside by the perpendicular.
 \end{claim}
-\begin{evidence}[Proof sketch of II.12]
+\begin{evidence}[Proof of II.12]
 \label{ev:II.12}
-Apply II.4 (square of a sum) and I.47.  To be filled in fully.
+Drop a perpendicular from the vertex opposite the obtuse angle to the
+extension of one side; this produces two right triangles to which
+I.47 applies.  Add the resulting squared-length identities and apply
+II.4 to the side containing the obtuse angle to obtain the law of
+cosines.
+\dependson{II.12}{I.12}
 \dependson{II.12}{I.47}
+\dependson{II.12}{II.4}
+\dependson{II.12}{cn:2}
+\dependson{II.12}{cn:4}
 \end{evidence}
 
-% TODO: Propositions II.2 through II.14 (excluding II.12) — translations
-% follow Heath; dependency edges to be added per the rrxiv convention.
+\begin{claim}[Proposition II.13: Acute-triangle generalisation of Pythagoras]
+\label{prop:II.13}
+In acute-angled triangles the square on the side subtending the acute
+angle is less than the squares on the sides containing the acute
+angle by twice the rectangle contained by one of the sides about the
+acute angle (namely that on which the perpendicular falls) and the
+straight line cut off within by the perpendicular.
+\end{claim}
+\begin{evidence}[Proof of II.13]
+\label{ev:II.13}
+Symmetric to II.12: drop a perpendicular from the vertex opposite the
+acute angle; the foot lies within the side this time.  Apply I.47
+to the two right triangles and II.7 to combine the lengths.
+\dependson{II.13}{II.7}
+\dependson{II.13}{II.12}
+\dependson{II.13}{I.12}
+\dependson{II.13}{I.47}
+\dependson{II.13}{cn:2}
+\dependson{II.13}{cn:3}
+\dependson{II.13}{cn:4}
+\end{evidence}
+
+\begin{claim}[Proposition II.14: Quadrature of a rectilinear figure]
+\label{prop:II.14}
+To construct a square equal to a given rectilineal figure.
+\end{claim}
+\begin{evidence}[Proof of II.14]
+\label{ev:II.14}
+Reduce the given figure to a rectangle by I.45.  Convert the
+rectangle to a square using II.5 in the following way: extend one
+side $BE$ of the rectangle $BCDE$ along the other side $EF$ so that
+$EF = ED$; bisect $BF$ at $G$; describe the semicircle on $BF$;
+extend $DE$ to meet the semicircle at $H$.  By II.5 (and I.47), the
+square on $EH$ equals the rectangle $BE\cdot EF$, which is the area
+of the original figure.
+\dependson{II.14}{II.5}
+\dependson{II.14}{I.45}
+\dependson{II.14}{I.47}
+\dependson{II.14}{cn:2}
+\end{evidence}
 % [flatten-tex.py] end: books/book02.tex
 % [flatten-tex.py] inlined: books/book03.tex
 % book03.tex — Book III: Circles. Scaffolded.
