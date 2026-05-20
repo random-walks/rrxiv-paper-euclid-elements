@@ -31,6 +31,9 @@
 \RequirePackage[numbers]{natbib}
 \RequirePackage{booktabs}
 \RequirePackage{authblk}
+\RequirePackage{tikz}
+\usetikzlibrary{calc, angles, quotes, intersections, through}
+\RequirePackage{float}
 \RequirePackage[colorlinks=true,
                 linkcolor=blue!50!black,
                 citecolor=blue!50!black,

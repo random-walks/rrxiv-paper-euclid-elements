@@ -1,0 +1,35 @@
+% fig-ii-11.tex — II.11: cut a line in extreme and mean ratio (golden section).
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=1.2, line cap=round, line join=round]
+  \coordinate (A) at (0, 0);
+  \coordinate (B) at (3, 0);
+  \coordinate (C) at (0, 3);
+  \coordinate (D) at (3, 3);
+  % Square ABDC on AB.
+  \draw[very thick] (A) -- (B) -- (D) -- (C) -- cycle;
+  % E = midpoint of AC.
+  \coordinate (E) at (0, 1.5);
+  \draw[thin, dashed] (E) -- (B);
+  % F = on AC produced, with EF = EB. EF = sqrt(9 + 2.25) ~ 3.354.
+  \coordinate (F) at (0, {-sqrt(11.25) + 1.5});
+  \draw[thin] (E) -- (F);
+  % H on AB with AH = AF.
+  \coordinate (H) at ({sqrt(11.25) - 1.5}, 0);
+  \draw[very thick, dotted] (H) -- ($(H)+(0, 3)$);
+  % Labels.
+  \node[above left]  at (A) {$A$};
+  \node[above right] at (B) {$B$};
+  \node[below right] at (D) {$D$};
+  \node[below left]  at (C) {$C$};
+  \node[left]        at (E) {$E$};
+  \node[left]        at (F) {$F$};
+  \node[below]       at (H) {$H$};
+  % Arc from F to H (centre A, radius AF).
+  \draw[thin] (F) arc[start angle=270, end angle=360, radius={sqrt(11.25) - 1.5}];
+\end{tikzpicture}
+\caption{Proposition II.11. Square $ABDC$ on $AB$; midpoint $E$ of $AC$;
+$F$ on the extension of $AC$ with $EF = EB$. Then $AH = AF$ cuts $AB$
+in the desired ratio: $AB \cdot HB = AH^2$. This is the golden section.}
+\label{fig:II.11}
+\end{figure}

@@ -1,0 +1,51 @@
+% fig-ii-4.tex — II.4: binomial square (a+b)^2 = a^2 + 2ab + b^2.
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=1.0, line cap=round, line join=round]
+  \def\a{2.4}
+  \def\b{1.4}
+  \coordinate (A) at (0, 0);
+  \coordinate (B) at ({\a+\b}, 0);
+  \coordinate (D) at (0, {\a+\b});
+  \coordinate (E) at ({\a+\b}, {\a+\b});
+  \coordinate (C) at (\a, 0);
+  \coordinate (G) at (\a, \a);
+  \coordinate (F) at (\a, {\a+\b});
+  \coordinate (H) at (0, \a);
+  \coordinate (K) at ({\a+\b}, \a);
+  % Outer square ADEB.
+  \draw[very thick] (A) -- (B) -- (E) -- (D) -- cycle;
+  % Diagonal BD.
+  \draw[thin, dashed] (B) -- (D);
+  % Internal partition: CF parallel to AD, HK parallel to AB.
+  \draw[thick] (C) -- (F);
+  \draw[thick] (H) -- (K);
+  % Shaded squares: HDFG (top-left, side a) and CBKG (bottom-right, side b).
+  \fill[gray!10] (H) -- (D) -- (F) -- (G) -- cycle;
+  \fill[gray!25] (C) -- (B) -- (K) -- (G) -- cycle;
+  % Re-draw lines on top so shading doesn't hide them.
+  \draw[very thick] (A) -- (B) -- (E) -- (D) -- cycle;
+  \draw[thick] (C) -- (F);
+  \draw[thick] (H) -- (K);
+  \draw[thin, dashed] (B) -- (D);
+  % Labels.
+  \node[below left]  at (A) {$A$};
+  \node[below]       at (C) {$C$};
+  \node[below right] at (B) {$B$};
+  \node[above left]  at (D) {$D$};
+  \node[above]       at (F) {$F$};
+  \node[above right] at (E) {$E$};
+  \node[left]        at (H) {$H$};
+  \node[right]       at (K) {$K$};
+  \node              at (G) {$G$};
+  % Side annotations.
+  \node[below] at ($(A)!0.5!(C)$) {$a$};
+  \node[below] at ($(C)!0.5!(B)$) {$b$};
+\end{tikzpicture}
+\caption{Proposition II.4. The square $ADEB$ on $AB = a+b$ is
+decomposed by the parallels $CF \parallel AD$ and $HK \parallel AB$
+into the square $HDFG$ on $AC = a$, the square $CBKG$ on $CB = b$, and
+two equal rectangles $AGHD$ and $GFBK$ (by I.43), each equal to
+$a \cdot b$.}
+\label{fig:II.4}
+\end{figure}

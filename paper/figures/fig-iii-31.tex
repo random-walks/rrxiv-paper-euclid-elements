@@ -1,0 +1,29 @@
+% fig-iii-31.tex — III.31: angle in a semicircle is right.
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=1.1, line cap=round]
+  \coordinate (O) at (0, 0);
+  \def\r{2}
+  \draw[thin] (O) circle (\r);
+  \coordinate (A) at (-\r, 0);
+  \coordinate (B) at ( \r, 0);
+  % Diameter AB.
+  \draw[very thick] (A) -- (B);
+  \coordinate (C) at ({\r*cos(70)}, {\r*sin(70)});
+  \draw[very thick] (A) -- (C) -- (B);
+  % Right angle marker at C.
+  \coordinate (Cm1) at ($(C)!0.25!(A)$);
+  \coordinate (Cm2) at ($(C)!0.25!(B)$);
+  \coordinate (Cmid) at ($(Cm1)!0.5!(Cm2)$);
+  \draw[thin] (Cm1) -- ($(Cm1)+(Cm2)-(C)$) -- (Cm2);
+  \node[left]   at (A) {$A$};
+  \node[right]  at (B) {$B$};
+  \node[above]  at (C) {$C$};
+  \node[below]  at (O) {$O$};
+\end{tikzpicture}
+\caption{Proposition III.31. For any point $C$ on the circle (not at
+$A$ or $B$), the inscribed angle $\angle ACB$ subtending the diameter
+$AB$ is a right angle. Proof: by I.5 applied to the two isoceles
+triangles $OAC$ and $OCB$, then I.32.}
+\label{fig:III.31}
+\end{figure}

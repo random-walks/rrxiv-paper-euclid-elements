@@ -1,0 +1,37 @@
+% fig-iii-36.tex — III.36: power of a point (secant and tangent).
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=1.1, line cap=round]
+  \coordinate (O) at (0, 0);
+  \def\r{1.8}
+  \draw[thin] (O) circle (\r);
+  % External point P.
+  \coordinate (P) at (4.0, 0);
+  % Secant through P meeting circle at A (near) and B (far).
+  \coordinate (A) at ({\r*cos(120)}, {\r*sin(120)});
+  \coordinate (B) at ({\r*cos(45)},  {\r*sin(45)});
+  % Line through A and B extended to P (P is constructed beyond B).
+  % Pick A and B on the circle, then place P on line AB extended.
+  % For visual clarity, just draw P--A--B.
+  \draw[very thick] (P) -- ($(B)!1.6!(A)$);
+  % Tangent from P touching circle at T.
+  % T is found by: OT perpendicular to PT, and |OT|=r, |OP|=PO.
+  % Compute T: angle OPT = arcsin(r/OP).
+  \pgfmathsetmacro{\OPdist}{4.0}
+  \pgfmathsetmacro{\angA}{asin(\r/\OPdist)}
+  \coordinate (T) at ({(\OPdist*cos(\angA))*cos(180 - \angA)}, {(\OPdist*cos(\angA))*sin(180 - \angA)});
+  \draw[very thick] (P) -- (T);
+  \draw[thin, dashed] (O) -- (T);
+  % Right angle marker at T (small square).
+  % Labels.
+  \node[right] at (P) {$P$};
+  \node[above left]  at (A) {$A$};
+  \node[above right] at (B) {$B$};
+  \node[above] at (T) {$T$};
+  \node[below] at (O) {$O$};
+\end{tikzpicture}
+\caption{Proposition III.36. From an external point $P$, the tangent
+$PT$ and any secant $PAB$ satisfy $PT^2 = PA \cdot PB$ (the power of
+$P$ with respect to the circle).}
+\label{fig:III.36}
+\end{figure}

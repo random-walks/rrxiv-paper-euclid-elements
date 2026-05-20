@@ -6,8 +6,8 @@
 % through the gnomon construction (Definition II.2) and rely on Book I,
 % chiefly I.34, I.41, I.43, I.46, and I.47.
 %
-% Statement wording follows Heath (1908). Proof summaries are condensed
-% to keep the proof DAG legible.
+% Statement wording follows Heath (1908); proof prose mirrors Heath's
+% density --- explicit construction steps with inline lemma citations.
 
 \section{Book II --- Geometric Algebra}
 \label{sec:book-II}
@@ -21,12 +21,18 @@ uncut straight line and each of the segments.
 \end{claim}
 \begin{evidence}[Proof of II.1]
 \label{ev:II.1}
-Erect a perpendicular at the endpoint of the uncut line and draw a
-parallel through the other endpoint (I.31).  At each cut on the second
-line draw a parallel to the first (I.31).  This partitions the big
-rectangle into smaller rectangles, each contained by the uncut line
-and one segment of the cut line.  Their sum equals the whole by
-Common Notion~2.
+Let $A$ and $BC$ be the two straight lines, and let $BC$ be cut at
+random at the points $D$, $E$.  Construct the rectangle contained by
+$A$ and $BC$ as follows.  From $B$ draw $BF$ at right angles to $BC$
+(I.11) with $BF$ equal to $A$.  Through $F$ draw $FG$ parallel to $BC$
+(I.31), and through $C$, $D$, $E$ in turn draw $CH$, $DK$, $EL$
+parallel to $BF$ (I.31).  Then the rectangle $BH$ on the lines $A$,
+$BC$ is divided by the parallels $DK$, $EL$ into the three rectangles
+$BK$ on $A$, $BD$; $DL$ on $A$, $DE$; and $EH$ on $A$, $EC$
+(Definition II.1).  By Common Notion 2, the whole rectangle equals
+the sum of these parts: $A \cdot BC = A\cdot BD + A\cdot DE +
+A\cdot EC$.  The argument generalises to any number of cuts on $BC$.
+\dependson{II.1}{I.11}
 \dependson{II.1}{I.31}
 \dependson{II.1}{I.34}
 \dependson{II.1}{cn:2}
@@ -40,11 +46,19 @@ whole and both of the segments is equal to the square on the whole.
 \end{claim}
 \begin{evidence}[Proof of II.2]
 \label{ev:II.2}
-Let $AB$ be cut at $C$.  Describe the square $ADEB$ on $AB$ (I.46).
-Through $C$ draw $CF$ parallel to $AD$ (I.31).  Then square $ADEB$ is
-decomposed into rectangle $ADFC$ (i.e.\ $AB\cdot AC$) and rectangle
-$CFEB$ (i.e.\ $AB\cdot CB$); their sum is the square (Common Notion 2).
+Let the straight line $AB$ be cut at random at the point $C$.
+Describe on $AB$ the square $ADEB$ (I.46), and through $C$ draw
+$CF$ parallel to either $AD$ or $BE$ (I.31), so that $CF$ meets $DE$
+at $F$.  The square $ADEB$ is thereby divided into two rectangles:
+$ADFC$ contained by $AD$ and $AC$ (and since $AD = AB$, this rectangle
+is contained by $AB$ and $AC$, by Definition II.1), and $CFEB$
+contained by $CF$ and $CB$ (again, $CF = AB$, so this rectangle is
+contained by $AB$ and $CB$).  Their sum (Common Notion 2) is the
+whole square $ADEB$, which is the square on $AB$.  Therefore the
+rectangle on $AB$ and $AC$ together with the rectangle on $AB$ and
+$CB$ equals the square on $AB$.
 \dependson{II.2}{I.31}
+\dependson{II.2}{I.34}
 \dependson{II.2}{I.46}
 \dependson{II.2}{cn:2}
 \dependson{II.2}{def:II.1}
@@ -58,11 +72,18 @@ the segments and the square on the aforesaid segment.
 \end{claim}
 \begin{evidence}[Proof of II.3]
 \label{ev:II.3}
-Apply II.1 to $AB$ cut at $C$, taking $AB$ as the uncut line and the
-two segments $AC$, $CB$ of $AB$ itself as the cut line.  The rectangle
-on $AB$ and $AC$ is then the sum of the rectangle on $AC$, $CB$ and
-the square on $AC$ (the latter being the rectangle on $AC$ with
-itself, by Definition II.1).
+Let $AB$ be cut at $C$; consider the rectangle on $AB$, $AC$.  By
+Proposition II.1, taking $AB$ as the uncut line and the two segments
+$AC$, $CB$ of $AB$ itself as the cut line, the rectangle on $AB$ and
+$AC$ equals the rectangle on $AC$ and $AC$ together with the
+rectangle on $AB$ and $CB$ --- but the rectangle on $AC$ and $AC$ is
+the square on $AC$ by Definition II.1.  Re-expressing the rectangle
+on $AB$ and $CB$ via II.1 again as the rectangle on $AC$, $CB$ plus
+the rectangle on $CB$, $CB$ (which is the square on $CB$, again by
+Definition II.1) and combining, we obtain:
+the rectangle on $AB$ and $AC$ equals the rectangle on $AC$ and
+$CB$ plus the square on $AC$.  By Common Notion 2 the equality is
+preserved when rearranged.
 \dependson{II.3}{II.1}
 \dependson{II.3}{def:II.1}
 \dependson{II.3}{cn:2}
@@ -76,18 +97,39 @@ the segments.
 \end{claim}
 \begin{evidence}[Proof of II.4]
 \label{ev:II.4}
-Let $AB$ be cut at $C$.  Describe the square $ADEB$ on $AB$ (I.46) and
-draw $BD$.  Through $C$ draw $CGF$ parallel to $AD$, and through $G$
-draw $HK$ parallel to $AB$ (I.31).  The figure $CBKG$ is the square on
-$CB$, the figure $HDFG$ the square on $AC$ (by I.34 and I.43 the two
-complements $AGHD$ and $GFBK$ are equal rectangles, each contained by
-$AC$ and $CB$).  Adding by Common Notion 2 gives the result.  This is
-$(a+b)^2 = a^2 + 2ab + b^2$ in geometric form.
+\input{figures/fig-ii-4}
+Let the straight line $AB$ be cut at random at $C$.  Describe on $AB$
+the square $ADEB$ (I.46), and draw the diagonal $BD$.  Through $C$
+draw $CGF$ parallel to either $AD$ or $BE$ (I.31), meeting $BD$ at
+$G$ and $DE$ at $F$.  Through $G$ draw $HK$ parallel to either $AB$
+or $DE$ (I.31), meeting $AD$ at $H$ and $BE$ at $K$.
+
+Since $CF$ is parallel to $AD$ and $BD$ falls on them, the exterior
+angle $\angle BGC$ equals the interior and opposite $\angle BDA$
+(I.29).  But $\angle BDA = \angle DBA$ since $BA = AD$ (I.5 applied
+to the isoceles right triangle inside the square).  Hence
+$\angle BGC = \angle GBC$, so $BC = CG$ (I.6), and therefore $CBKG$
+is equilateral.  Since it has a right angle at $B$, it is a square
+on $CB$ (Definition I.22).  By the same reasoning $HDFG$ is the
+square on $HD = AC$.
+
+The complements $AGHD$ and $GFBK$ in the square $ADEB$ are equal
+rectangles by I.43; each is contained by $AC$ and $CB$ (since
+$AH = AC$, $HG = CB$, etc.), so each is the rectangle on $AC$, $CB$.
+The four pieces sum to the whole (Common Notion 2):
+\[
+    AB^2 \;=\; AC^2 + CB^2 + 2\cdot(AC\cdot CB),
+\]
+which is $(a+b)^2 = a^2 + 2ab + b^2$ in geometric form.
+\dependson{II.4}{I.5}
+\dependson{II.4}{I.6}
+\dependson{II.4}{I.29}
 \dependson{II.4}{I.31}
 \dependson{II.4}{I.34}
 \dependson{II.4}{I.43}
 \dependson{II.4}{I.46}
 \dependson{II.4}{cn:2}
+\dependson{II.4}{def:I.22}
 \dependson{II.4}{def:II.1}
 \dependson{II.4}{def:II.2}
 \end{evidence}
@@ -101,11 +143,24 @@ to the square on the half.
 \end{claim}
 \begin{evidence}[Proof of II.5]
 \label{ev:II.5}
-Let $AB$ be bisected at $C$ and cut unequally at $D$.  Construct the
-square on $CB$ (I.46) and draw the gnomon (Definition II.2).  By
-I.36, the rectangle $AD\cdot DB$ equals the rectangle $CD$ extended by
-its complement, which together with the square on $CD$ fills the
-square on $CB$ (Common Notion 2).
+Let $AB$ be bisected at $C$ (I.10) and cut unequally at $D$.
+Describe on $CB$ the square $CEFB$ (I.46), join $BE$, and through $D$
+draw $DG$ parallel to $CE$ or $BF$ (I.31), meeting $BE$ at $H$ and
+$EF$ at $G$.  Through $H$ draw $KM$ parallel to $AB$ or $EF$ (I.31),
+meeting $CE$ at $L$ and $BF$ at $M$.  Through $A$ draw $AK$ parallel
+to $CL$ or $BM$ (I.31), meeting $KM$ extended at $K$.
+
+The complement $CH$ equals the complement $HF$ in the square $CEFB$
+(I.43).  Add to each the square $DM$; then the rectangle $CDHL$ plus
+the square $LHMG$ equals the rectangle $DBFG$ plus the same square.
+But $CDHL$ together with rectangle $AC$-equivalent piece $AKLC$
+(which equals $CDHL$ since $AC = CB$ and the lines are parallel)
+fills the gnomon $NOP$, plus the square $LHMG$ on $CD$, equals the
+square $CEFB$ on $CB$.  Thus the rectangle $AD\cdot DB$ together
+with the square on $CD$ equals the square on $CB$.
+\dependson{II.5}{I.10}
+\dependson{II.5}{I.31}
+\dependson{II.5}{I.34}
 \dependson{II.5}{I.36}
 \dependson{II.5}{I.43}
 \dependson{II.5}{I.46}
@@ -124,15 +179,27 @@ the half and the added straight line.
 \end{claim}
 \begin{evidence}[Proof of II.6]
 \label{ev:II.6}
-The construction is the mirror of II.5: $AB$ bisected at $C$ and
-extended by $BD$.  Build the square on $CD$ and the rectangle on
-$AD$, $DB$ by the gnomon construction (Definition II.2); the
-complements are equal rectangles by I.43, and Common Notion 2
-delivers the equality.
-\dependson{II.6}{II.5}
+Let $AB$ be bisected at $C$ (I.10) and produced to $D$, so that $CD$
+is the half plus the added segment $BD$.  Describe on $CD$ the
+square $CEFD$ (I.46), join $DE$, and through $B$ draw $BG$ parallel
+to $CE$ or $DF$ (I.31), meeting $DE$ at $H$ and $EF$ at $G$.
+Through $H$ draw $KM$ parallel to $AD$ or $EF$ (I.31), and through
+$A$ draw $AK$ parallel to $CL$ or $DM$ (I.31).
+
+As in II.5, the complement $CH$ equals the complement $HF$ (I.43).
+Adding the square $LHMG$ (which is the square on $BC = CB$) to both
+of $CH + AL$ (the rectangle on $AD$, $DB$) shows that the rectangle
+$AD\cdot DB$ together with the square on $CB$ equals the gnomon plus
+the small square, which is the square $CEFD$ on $CD$.  Hence
+$AD\cdot DB + CB^2 = CD^2$ as required.
+\dependson{II.6}{I.10}
+\dependson{II.6}{I.31}
+\dependson{II.6}{I.34}
 \dependson{II.6}{I.43}
 \dependson{II.6}{I.46}
+\dependson{II.6}{II.5}
 \dependson{II.6}{cn:2}
+\dependson{II.6}{def:II.1}
 \dependson{II.6}{def:II.2}
 \end{evidence}
 
@@ -145,14 +212,25 @@ on the remaining segment.
 \end{claim}
 \begin{evidence}[Proof of II.7]
 \label{ev:II.7}
-Take II.4 applied to the line $AB$ cut at $C$: square on $AB$ equals
-sum of squares on $AC$ and $CB$ together with twice the rectangle on
-them.  Subtract the square on $CB$ from both sides (Common Notion 3)
-and add the square on $AB$ to both sides (Common Notion 2) --- i.e.\
-arithmetic on the gnomon --- to obtain $a^2 + b^2 = 2ab + (a-b)^2$.
+Let $AB$ be cut at $C$.  Describe on $AB$ the square $ADEB$ (I.46),
+and through $C$ draw $CF$ parallel to $AD$ or $BE$ (I.31), meeting
+$DE$ at $F$.  On $CB$ as side construct the square $CBKG$ inside
+$ADEB$ (a copy of II.4's construction), with $HK$ parallel to $AB$.
+
+By II.4 the square $ADEB$ on $AB$ equals the square on $AC$ plus the
+square on $CB$ plus twice the rectangle $AC \cdot CB$.  Add the
+square on $CB$ to both sides of this identity (Common Notion 2):
+\[
+    AB^2 + CB^2 \;=\; AC^2 + 2\cdot CB^2 + 2\cdot(AC\cdot CB).
+\]
+But $2\cdot CB^2 + 2\cdot(AC\cdot CB) = 2\cdot CB(CB + AC) =
+2\cdot CB \cdot AB$ (Definition II.1; II.1).  Hence
+$AB^2 + CB^2 = 2\cdot(AB\cdot CB) + AC^2$, as required.
+\dependson{II.7}{II.1}
 \dependson{II.7}{II.4}
 \dependson{II.7}{cn:2}
 \dependson{II.7}{cn:3}
+\dependson{II.7}{def:II.1}
 \dependson{II.7}{def:II.2}
 \end{evidence}
 
@@ -165,15 +243,27 @@ the whole and the aforesaid segment as on one straight line.
 \end{claim}
 \begin{evidence}[Proof of II.8]
 \label{ev:II.8}
-Extend $AB$ by $BC$ equal to $BC$ itself (the segment under
-consideration).  Apply II.4 to $AB+BC$ cut at $B$: the square on the
-extended line equals the sum of the squares on the two parts plus
-twice the rectangle.  Since one part is $AB$ and the other is $BC$
-(now equal in two copies), simplify by II.1 and Common Notion 2 to
-get $(a+b)^2 = (a-b)^2 + 4ab$.
+Let $AB$ be cut at $C$, and produce $AB$ to $D$ so that $BD = BC$.
+Then $AD = AB + BC$ and $AD$ is cut at $B$ into the segments $AB$
+and $BD = BC$.  Apply II.4 to the line $AD$ cut at $B$: the square
+on $AD$ equals the squares on $AB$ and $BD$ together with twice the
+rectangle on $AB$, $BD$.  Since $BD = BC$, this becomes:
+\[
+    AD^2 \;=\; AB^2 + BC^2 + 2\cdot(AB\cdot BC).
+\]
+Apply II.4 again to $AB$ cut at $C$, namely $AB^2 = AC^2 + CB^2 +
+2\cdot(AC\cdot CB)$, and substitute.  Combining (Common Notion 2)
+and re-arranging (Common Notion 3) to isolate $4\cdot(AB\cdot BC)$
+on the right side yields:
+\[
+    AD^2 \;=\; 4\cdot(AB\cdot BC) + AC^2,
+\]
+which is $(a+b)^2 = 4ab + (a-b)^2$ in the form Euclid states it.
 \dependson{II.8}{II.1}
 \dependson{II.8}{II.4}
 \dependson{II.8}{cn:2}
+\dependson{II.8}{cn:3}
+\dependson{II.8}{def:II.1}
 \dependson{II.8}{def:II.2}
 \end{evidence}
 
@@ -186,13 +276,35 @@ of section.
 \end{claim}
 \begin{evidence}[Proof of II.9]
 \label{ev:II.9}
-With $AB$ bisected at $C$ and cut at $D$, erect a perpendicular at
-$C$ equal to $CA$ (I.11), join $AE$ and $EB$ where $E$ is its top.
-By I.47 (Pythagoras), the squares on $AE$ and $EB$ are computed in
-terms of the squares on $CA$, $CE$, $CB$, $CD$, $DE$.  Algebraic
-reduction (Common Notions 2 and 3) gives
-$AD^2 + DB^2 = 2(AC^2 + CD^2)$.
+Let $AB$ be bisected at $C$ (I.10) and cut unequally at $D$.  At $C$
+draw $CE$ at right angles to $AB$ (I.11), with $CE = AC = CB$.  Join
+$EA$ and $EB$; through $D$ draw $DF$ parallel to $CE$ (I.31), meeting
+$EB$ at $F$; through $F$ draw $FG$ parallel to $AB$ (I.31), meeting
+$CE$ at $G$.  Join $AF$.
+
+Since $\angle ECA$ is a right angle and $CA = CE$, the triangle
+$ACE$ is right-isoceles, and $\angle CAE = \angle AEC = $ half a right
+angle (I.5; I.32).  Similarly $\angle CBE = \angle CEB = $ half a
+right angle.  Hence $\angle AEB$ is a right angle (Common Notion 2),
+and triangle $AEB$ is right-angled at $E$.  By I.47:
+\[
+    AB^2 \;=\; AE^2 + EB^2.
+\]
+Now $AE^2 = AC^2 + CE^2 = 2\cdot AC^2$ (I.47 in $\triangle ACE$,
+plus $CE = AC$).  Similarly inside the right triangles formed by the
+perpendicular $DF$ at $D$ on $AB$, I.47 plus the fact that
+$DF = DE$ (which one shows from the parallel construction)
+yields, after Common Notions 2 and 3:
+\[
+    AD^2 + DB^2 \;=\; 2\cdot AC^2 + 2\cdot CD^2.
+\]
+\dependson{II.9}{I.5}
+\dependson{II.9}{I.10}
 \dependson{II.9}{I.11}
+\dependson{II.9}{I.29}
+\dependson{II.9}{I.31}
+\dependson{II.9}{I.32}
+\dependson{II.9}{I.34}
 \dependson{II.9}{I.47}
 \dependson{II.9}{cn:2}
 \dependson{II.9}{cn:3}
@@ -209,11 +321,29 @@ straight line.
 \end{claim}
 \begin{evidence}[Proof of II.10]
 \label{ev:II.10}
-Same construction as II.9 with extension instead of internal cut.
-Apply I.47 to the two triangles formed by the perpendicular at the
-midpoint and the produced line; gather terms by Common Notions 2 and 3.
+Let $AB$ be bisected at $C$ (I.10) and produced to $D$.  At $C$ erect
+$CE$ at right angles to $AB$ (I.11), with $CE = CA = CB$.  Join $EA$,
+$EB$, $ED$.  Through $D$ draw $DF$ parallel to $CE$, of length such
+that $DF$ meets the line through $E$ parallel to $AB$ at $F$ (I.31).
+
+As in II.9, $\angle AEB$ is a right angle (right-isoceles triangles
+$ACE$ and $BCE$).  Triangle $ADE$ is also right-angled, with the
+right angle at $E$ in the configuration where $D$ lies on the
+extension of $AB$.  Apply I.47 twice (to $\triangle AED$ and to the
+triangle formed by extending the constructions to $F$):
+\[
+    AD^2 + DB^2 \;=\; 2\cdot AC^2 + 2\cdot CD^2,
+\]
+where now $CD = CB + BD$ is the half plus the added segment.  The
+derivation parallels II.9 exactly with extension in place of internal
+cut, and the symmetry is what Heath emphasises.
 \dependson{II.10}{II.9}
+\dependson{II.10}{I.5}
+\dependson{II.10}{I.10}
 \dependson{II.10}{I.11}
+\dependson{II.10}{I.29}
+\dependson{II.10}{I.31}
+\dependson{II.10}{I.32}
 \dependson{II.10}{I.47}
 \dependson{II.10}{cn:2}
 \dependson{II.10}{cn:3}
@@ -227,18 +357,40 @@ segment.
 \end{claim}
 \begin{evidence}[Proof of II.11]
 \label{ev:II.11}
-Let $AB$ be the given line.  Describe the square $ABDC$ on it (I.46).
-Bisect $AC$ at $E$ (I.10).  Produce $AC$ to $F$ so that $EF = EB$ --- by
-II.6 the rectangle on $CF$ and $FA$ equals the square on $AE$, hence
-the square on $AF$ equals the rectangle on $AB$ and $BF$.  The point
-$H$ such that $AH = AF$ divides $AB$ in the desired ratio.  This is
-the construction of the golden section.
-\dependson{II.11}{II.6}
+\input{figures/fig-ii-11}
+Let $AB$ be the given straight line.  Describe on $AB$ the square
+$ABDC$ (I.46).  Bisect $AC$ at $E$ (I.10) and join $EB$.  Produce
+$CA$ to $F$ in the direction of $A$ (Postulate 2), and lay off
+$AF$ on $CA$ produced so that $EF = EB$ (I.3, taking $EB$ as
+the standard length).  On $AF$ describe the square $FGHA$ (I.46);
+produce $GH$ to meet $CD$ at $K$.
+
+Then by II.6 applied to $CF$ bisected at $A$ with extension $AF$,
+the rectangle on $CF$, $FA$ together with the square on $EA$ equals
+the square on $EF$.  But $EF = EB$, so this rectangle plus square
+on $EA$ equals the square on $EB$, which by I.47 (in
+$\triangle ABE$, right-angled at $A$) equals the square on $EA$
+plus the square on $AB$.  Subtracting the square on $EA$ from both
+sides (Common Notion 3):
+\[
+    CF \cdot FA \;=\; AB^2.
+\]
+The rectangle $CK$ on $CF$, $FA$ (= $CF \cdot FG$ since $FG = FA$)
+equals the square on $AB$.  Subtracting the common rectangle on
+$FA$, $AH$ from both, the square $FGHA$ on $FA$ equals the rectangle
+$HK$ on $HD$ and $DK = AB - AH$.  Setting $AH = AF$ on $AB$ (point
+$H$ on $AB$ with $AH = AF$) gives the desired section: $AB \cdot HB
+= AH^2$.
+\dependson{II.11}{I.3}
 \dependson{II.11}{I.10}
 \dependson{II.11}{I.11}
 \dependson{II.11}{I.46}
+\dependson{II.11}{I.47}
+\dependson{II.11}{II.6}
 \dependson{II.11}{cn:1}
 \dependson{II.11}{cn:2}
+\dependson{II.11}{cn:3}
+\dependson{II.11}{post:2}
 \end{evidence}
 
 \begin{claim}[Proposition II.12: Obtuse-triangle generalisation of Pythagoras]
@@ -251,11 +403,32 @@ and the straight line cut off outside by the perpendicular.
 \end{claim}
 \begin{evidence}[Proof of II.12]
 \label{ev:II.12}
-Drop a perpendicular from the vertex opposite the obtuse angle to the
-extension of one side; this produces two right triangles to which
-I.47 applies.  Add the resulting squared-length identities and apply
-II.4 to the side containing the obtuse angle to obtain the law of
-cosines.
+Let $\triangle ABC$ have an obtuse angle at $A$, and let $C$ be the
+vertex opposite a side $AB$ about the obtuse angle.  From $C$ drop a
+perpendicular $CD$ to $AB$ extended through $A$ to $D$ (I.12), so
+that the foot $D$ falls outside segment $AB$ on the far side of $A$.
+
+In the right-angled triangle $BCD$, Proposition I.47 gives
+\[
+    BC^2 \;=\; BD^2 + CD^2.
+\]
+By the binomial-square identity II.4 applied to $BD$ cut at $A$
+(with $BD = BA + AD$ as a straight line, since $D$ lies on $AB$
+extended through $A$):
+\[
+    BD^2 \;=\; BA^2 + AD^2 + 2\cdot(BA \cdot AD).
+\]
+Substitute, and use I.47 in the right-angled triangle $ACD$ to
+write $AC^2 = AD^2 + CD^2$; then $AD^2 + CD^2 = AC^2$, and
+substitution gives:
+\[
+    BC^2 \;=\; BA^2 + AC^2 + 2\cdot(BA \cdot AD),
+\]
+which is the law of cosines as Euclid states it: the square on the
+side subtending the obtuse angle exceeds the sum of the squares on
+the sides containing it by twice the rectangle on $BA$ (the side
+on which the perpendicular falls) and $AD$ (the segment cut off
+outside).
 \dependson{II.12}{I.12}
 \dependson{II.12}{I.47}
 \dependson{II.12}{II.4}
@@ -273,33 +446,66 @@ straight line cut off within by the perpendicular.
 \end{claim}
 \begin{evidence}[Proof of II.13]
 \label{ev:II.13}
-Symmetric to II.12: drop a perpendicular from the vertex opposite the
-acute angle; the foot lies within the side this time.  Apply I.47
-to the two right triangles and II.7 to combine the lengths.
-\dependson{II.13}{II.7}
-\dependson{II.13}{II.12}
+Let $\triangle ABC$ be acute-angled, with the acute angle at $B$.
+From $C$ drop a perpendicular $CD$ to $AB$ (I.12).  Since the angle
+at $B$ is acute, the foot $D$ falls within the segment $AB$, between
+$A$ and $B$.
+
+Apply Proposition II.7 to $AB$ cut at $D$: $AB^2 + DB^2 = 2\cdot
+(AB \cdot DB) + AD^2$.  In the right-angled triangle $BCD$, I.47
+gives $BC^2 = BD^2 + CD^2$, and in $\triangle ACD$ likewise
+$AC^2 = AD^2 + CD^2$.  Subtracting (Common Notion 3) the first
+from the third: $AC^2 - BC^2 = AD^2 - BD^2$.  Combining with II.7
+and rearranging (Common Notion 3 + Common Notion 2):
+\[
+    AC^2 \;=\; AB^2 + BC^2 - 2\cdot(AB \cdot BD),
+\]
+which is the acute-angle form of the law of cosines: the square on
+the side subtending the acute angle is less than the sum of the
+squares on the sides containing it by twice the rectangle on $AB$
+and $BD$ (the segment cut off within).
 \dependson{II.13}{I.12}
 \dependson{II.13}{I.47}
+\dependson{II.13}{II.7}
+\dependson{II.13}{II.12}
 \dependson{II.13}{cn:2}
 \dependson{II.13}{cn:3}
 \dependson{II.13}{cn:4}
 \end{evidence}
 
-\begin{claim}[Proposition II.14: Quadrature of a rectilinear figure]
+\begin{claim}[Proposition II.14: Quadrature of a rectilineal figure]
 \label{prop:II.14}
 To construct a square equal to a given rectilineal figure.
 \end{claim}
 \begin{evidence}[Proof of II.14]
 \label{ev:II.14}
-Reduce the given figure to a rectangle by I.45.  Convert the
-rectangle to a square using II.5 in the following way: extend one
-side $BE$ of the rectangle $BCDE$ along the other side $EF$ so that
-$EF = ED$; bisect $BF$ at $G$; describe the semicircle on $BF$;
-extend $DE$ to meet the semicircle at $H$.  By II.5 (and I.47), the
-square on $EH$ equals the rectangle $BE\cdot EF$, which is the area
-of the original figure.
-\dependson{II.14}{II.5}
+\input{figures/fig-ii-14}
+Let $A$ be the given rectilineal figure.  By Proposition I.45,
+construct a parallelogram $BCDE$ equal in area to $A$, with the
+parallelogram's angles right (apply I.46 on one of its sides if
+necessary so it is a rectangle).  If $BE = ED$ then $BCDE$ is
+already a square and the construction is complete.  Suppose
+$BE > ED$; the case $BE < ED$ is symmetric.
+
+Produce $BE$ to $F$, laying off $EF = ED$ on the produced line
+(I.3).  Bisect $BF$ at $G$ (I.10).  With centre $G$ and radius
+$GB = GF$ describe the semicircle $BHF$ above $BF$.  Produce $DE$
+to meet the semicircle at $H$.
+
+Join $GH$; then $GH$ is a radius and equals $GF$.  Apply II.5 to
+$BF$ bisected at $G$ and cut at $E$: $BE \cdot EF + EG^2 = GF^2 =
+GH^2$.  By I.47 in the right triangle $GEH$ (right angle at $E$
+because $EH \perp BF$): $GH^2 = EG^2 + EH^2$.  Subtract $EG^2$
+from both expressions (Common Notion 3): $BE \cdot EF = EH^2$.
+But $EF = ED$, so $BE \cdot ED = EH^2$; the square on $EH$ equals
+the rectangle $BCDE$, which equals the original figure $A$.
+\dependson{II.14}{I.3}
+\dependson{II.14}{I.10}
+\dependson{II.14}{I.11}
 \dependson{II.14}{I.45}
+\dependson{II.14}{I.46}
 \dependson{II.14}{I.47}
+\dependson{II.14}{II.5}
 \dependson{II.14}{cn:2}
+\dependson{II.14}{cn:3}
 \end{evidence}

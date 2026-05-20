@@ -1,0 +1,32 @@
+% fig-i-5.tex — I.5: pons asinorum (base angles of an isoceles triangle).
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=1.0, line cap=round]
+  \coordinate (A) at (0, 3);
+  \coordinate (B) at (-1.5, 0);
+  \coordinate (C) at (1.5, 0);
+  % Equal sides AB and AC, extended to F and G.
+  \coordinate (F) at ($(A)!2.0!(B)$);
+  \coordinate (G) at ($(A)!2.0!(C)$);
+  \draw[thin]      (A) -- (F);
+  \draw[thin]      (A) -- (G);
+  \draw[very thick] (B) -- (C);
+  % Points D on BF, E on CG with BD = CE.
+  \coordinate (D) at ($(B)!0.5!(F)$);
+  \coordinate (E) at ($(C)!0.5!(G)$);
+  \draw[very thick, dashed] (B) -- (E);
+  \draw[very thick, dashed] (C) -- (D);
+  % Labels.
+  \node[above]      at (A) {$A$};
+  \node[left]       at (B) {$B$};
+  \node[right]      at (C) {$C$};
+  \node[below left] at (D) {$D$};
+  \node[below right] at (E) {$E$};
+  \node[below left] at (F) {$F$};
+  \node[below right] at (G) {$G$};
+\end{tikzpicture}
+\caption{Proposition I.5. With $AB = AC$ and $BD = CE$ on the extensions,
+triangles $ABE$ and $ACD$ are congruent (SAS, by I.4), whence the base
+angles $\angle ABC = \angle ACB$.}
+\label{fig:I.5}
+\end{figure}

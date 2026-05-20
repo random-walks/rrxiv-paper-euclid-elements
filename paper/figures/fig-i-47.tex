@@ -1,0 +1,42 @@
+% fig-i-47.tex — I.47: Pythagoras (square decomposition).
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=0.55, line cap=round, line join=round]
+  % Right triangle vertices: right angle at A.
+  \coordinate (A) at (0, 0);
+  \coordinate (B) at (3, 0); % horizontal leg
+  \coordinate (C) at (0, 4); % vertical leg
+  % Hypotenuse BC.
+  % Square on AB (below): A, B, B', A'
+  \coordinate (Ap) at (0, -3);
+  \coordinate (Bp) at (3, -3);
+  % Square on AC (left): A, C, C', A''
+  \coordinate (App) at (-4, 0);
+  \coordinate (Cp)  at (-4, 4);
+  % Square on BC (outward): B, C, C'', B''
+  % Outward direction = rotate (B-C) by -90.
+  \coordinate (Bpp) at ($(B)!1!-90:(C)$);
+  \coordinate (Cpp) at ($(C)!1!90:(B)$);
+  % Triangle.
+  \draw[very thick] (A) -- (B) -- (C) -- cycle;
+  % Three squares.
+  \draw[thick, fill=gray!10] (A)   -- (B)   -- (Bp)  -- (Ap)  -- cycle;
+  \draw[thick, fill=gray!10] (A)   -- (C)   -- (Cp)  -- (App) -- cycle;
+  \draw[thick, fill=gray!20] (B)   -- (C)   -- (Cpp) -- (Bpp) -- cycle;
+  % Altitude from A to BC, foot at H, extended to meet square on BC.
+  \coordinate (H) at ($(B)!(A)!(C)$);
+  \coordinate (Hext) at ($(H)!1!-90:(B)$);
+  \draw[thin, dashed] (A) -- (Hext);
+  % Labels.
+  \node[below right]      at (A) {$A$};
+  \node[below]            at (B) {$B$};
+  \node[left]             at (C) {$C$};
+  \node[left]             at ($(A)!0.5!(App)$) {square on $AC$};
+  \node                   at ($(A)!0.5!(Bp)+(0.5,-1.5)$) {square on $AB$};
+  \node                   at ($(B)!0.5!(Cpp)+(1.7,0.7)$) {square on $BC$};
+\end{tikzpicture}
+\caption{Proposition I.47. The square on the hypotenuse $BC$ is
+partitioned by the altitude $AH$ extended into two rectangles, each
+equal (by I.41 + I.46) to a square on a leg; thus $BC^2 = AB^2 + AC^2$.}
+\label{fig:I.47}
+\end{figure}

@@ -1,0 +1,30 @@
+% fig-i-32.tex — I.32: triangle angle sum (parallel through apex).
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=1.2, line cap=round]
+  \coordinate (A) at (-1.5, 0);
+  \coordinate (B) at (2.0, 0);
+  \coordinate (C) at (0.5, 2.4);
+  \coordinate (D) at ($(C)!-1.4!(A)$); % line through C parallel to AB, on left
+  \coordinate (E) at ($(C)!-1.4!(B)$); % line through C parallel to AB, on right
+  % Triangle.
+  \draw[very thick] (A) -- (B) -- (C) -- cycle;
+  % Parallel through C, drawn long.
+  \draw[thin] ($(C)!-0.7!(B)$) -- ($(C)!1.5!(B)$);
+  % Side AB extended beyond B to F to expose exterior angle.
+  \coordinate (F) at ($(A)!1.4!(B)$);
+  \draw[thin] (B) -- (F);
+  % Labels.
+  \node[below left]  at (A) {$A$};
+  \node[below right] at (B) {$B$};
+  \node[above]       at (C) {$C$};
+  \node[below right] at (F) {$F$};
+  \node[above left]  at ($(C)!-0.7!(B)$) {$D$};
+  \node[above right] at ($(C)!1.5!(B)$) {$E$};
+\end{tikzpicture}
+\caption{Proposition I.32. Drawing $DE$ through $C$ parallel to $AB$
+makes $\angle DCA = \angle CAB$ (alternate, I.29) and $\angle ECB =
+\angle ABC$ (alternate, I.29); the straight angle at $C$ then sums
+the three interior angles of $\triangle ABC$ to two right angles.}
+\label{fig:I.32}
+\end{figure}
