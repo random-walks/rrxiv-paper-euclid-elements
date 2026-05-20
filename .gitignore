@@ -28,3 +28,9 @@ paper/main-flat.rrxiv.aux
 
 # Tectonic cache (in case TECTONIC_CACHE_DIR isn't set globally).
 .tectonic-cache/
+
+# Figure renders — produced by ``scripts/render-figures.sh`` and
+# bundled into the seed tarball at build time. Source of truth is
+# paper/figures/fig-*.tex; the .pdf + .png siblings are regenerated.
+paper/figures/*.pdf
+paper/figures/*.png
