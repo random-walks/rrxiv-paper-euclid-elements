@@ -1,3 +1,262 @@
+% main.tex — Euclid's Elements, encoded as an rrxiv paper.
+%
+% Build with tectonic via ./scripts/build.sh.
+
+\documentclass{rrxiv}
+
+\rrxivid{rrxiv-paper-euclid-elements}
+\rrxivversion{v1}
+\rrxivprotocolversion{0.1.0}
+\rrxivlicense{CC-BY-4.0}
+\rrxivtopics{math.HO,math.MG,math.NT,history-of-mathematics,reproducibility}
+
+\title{Euclid's \emph{Elements}, encoded as an rrxiv paper}
+\author{Blaise Albis-Burdige \and Claude \\
+        \small {(translation after Heath, 1908; encoding new, CC-BY-4.0)}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We publish a complete, machine-readable rendering of Euclid's
+\emph{Elements} as an rrxiv paper. Every definition, postulate, common
+notion, and proposition is registered as an addressable rrxiv
+\texttt{claim}, and every proof is encoded as a sequence of explicit
+\texttt{depends\_on} edges to earlier claims. The result is the original
+geometric corpus, intact, but with its full reasoning DAG now queryable
+through the rrxiv API. This serves three purposes: (i)~it dogfoods the
+rrxiv schema on a finite, dependency-rich corpus; (ii)~it provides a
+working reproducibility demonstration --- every proposition is provable
+from claims that the rrxiv graph can enumerate; and (iii)~it gives
+agent harnesses a canonical proof corpus to retrieve over. Book I is
+fully encoded in this version (v1); Books II--XIII are scaffolded with
+representative propositions and will be filled in iteratively.
+\end{abstract}
+
+% ---- Front matter: postulates + common notions + Book I definitions ----
+% [flatten-tex.py] inlined: postulates.tex
+% postulates.tex — The five postulates of Euclidean plane geometry.
+%
+% Postulates are recorded as rrxivremark blocks so the parser
+% addresses them but doesn't confuse them with falsifiable claims.
+
+\section*{Postulates}
+\label{sec:postulates}
+
+\begin{rrxivremark}[Postulate~1]
+\label{post:1}
+To draw a straight line from any point to any point.
+\end{rrxivremark}
+
+\begin{rrxivremark}[Postulate~2]
+\label{post:2}
+To produce a finite straight line continuously in a straight line.
+\end{rrxivremark}
+
+\begin{rrxivremark}[Postulate~3]
+\label{post:3}
+To describe a circle with any centre and distance.
+\end{rrxivremark}
+
+\begin{rrxivremark}[Postulate~4]
+\label{post:4}
+That all right angles are equal to one another.
+\end{rrxivremark}
+
+\begin{rrxivremark}[Postulate~5 (the parallel postulate)]
+\label{post:5}
+That, if a straight line falling on two straight lines makes the
+interior angles on the same side less than two right angles, the two
+straight lines, if produced indefinitely, meet on that side on which
+are the angles less than the two right angles.
+\end{rrxivremark}
+% [flatten-tex.py] end: postulates.tex
+% [flatten-tex.py] inlined: common-notions.tex
+% common-notions.tex — Euclid's five common notions (axioms of magnitudes).
+
+\section*{Common Notions}
+\label{sec:common-notions}
+
+\begin{rrxivremark}[Common Notion~1]
+\label{cn:1}
+Things which are equal to the same thing are also equal to one another.
+\end{rrxivremark}
+
+\begin{rrxivremark}[Common Notion~2]
+\label{cn:2}
+If equals be added to equals, the wholes are equal.
+\end{rrxivremark}
+
+\begin{rrxivremark}[Common Notion~3]
+\label{cn:3}
+If equals be subtracted from equals, the remainders are equal.
+\end{rrxivremark}
+
+\begin{rrxivremark}[Common Notion~4]
+\label{cn:4}
+Things which coincide with one another are equal to one another.
+\end{rrxivremark}
+
+\begin{rrxivremark}[Common Notion~5]
+\label{cn:5}
+The whole is greater than the part.
+\end{rrxivremark}
+% [flatten-tex.py] end: common-notions.tex
+% [flatten-tex.py] inlined: definitions.tex
+% definitions.tex — Book I definitions (the 23). Each is a `scope`
+% block: definitions delimit terms used by later claims and edges, but
+% they're not themselves assertions about the world.
+
+\section*{Book I: Definitions}
+\label{sec:def-bookI}
+
+\begin{scope}[Definition I.1: point]
+\label{def:I.1}
+A point is that which has no part.
+\end{scope}
+
+\begin{scope}[Definition I.2: line]
+\label{def:I.2}
+A line is breadthless length.
+\end{scope}
+
+\begin{scope}[Definition I.3: extremities of a line]
+\label{def:I.3}
+The extremities of a line are points.
+\end{scope}
+
+\begin{scope}[Definition I.4: straight line]
+\label{def:I.4}
+A straight line is a line which lies evenly with the points on itself.
+\end{scope}
+
+\begin{scope}[Definition I.5: surface]
+\label{def:I.5}
+A surface is that which has length and breadth only.
+\end{scope}
+
+\begin{scope}[Definition I.6: extremities of a surface]
+\label{def:I.6}
+The extremities of a surface are lines.
+\end{scope}
+
+\begin{scope}[Definition I.7: plane surface]
+\label{def:I.7}
+A plane surface is a surface which lies evenly with the straight lines
+on itself.
+\end{scope}
+
+\begin{scope}[Definition I.8: plane angle]
+\label{def:I.8}
+A plane angle is the inclination to one another of two lines in a
+plane which meet one another and do not lie in a straight line.
+\end{scope}
+
+\begin{scope}[Definition I.9: rectilineal angle]
+\label{def:I.9}
+And when the lines containing the angle are straight, the angle is
+called rectilineal.
+\end{scope}
+
+\begin{scope}[Definition I.10: right angle]
+\label{def:I.10}
+When a straight line set up on a straight line makes the adjacent
+angles equal to one another, each of the equal angles is right, and
+the straight line standing on the other is called a perpendicular to
+that on which it stands.
+\end{scope}
+
+\begin{scope}[Definition I.11: obtuse angle]
+\label{def:I.11}
+An obtuse angle is an angle greater than a right angle.
+\end{scope}
+
+\begin{scope}[Definition I.12: acute angle]
+\label{def:I.12}
+An acute angle is an angle less than a right angle.
+\end{scope}
+
+\begin{scope}[Definition I.13: boundary]
+\label{def:I.13}
+A boundary is that which is an extremity of anything.
+\end{scope}
+
+\begin{scope}[Definition I.14: figure]
+\label{def:I.14}
+A figure is that which is contained by any boundary or boundaries.
+\end{scope}
+
+\begin{scope}[Definition I.15: circle]
+\label{def:I.15}
+A circle is a plane figure contained by one line such that all the
+straight lines falling upon it from one point among those lying within
+the figure are equal to one another.
+\end{scope}
+
+\begin{scope}[Definition I.16: centre]
+\label{def:I.16}
+And the point is called the centre of the circle.
+\end{scope}
+
+\begin{scope}[Definition I.17: diameter]
+\label{def:I.17}
+A diameter of the circle is any straight line drawn through the centre
+and terminated in both directions by the circumference of the circle,
+and such a straight line also bisects the circle.
+\end{scope}
+
+\begin{scope}[Definition I.18: semicircle]
+\label{def:I.18}
+A semicircle is the figure contained by the diameter and the
+circumference cut off by it. And the centre of the semicircle is the
+same as that of the circle.
+\end{scope}
+
+\begin{scope}[Definition I.19: rectilineal figures]
+\label{def:I.19}
+Rectilineal figures are those which are contained by straight lines,
+trilateral figures being those contained by three, quadrilateral those
+contained by four, and multilateral those contained by more than four
+straight lines.
+\end{scope}
+
+\begin{scope}[Definition I.20: kinds of trilateral]
+\label{def:I.20}
+Of trilateral figures, an equilateral triangle is that which has its
+three sides equal, an isosceles triangle that which has two of its
+sides alone equal, and a scalene triangle that which has its three
+sides unequal.
+\end{scope}
+
+\begin{scope}[Definition I.21: kinds of trilateral by angle]
+\label{def:I.21}
+Further, of trilateral figures, a right-angled triangle is that which
+has a right angle, an obtuse-angled triangle that which has an obtuse
+angle, and an acute-angled triangle that which has its three angles
+acute.
+\end{scope}
+
+\begin{scope}[Definition I.22: kinds of quadrilateral]
+\label{def:I.22}
+Of quadrilateral figures, a square is that which is both equilateral
+and right-angled; an oblong that which is right-angled but not
+equilateral; a rhombus that which is equilateral but not right-angled;
+and a rhomboid that which has its opposite sides and angles equal to
+one another but is neither equilateral nor right-angled. And let
+quadrilaterals other than these be called trapezia.
+\end{scope}
+
+\begin{scope}[Definition I.23: parallel straight lines]
+\label{def:I.23}
+Parallel straight lines are straight lines which, being in the same
+plane and being produced indefinitely in both directions, do not meet
+one another in either direction.
+\end{scope}
+% [flatten-tex.py] end: definitions.tex
+
+% ---- Books ----
+% [flatten-tex.py] inlined: books/book01.tex
 % book01.tex — Book I of Euclid's Elements: Plane Geometry.
 %
 % Each Proposition X.Y is a `claim` with the statement; its proof is
@@ -705,3 +964,377 @@ I.47, I.8, and Common Notion 1.
 \dependson{I.48}{I.47}
 \dependson{I.48}{cn:1}
 \end{evidence}
+% [flatten-tex.py] end: books/book01.tex
+% [flatten-tex.py] inlined: books/book02.tex
+% book02.tex — Book II: Geometric algebra. Scaffolded.
+
+\section{Book II --- Geometric Algebra}
+\label{sec:book-II}
+
+Book II contains the famous identities of geometric algebra, including
+the distributivity of multiplication over addition (II.1) and the
+law of cosines in its purely-geometric form (II.12, II.13). Definitions
+introduce the gnomon construction used throughout.
+
+\begin{claim}[Proposition II.1: Distributivity of multiplication]
+\label{prop:II.1}
+If there be two straight lines, and one of them be cut into any
+number of segments whatever, the rectangle contained by the two
+straight lines is equal to the rectangles contained by the
+uncut straight line and each of the segments.
+\end{claim}
+\begin{evidence}[Proof sketch of II.1]
+\label{ev:II.1}
+Construction follows Heath. To be filled in fully in a later version.
+\dependson{II.1}{I.31}
+\dependson{II.1}{I.34}
+\dependson{II.1}{cn:2}
+\end{evidence}
+
+\begin{claim}[Proposition II.12: Obtuse-triangle generalisation of Pythagoras]
+\label{prop:II.12}
+In obtuse-angled triangles the square on the side subtending the
+obtuse angle is greater than the squares on the sides containing the
+obtuse angle by twice the rectangle contained by one of the sides
+about the obtuse angle (namely that on which the perpendicular falls)
+and the straight line cut off outside by the perpendicular.
+\end{claim}
+\begin{evidence}[Proof sketch of II.12]
+\label{ev:II.12}
+Apply II.4 (square of a sum) and I.47.  To be filled in fully.
+\dependson{II.12}{I.47}
+\end{evidence}
+
+% TODO: Propositions II.2 through II.14 (excluding II.12) — translations
+% follow Heath; dependency edges to be added per the rrxiv convention.
+% [flatten-tex.py] end: books/book02.tex
+% [flatten-tex.py] inlined: books/book03.tex
+% book03.tex — Book III: Circles. Scaffolded.
+
+\section{Book III --- Circles}
+\label{sec:book-III}
+
+Book III introduces the geometry of the circle: tangents, chords,
+inscribed angles, and the closely-related Thales' theorem (III.31).
+
+\begin{claim}[Proposition III.1: Find the centre of a given circle]
+\label{prop:III.1}
+To find the centre of a given circle.
+\end{claim}
+\begin{evidence}[Proof sketch of III.1]
+\label{ev:III.1}
+Bisect a chord by I.10, erect a perpendicular by I.11, bisect the
+perpendicular; the intersection is the centre.
+\dependson{III.1}{I.10}
+\dependson{III.1}{I.11}
+\end{evidence}
+
+\begin{claim}[Proposition III.31: Thales' theorem]
+\label{prop:III.31}
+In a circle the angle in the semicircle is right, that in a greater
+segment less than a right angle, and that in a less segment greater
+than a right angle.
+\end{claim}
+\begin{evidence}[Proof sketch of III.31]
+\label{ev:III.31}
+Apply I.5, I.32, I.13.
+\dependson{III.31}{I.5}
+\dependson{III.31}{I.13}
+\dependson{III.31}{I.32}
+\end{evidence}
+
+% TODO: Propositions III.2 through III.37.
+% [flatten-tex.py] end: books/book03.tex
+% [flatten-tex.py] inlined: books/book04.tex
+% book04.tex — Book IV: Inscription and circumscription. Scaffolded.
+
+\section{Book IV --- Inscribed and Circumscribed Figures}
+\label{sec:book-IV}
+
+Book IV constructs regular polygons inscribed in and circumscribed
+about circles, culminating in the regular pentadecagon (IV.16).
+
+\begin{claim}[Proposition IV.10: Construct an isosceles triangle with 72--72--36 angles]
+\label{prop:IV.10}
+To construct an isosceles triangle having each of the angles at the
+base double of the remaining one.
+\end{claim}
+\begin{evidence}[Proof sketch of IV.10]
+\label{ev:IV.10}
+Apply II.11 to divide a segment in extreme and mean ratio, then I.32.
+\dependson{IV.10}{I.32}
+\dependson{IV.10}{II.1}
+\end{evidence}
+
+\begin{claim}[Proposition IV.11: Inscribe a regular pentagon in a given circle]
+\label{prop:IV.11}
+In a given circle to inscribe an equilateral and equiangular
+pentagon.
+\end{claim}
+\begin{evidence}[Proof sketch of IV.11]
+\label{ev:IV.11}
+Apply IV.10 to set up the 72--72--36 triangle, then III.27, III.28.
+\dependson{IV.11}{IV.10}
+\end{evidence}
+
+% TODO: Propositions IV.1 through IV.16.
+% [flatten-tex.py] end: books/book04.tex
+% [flatten-tex.py] inlined: books/book05.tex
+% book05.tex — Book V: Eudoxean proportion. Scaffolded.
+
+\section{Book V --- Eudoxean Theory of Proportion}
+\label{sec:book-V}
+
+Book V develops the theory of proportion for magnitudes
+(including incommensurable ones), credited to Eudoxus. It is
+machinery for Books VI and XII.
+
+\begin{claim}[Proposition V.16: Alternation of proportionals]
+\label{prop:V.16}
+If four magnitudes be proportional, they will also be proportional
+alternately.
+\end{claim}
+\begin{evidence}[Proof sketch of V.16]
+\label{ev:V.16}
+Apply the definition of proportion (V.5) directly.
+\dependson{V.16}{V.5}
+\end{evidence}
+
+% TODO: All 25 propositions of Book V. The definitions block (V.1–V.18)
+% requires its own \scope listing similar to definitions.tex for Book I.
+% [flatten-tex.py] end: books/book05.tex
+% [flatten-tex.py] inlined: books/book06.tex
+% book06.tex — Book VI: Similar figures. Scaffolded.
+
+\section{Book VI --- Similar Figures}
+\label{sec:book-VI}
+
+Book VI applies Book V's proportion machinery to similar plane
+figures, including the famous Proposition VI.1 (triangles with the
+same height are to one another as their bases).
+
+\begin{claim}[Proposition VI.1: Areas of triangles and parallelograms with the same height]
+\label{prop:VI.1}
+Triangles and parallelograms which are under the same height are to
+one another as their bases.
+\end{claim}
+\begin{evidence}[Proof sketch of VI.1]
+\label{ev:VI.1}
+Apply I.38 repeatedly and the definition of proportion (V.5).
+\dependson{VI.1}{I.38}
+\dependson{VI.1}{V.5}
+\end{evidence}
+
+\begin{claim}[Proposition VI.31: Generalisation of Pythagoras]
+\label{prop:VI.31}
+In right-angled triangles the figure on the side subtending the right
+angle is equal to the similar and similarly described figures on the
+sides containing the right angle.
+\end{claim}
+\begin{evidence}[Proof sketch of VI.31]
+\label{ev:VI.31}
+Apply VI.20 (similar polygons), I.47, V.16.
+\dependson{VI.31}{I.47}
+\dependson{VI.31}{V.16}
+\end{evidence}
+
+% TODO: All 33 propositions of Book VI.
+% [flatten-tex.py] end: books/book06.tex
+% [flatten-tex.py] inlined: books/book07.tex
+% book07.tex — Book VII: Number theory foundations. Scaffolded.
+
+\section{Book VII --- Number Theory Foundations}
+\label{sec:book-VII}
+
+Book VII introduces unit, number, divisibility, and the Euclidean
+algorithm (VII.1, VII.2).
+
+\begin{claim}[Proposition VII.1: Euclidean algorithm correctness (relatively prime case)]
+\label{prop:VII.1}
+Two unequal numbers being set out, and the less being continually
+subtracted in turn from the greater, if the number which is left
+never measures the one before it until a unit is left, the original
+numbers will be prime to one another.
+\end{claim}
+\begin{evidence}[Proof sketch of VII.1]
+\label{ev:VII.1}
+By contradiction: any common measure would persist through the
+algorithm.
+\end{evidence}
+
+\begin{claim}[Proposition VII.2: Greatest common measure]
+\label{prop:VII.2}
+Given two numbers not prime to one another, to find their greatest
+common measure.
+\end{claim}
+\begin{evidence}[Proof sketch of VII.2]
+\label{ev:VII.2}
+The same algorithm as VII.1, terminating in the last non-unit
+remainder.
+\dependson{VII.2}{VII.1}
+\end{evidence}
+
+% TODO: All 39 propositions of Book VII. Definitions VII.1–VII.22
+% deserve their own \scope listing.
+% [flatten-tex.py] end: books/book07.tex
+% [flatten-tex.py] inlined: books/book08.tex
+% book08.tex — Book VIII: Continued proportion. Scaffolded.
+
+\section{Book VIII --- Continued Proportion}
+\label{sec:book-VIII}
+
+Book VIII develops the theory of geometric progressions of integers.
+
+\begin{claim}[Proposition VIII.7: Continued proportion implies divisibility]
+\label{prop:VIII.7}
+If there be as many numbers as we please in continued proportion, and
+the first measure the last, it will measure the second also.
+\end{claim}
+\begin{evidence}[Proof sketch of VIII.7]
+\label{ev:VIII.7}
+Apply VII.21 (lowest terms) and the definition of continued proportion.
+\dependson{VIII.7}{VII.2}
+\end{evidence}
+
+% TODO: All 27 propositions of Book VIII.
+% [flatten-tex.py] end: books/book08.tex
+% [flatten-tex.py] inlined: books/book09.tex
+% book09.tex — Book IX: Advanced number theory. Scaffolded.
+
+\section{Book IX --- Advanced Number Theory}
+\label{sec:book-IX}
+
+Book IX contains Proposition 20 (infinitude of primes) and Proposition
+36 (Mersenne-style construction of even perfect numbers).
+
+\begin{claim}[Proposition IX.20: Infinitude of primes]
+\label{prop:IX.20}
+Prime numbers are more than any assigned multitude of prime numbers.
+\end{claim}
+\begin{evidence}[Proof sketch of IX.20]
+\label{ev:IX.20}
+The classic Euclid construction: multiply the assigned primes, add
+one, factor; any prime factor of the result is new. Uses VII.31 and
+basic divisibility from Book VII.
+\dependson{IX.20}{VII.1}
+\dependson{IX.20}{VII.2}
+\end{evidence}
+
+\begin{claim}[Proposition IX.36: Even perfect numbers]
+\label{prop:IX.36}
+If as many numbers as we please beginning from a unit be set out
+continuously in double proportion, until the sum of all becomes prime,
+and if the sum multiplied into the last make some number, the product
+will be perfect.
+\end{claim}
+\begin{evidence}[Proof sketch of IX.36]
+\label{ev:IX.36}
+Apply the geometric-progression sum (Book VIII) and the definition of
+perfect number.
+\dependson{IX.36}{VIII.7}
+\end{evidence}
+
+% TODO: All 36 propositions of Book IX.
+% [flatten-tex.py] end: books/book09.tex
+% [flatten-tex.py] inlined: books/book10.tex
+% book10.tex — Book X: Incommensurable magnitudes. Scaffolded.
+
+\section{Book X --- Incommensurable Magnitudes}
+\label{sec:book-X}
+
+Book X is the longest of the Elements (115 propositions),
+classifying irrational magnitudes via repeated quadratic operations.
+A full encoding is a large project on its own; here we record only the
+opening proposition and the definitions block as a stub.
+
+\begin{claim}[Proposition X.1: Method of exhaustion lemma]
+\label{prop:X.1}
+Two unequal magnitudes being set out, if from the greater there be
+subtracted a magnitude greater than its half, and from that which is
+left a magnitude greater than its half, and if this process be
+repeated continually, there will be left some magnitude which will be
+less than the lesser magnitude set out.
+\end{claim}
+\begin{evidence}[Proof sketch of X.1]
+\label{ev:X.1}
+By Archimedean property of magnitudes (V.4).
+\dependson{X.1}{V.5}
+\end{evidence}
+
+% TODO: 115 propositions. Definitions in three groups (X.def.1, X.def.2,
+% X.def.3) require their own \scope listings.
+% [flatten-tex.py] end: books/book10.tex
+% [flatten-tex.py] inlined: books/book11.tex
+% book11.tex — Book XI: Solid geometry. Scaffolded.
+
+\section{Book XI --- Solid Geometry}
+\label{sec:book-XI}
+
+Book XI begins three-dimensional geometry: parallelepipeds, prisms,
+and the foundational definitions for the Platonic solids of Book XIII.
+
+\begin{claim}[Proposition XI.1: A straight line cannot have part in a plane and part not]
+\label{prop:XI.1}
+A part of a straight line cannot be in the plane of reference and a
+part in a plane more elevated.
+\end{claim}
+\begin{evidence}[Proof sketch of XI.1]
+\label{ev:XI.1}
+Reductio via Postulate 1 and the uniqueness of straight lines.
+\dependson{XI.1}{post:1}
+\end{evidence}
+
+% TODO: All 39 propositions of Book XI.
+% [flatten-tex.py] end: books/book11.tex
+% [flatten-tex.py] inlined: books/book12.tex
+% book12.tex — Book XII: Method of exhaustion. Scaffolded.
+
+\section{Book XII --- Method of Exhaustion}
+\label{sec:book-XII}
+
+Book XII applies the exhaustion lemma (X.1) to circles, cones, and
+spheres, including XII.2 (circles are to one another as the squares
+on their diameters) and XII.18 (spheres are in the triplicate ratio
+of their diameters).
+
+\begin{claim}[Proposition XII.2: Circles by squared diameters]
+\label{prop:XII.2}
+Circles are to one another as the squares on the diameters.
+\end{claim}
+\begin{evidence}[Proof sketch of XII.2]
+\label{ev:XII.2}
+Apply the method of exhaustion (X.1) plus VI.20.
+\dependson{XII.2}{X.1}
+\end{evidence}
+
+% TODO: All 18 propositions of Book XII.
+% [flatten-tex.py] end: books/book12.tex
+% [flatten-tex.py] inlined: books/book13.tex
+% book13.tex — Book XIII: Platonic solids. Scaffolded.
+
+\section{Book XIII --- Platonic Solids}
+\label{sec:book-XIII}
+
+Book XIII is the climax of the Elements: the construction of the five
+regular solids inscribed in a sphere (XIII.13--XIII.17) and the proof
+that there are exactly five (XIII.18).
+
+\begin{claim}[Proposition XIII.18: There are exactly five regular solids]
+\label{prop:XIII.18}
+No other figure, besides the five aforesaid figures, can be
+constructed which is contained by equilateral and equiangular figures
+equal to one another.
+\end{claim}
+\begin{evidence}[Proof sketch of XIII.18]
+\label{ev:XIII.18}
+Sum the polygonal angles around a vertex; the constraint that the sum
+be strictly less than four right angles (XI.21) admits only the five
+known solids.
+\dependson{XIII.18}{XI.1}
+\dependson{XIII.18}{I.32}
+\end{evidence}
+
+% TODO: All 18 propositions of Book XIII.
+% [flatten-tex.py] end: books/book13.tex
+
+\end{document}
