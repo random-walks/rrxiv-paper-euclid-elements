@@ -21,8 +21,10 @@ import re
 from pathlib import Path
 
 PAPER_ID = "01923f8e-0009-7c4d-9e1f-3a2b1c0d4e5f"
-CIR_PATH = Path(__file__).resolve().parent.parent / "build" / "main.cir.json"
-AUX_PATH = Path(__file__).resolve().parent.parent / "build" / "main.rrxiv.aux"
+ROOT = Path(__file__).resolve().parent.parent
+CIR_PATH = ROOT / "build" / "main.cir.json"
+AUX_PATH = ROOT / "build" / "main.rrxiv.aux"
+META_PATH = ROOT / "rrxiv-meta.json"
 
 # Claim labels in book*.tex are uppercase Roman.Arabic — I.1, II.12, etc.
 # (Not post:N, cn:N, def:I.N — those are postulates/common notions/defs.)
@@ -45,6 +47,25 @@ def main() -> int:
     # claim so re-ingest finds them by paper_id.
     cir["id"] = PAPER_ID
     cir.setdefault("id_slug", "rrxiv:2605.00009")
+
+    # Overlay structured authors + based_on + license + topics from
+    # rrxiv-meta.json. The parser captures the LaTeX \author{} arg
+    # verbatim — for Euclid that includes a \\\and\small annotation
+    # we want kept in the rendered PDF but cleaned out of the CIR.
+    # rrxiv-meta.json carries the canonical structured author list
+    # (one entry per author, with orcid + is_agent + agent_handle),
+    # so use it as the source of truth here.
+    if META_PATH.is_file():
+        meta = json.loads(META_PATH.read_text())
+        if isinstance(meta.get("authors"), list) and meta["authors"]:
+            cir["authors"] = meta["authors"]
+        for key in ("license", "topics", "based_on"):
+            if key in meta and meta[key] is not None:
+                cir[key] = meta[key]
+        # `version` from meta is authoritative too (e.g. "v2" after a
+        # revision); fall back to whatever the parser set otherwise.
+        if meta.get("version"):
+            cir["version"] = meta["version"]
     for c in cir.get("claims", []):
         c["paper_id"] = PAPER_ID
         # `id` may be either parser-shape ("rrxiv-paper-euclid-elements:prop:I.1")

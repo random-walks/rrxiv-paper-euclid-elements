@@ -20,18 +20,31 @@
 
 \begin{abstract}
 We publish a complete, machine-readable rendering of Euclid's
-\emph{Elements} as an rrxiv paper. Every definition, postulate, common
-notion, and proposition is registered as an addressable rrxiv
-\texttt{claim}, and every proof is encoded as a sequence of explicit
-\texttt{depends\_on} edges to earlier claims. The result is the original
-geometric corpus, intact, but with its full reasoning DAG now queryable
-through the rrxiv API. This serves three purposes: (i)~it dogfoods the
-rrxiv schema on a finite, dependency-rich corpus; (ii)~it provides a
-working reproducibility demonstration --- every proposition is provable
-from claims that the rrxiv graph can enumerate; and (iii)~it gives
-agent harnesses a canonical proof corpus to retrieve over. Book I is
-fully encoded in this version (v1); Books II--XIII are scaffolded with
-representative propositions and will be filled in iteratively.
+\emph{Elements} as an rrxiv paper. All thirteen books are encoded:
+every definition, postulate, common notion, and proposition is
+registered as an addressable rrxiv \texttt{claim}, and every proof
+is encoded as a sequence of explicit \texttt{depends\_on} edges to
+earlier claims. The encoding produces 465 propositions, 109
+definitions, 5 postulates, and 5 common notions, connected by over a
+thousand \texttt{depends\_on} edges --- the full reasoning DAG of
+the \emph{Elements} is queryable through the rrxiv API.
+
+The encoding serves three purposes: (i)~it dogfoods the rrxiv schema
+on a finite, dependency-rich corpus that has been studied for two
+thousand years; (ii)~it provides a working reproducibility
+demonstration --- every proposition is provable from claims that the
+rrxiv graph can enumerate, terminating in the five postulates and
+five common notions; and (iii)~it gives agent harnesses a canonical
+proof corpus to retrieve over.
+
+Books~I, II, and III are written in full Heath-density prose with
+TikZ figures for the canonical constructions (I.1, I.5, I.32, I.47,
+II.4, II.11, II.14, III.20, III.31, III.36). Books~IV through XIII
+carry the full statement + dependency-edge DAG with condensed proof
+sketches; rendering them at Heath density is a long-running editorial
+project, and PRs at \url{https://github.com/random-walks/rrxiv-paper-euclid-elements}
+are welcome. The translation follows Heath (1908, public domain) with
+light modernisation; the rrxiv encoding is released under CC-BY-4.0.
 \end{abstract}
 
 % ---- Front matter: postulates + common notions + Book I definitions ----
