@@ -1,32 +1,318 @@
-% book04.tex — Book IV: Inscription and circumscription. Scaffolded.
+% book04.tex --- Book IV of Euclid's Elements: Inscribed and Circumscribed Figures.
+%
+% All 16 propositions encoded. Book IV builds entirely on Books I and III,
+% culminating in the inscription of the regular pentadecagon (IV.16) via
+% combination of the inscribed equilateral triangle (IV.2) and the regular
+% pentagon (IV.11).
+%
+% Wording follows Heath (1908); proof sketches mirror his density.
 
 \section{Book IV --- Inscribed and Circumscribed Figures}
 \label{sec:book-IV}
 
-Book IV constructs regular polygons inscribed in and circumscribed
-about circles, culminating in the regular pentadecagon (IV.16).
+\begin{claim}[Proposition IV.1: Fit a chord of given length in a circle]
+\label{prop:IV.1}
+Into a given circle to fit a straight line equal to a given straight
+line which is not greater than the diameter of the circle.
+\end{claim}
+\begin{evidence}[Proof of IV.1]
+\label{ev:IV.1}
+Let $ABC$ be the given circle and $D$ the given segment, not greater
+than the diameter $BC$ of the circle.  Apply I.3 to cut off from $BC$
+a segment $BE$ equal to $D$.  With centre $B$ and radius $BE$ describe
+a circle $EAF$ (Postulate 3); join $BA$ where $EAF$ meets the given
+circle.  Then $BA = BE = D$ by Definition I.15, so $BA$ is the required
+chord.
+\dependson{IV.1}{I.3}
+\dependson{IV.1}{post:3}
+\dependson{IV.1}{def:I.15}
+\end{evidence}
+
+\begin{claim}[Proposition IV.2: Inscribe a triangle similar to a given triangle in a circle]
+\label{prop:IV.2}
+In a given circle to inscribe a triangle equiangular with a given
+triangle.
+\end{claim}
+\begin{evidence}[Proof of IV.2]
+\label{ev:IV.2}
+Let $ABC$ be the given circle and $DEF$ the given triangle.  Draw the
+tangent $GH$ at any point $A$ of the circle (III.16, III.17).  On $GH$
+construct $\angle HAC = \angle DEF$ (I.23), and $\angle GAB = \angle
+DFE$.  Join $BC$.  By III.32 (tangent--chord angle equals the
+inscribed angle in the alternate segment), $\angle ACB = \angle HAB
+= \angle DEF$ and $\angle ABC = \angle GAC = \angle DFE$.  By I.32 the
+remaining angles agree; so $\triangle ABC$ is equiangular with
+$\triangle DEF$.
+\dependson{IV.2}{I.23}
+\dependson{IV.2}{I.32}
+\dependson{IV.2}{III.16}
+\dependson{IV.2}{III.32}
+\end{evidence}
+
+\begin{claim}[Proposition IV.3: Circumscribe a triangle about a circle]
+\label{prop:IV.3}
+About a given circle to circumscribe a triangle equiangular with a
+given triangle.
+\end{claim}
+\begin{evidence}[Proof of IV.3]
+\label{ev:IV.3}
+Let $ABC$ be the given circle with centre $K$ and $DEF$ the given
+triangle.  Produce $EF$ both ways to $G$, $H$.  At the centre $K$
+construct $\angle AKB = \angle DEG$ and $\angle AKC = \angle DFH$
+(I.23).  At $A$, $B$, $C$ draw the tangents to the circle (III.16,
+III.17); they bound a triangle.  Because each tangent is perpendicular
+to the radius at the point of contact (III.18), the angles of the
+constructed triangle are the supplements of the central angles $\angle
+AKB$, $\angle AKC$, $\angle BKC$, hence equal to the angles of
+$\triangle DEF$ by I.13 and the construction.
+\dependson{IV.3}{I.13}
+\dependson{IV.3}{I.23}
+\dependson{IV.3}{I.32}
+\dependson{IV.3}{III.16}
+\dependson{IV.3}{III.18}
+\end{evidence}
+
+\begin{claim}[Proposition IV.4: Inscribe a circle in a triangle]
+\label{prop:IV.4}
+In a given triangle to inscribe a circle.
+\end{claim}
+\begin{evidence}[Proof of IV.4]
+\label{ev:IV.4}
+Let $ABC$ be the given triangle.  Bisect $\angle ABC$ and $\angle BCA$
+by $BD$ and $CD$ (I.9), meeting at $D$.  Drop perpendiculars $DE$,
+$DF$, $DG$ from $D$ to $AB$, $BC$, $CA$ (I.12).  In the pairs of
+triangles formed at $D$, the two angles and a common side give
+congruence (I.26), whence $DE = DF = DG$.  The circle with centre $D$
+and radius $DE$ touches each side (since the perpendiculars at the
+feet make the sides tangents by III.16) and is inscribed in
+$\triangle ABC$.
+\dependson{IV.4}{I.9}
+\dependson{IV.4}{I.12}
+\dependson{IV.4}{I.26}
+\dependson{IV.4}{III.16}
+\end{evidence}
+
+\begin{claim}[Proposition IV.5: Circumscribe a circle about a triangle]
+\label{prop:IV.5}
+About a given triangle to circumscribe a circle.
+\end{claim}
+\begin{evidence}[Proof of IV.5]
+\label{ev:IV.5}
+Let $ABC$ be the given triangle.  Bisect $AB$ at $D$ and $AC$ at $E$
+(I.10).  From $D$ and $E$ draw perpendiculars to $AB$ and $AC$
+respectively (I.11), meeting at $F$.  Join $FA$, $FB$, $FC$.  By I.4
+applied to the two right triangles at $D$, $FA = FB$; similarly at
+$E$, $FA = FC$.  Thus $FA = FB = FC$, and the circle with centre $F$
+and radius $FA$ passes through all three vertices.
+\dependson{IV.5}{I.4}
+\dependson{IV.5}{I.10}
+\dependson{IV.5}{I.11}
+\dependson{IV.5}{def:I.15}
+\end{evidence}
+
+\begin{claim}[Proposition IV.6: Inscribe a square in a circle]
+\label{prop:IV.6}
+In a given circle to inscribe a square.
+\end{claim}
+\begin{evidence}[Proof of IV.6]
+\label{ev:IV.6}
+Let $ABCD$ be the given circle with centre $E$.  Draw two diameters
+$AC$ and $BD$ at right angles (I.11).  Join $AB$, $BC$, $CD$, $DA$.
+The four right triangles at $E$ are congruent by I.4 (two radii and
+the common right angle), so $AB = BC = CD = DA$.  The inscribed
+angles standing on the diameters are right (III.31), so all four
+angles of $ABCD$ are right.  Therefore $ABCD$ is a square.
+\dependson{IV.6}{I.4}
+\dependson{IV.6}{I.11}
+\dependson{IV.6}{III.31}
+\dependson{IV.6}{def:I.15}
+\end{evidence}
+
+\begin{claim}[Proposition IV.7: Circumscribe a square about a circle]
+\label{prop:IV.7}
+About a given circle to circumscribe a square.
+\end{claim}
+\begin{evidence}[Proof of IV.7]
+\label{ev:IV.7}
+Draw two perpendicular diameters of the given circle (I.11).  Through
+each endpoint draw the tangent to the circle (III.16).  Each tangent
+is perpendicular to its diameter (III.18); the four tangents thus form
+a quadrilateral with all sides parallel and all angles right (I.28,
+I.29).  Equal radii combined with I.34 force the sides equal, hence a
+square circumscribes the circle.
+\dependson{IV.7}{I.11}
+\dependson{IV.7}{I.28}
+\dependson{IV.7}{I.29}
+\dependson{IV.7}{I.34}
+\dependson{IV.7}{III.16}
+\dependson{IV.7}{III.18}
+\end{evidence}
+
+\begin{claim}[Proposition IV.8: Inscribe a circle in a square]
+\label{prop:IV.8}
+In a given square to inscribe a circle.
+\end{claim}
+\begin{evidence}[Proof of IV.8]
+\label{ev:IV.8}
+Let $ABCD$ be the given square.  Bisect the sides at $E$, $F$, $G$,
+$H$ (I.10).  Join $EG$ and $FH$, meeting at $K$.  By I.34 and the
+construction, $KE = KF = KG = KH$.  Drop perpendiculars from $K$ to
+each side; each is equal to $KE$.  Thus the circle with centre $K$
+and radius $KE$ touches each side at its midpoint (III.16).
+\dependson{IV.8}{I.10}
+\dependson{IV.8}{I.34}
+\dependson{IV.8}{III.16}
+\end{evidence}
+
+\begin{claim}[Proposition IV.9: Circumscribe a circle about a square]
+\label{prop:IV.9}
+About a given square to circumscribe a circle.
+\end{claim}
+\begin{evidence}[Proof of IV.9]
+\label{ev:IV.9}
+Join the diagonals $AC$ and $BD$ of the given square, intersecting
+at $E$.  In the right triangles $\triangle ABE$ and $\triangle ADE$,
+SSS (I.8) gives $\angle EAB = \angle EAD$, so $AE$ bisects the right
+angle at $A$; similarly at every vertex.  The four triangles at $E$
+are then isosceles with equal vertex angles (I.6), so $EA = EB = EC =
+ED$.  The circle with centre $E$ and radius $EA$ passes through all
+four vertices.
+\dependson{IV.9}{I.6}
+\dependson{IV.9}{I.8}
+\dependson{IV.9}{def:I.15}
+\end{evidence}
 
 \begin{claim}[Proposition IV.10: Construct an isosceles triangle with 72--72--36 angles]
 \label{prop:IV.10}
 To construct an isosceles triangle having each of the angles at the
 base double of the remaining one.
 \end{claim}
-\begin{evidence}[Proof sketch of IV.10]
+\begin{evidence}[Proof of IV.10]
 \label{ev:IV.10}
-Apply II.11 to divide a segment in extreme and mean ratio, then I.32.
+Take a straight line $AB$ and cut it at $C$ so that the rectangle on
+$AB$, $BC$ equals the square on $AC$ (II.11, the golden section).
+With centre $A$ and radius $AB$ describe a circle; in it apply chord
+$BD$ equal to $AC$ (IV.1).  Join $AD$, $CD$.  Because $AB \cdot BC =
+AC^2 = BD^2$, $BD$ is tangent to the circle through $A$, $C$, $D$
+(III.37); by III.32 the tangent--chord angle equals the alternate
+inscribed angle.  Tracking the resulting angle relations (with I.5
+for the isosceles base angles) gives the required ratio.
+\dependson{IV.10}{II.11}
+\dependson{IV.10}{IV.1}
+\dependson{IV.10}{IV.5}
+\dependson{IV.10}{I.5}
 \dependson{IV.10}{I.32}
-\dependson{IV.10}{II.1}
+\dependson{IV.10}{III.32}
+\dependson{IV.10}{III.37}
 \end{evidence}
 
 \begin{claim}[Proposition IV.11: Inscribe a regular pentagon in a given circle]
 \label{prop:IV.11}
-In a given circle to inscribe an equilateral and equiangular
-pentagon.
+In a given circle to inscribe an equilateral and equiangular pentagon.
 \end{claim}
-\begin{evidence}[Proof sketch of IV.11]
+\begin{evidence}[Proof of IV.11]
 \label{ev:IV.11}
-Apply IV.10 to set up the 72--72--36 triangle, then III.27, III.28.
+Construct the 72--72--36 isosceles triangle $FGH$ by IV.10.  Inscribe
+in the given circle a triangle $ACD$ equiangular with $FGH$ (IV.2).
+Bisect the base-angles of $ACD$ by IV.10's construction propagated
+into the circle, yielding two more division points $B$, $E$.  The
+five arcs are equal (III.26), so the five chords $AB$, $BC$, $CD$,
+$DE$, $EA$ are equal (III.29), and the inscribed angles standing on
+equal arcs are equal (III.27): the pentagon is regular.
+\dependson{IV.11}{I.9}
+\dependson{IV.11}{IV.2}
 \dependson{IV.11}{IV.10}
+\dependson{IV.11}{III.26}
+\dependson{IV.11}{III.27}
+\dependson{IV.11}{III.29}
 \end{evidence}
 
-% TODO: Propositions IV.1 through IV.16.
+\begin{claim}[Proposition IV.12: Circumscribe a regular pentagon about a circle]
+\label{prop:IV.12}
+About a given circle to circumscribe an equilateral and equiangular
+pentagon.
+\end{claim}
+\begin{evidence}[Proof of IV.12]
+\label{ev:IV.12}
+Inscribe a regular pentagon in the given circle by IV.11.  At each
+vertex draw the tangent (III.16); the five tangents bound the
+circumscribed pentagon.  Each tangent is perpendicular to its radius
+(III.18), and by I.4 the right triangles formed at adjacent vertices
+are congruent, so the circumscribed pentagon has equal sides and
+equal angles.
+\dependson{IV.12}{IV.11}
+\dependson{IV.12}{I.4}
+\dependson{IV.12}{III.16}
+\dependson{IV.12}{III.18}
+\end{evidence}
+
+\begin{claim}[Proposition IV.13: Inscribe a circle in a regular pentagon]
+\label{prop:IV.13}
+In a given pentagon, which is equilateral and equiangular, to inscribe
+a circle.
+\end{claim}
+\begin{evidence}[Proof of IV.13]
+\label{ev:IV.13}
+Bisect two adjacent interior angles of the pentagon (I.9); their
+bisectors meet at a point $F$.  Drop perpendiculars from $F$ to each
+side (I.12); by I.4 these perpendiculars are equal.  The circle on
+$F$ with that common radius touches every side (III.16).
+\dependson{IV.13}{I.4}
+\dependson{IV.13}{I.9}
+\dependson{IV.13}{I.12}
+\dependson{IV.13}{III.16}
+\end{evidence}
+
+\begin{claim}[Proposition IV.14: Circumscribe a circle about a regular pentagon]
+\label{prop:IV.14}
+About a given pentagon, which is equilateral and equiangular, to
+circumscribe a circle.
+\end{claim}
+\begin{evidence}[Proof of IV.14]
+\label{ev:IV.14}
+Take the same point $F$ as in IV.13 (intersection of two
+angle-bisectors).  Join $F$ to each vertex; by I.4 the resulting
+triangles are congruent (equal sides, common bisected angles), so the
+five distances from $F$ to the vertices are equal.  Draw the circle
+on $F$ with that radius (Definition I.15).
+\dependson{IV.14}{IV.13}
+\dependson{IV.14}{I.4}
+\dependson{IV.14}{def:I.15}
+\end{evidence}
+
+\begin{claim}[Proposition IV.15: Inscribe a regular hexagon in a circle]
+\label{prop:IV.15}
+In a given circle to inscribe an equilateral and equiangular hexagon.
+\end{claim}
+\begin{evidence}[Proof of IV.15]
+\label{ev:IV.15}
+Let $G$ be the centre and $AD$ a diameter of the given circle.  With
+centre $D$ and radius $DG$ describe a circle meeting the given circle
+at $C$ and $E$ (Postulate 3).  Join $GC$, $GE$.  The triangle $GDC$
+has $GD = DC = CG$ (radii of equal circles), so it is equilateral,
+and $\angle DGC = 60^\circ$ (I.32).  Stepping this $60^\circ$ chord
+around the circle six times produces the regular hexagon.
+\dependson{IV.15}{I.32}
+\dependson{IV.15}{post:3}
+\dependson{IV.15}{def:I.15}
+\end{evidence}
+
+\begin{claim}[Proposition IV.16: Inscribe a regular 15-gon in a circle]
+\label{prop:IV.16}
+In a given circle to inscribe a fifteen-angled figure which shall be
+both equilateral and equiangular.
+\end{claim}
+\begin{evidence}[Proof of IV.16]
+\label{ev:IV.16}
+Inscribe a regular pentagon (IV.11) and a regular equilateral
+triangle (IV.2) in the circle, sharing a common vertex $A$.  The arc
+from $A$ to the next pentagon-vertex is $\tfrac{1}{5}$ of the circle;
+the arc from $A$ to the next triangle-vertex is $\tfrac{1}{3}$.  The
+difference is $\tfrac{1}{3} - \tfrac{1}{5} = \tfrac{2}{15}$ of the
+circle.  Bisect that arc (III.30); each half is $\tfrac{1}{15}$ of
+the circle, and stepping that chord fifteen times around gives the
+regular pentadecagon.
+\dependson{IV.16}{IV.2}
+\dependson{IV.16}{IV.11}
+\dependson{IV.16}{III.30}
+\end{evidence}

@@ -1,19 +1,402 @@
-% book08.tex — Book VIII: Continued proportion. Scaffolded.
+% book08.tex --- Book VIII of Euclid's Elements: Continued Proportions.
+%
+% All 27 propositions encoded. Book VIII studies geometric progressions
+% of integers, especially their reduction to a least sequence in the
+% given ratio.  It is the integer counterpart to Book V's continuous
+% theory and feeds directly into Book IX's number-theoretic applications.
+%
+% Wording follows Heath (1908).
 
-\section{Book VIII --- Continued Proportion}
+\section{Book VIII --- Continued Proportions}
 \label{sec:book-VIII}
 
-Book VIII develops the theory of geometric progressions of integers.
+\begin{claim}[Proposition VIII.1: Least continued proportion has coprime extremes]
+\label{prop:VIII.1}
+If there be as many numbers as we please in continued proportion, and
+the extremes of them be prime to one another, the numbers are the
+least of those which have the same ratio with them.
+\end{claim}
+\begin{evidence}[Proof of VIII.1]
+\label{ev:VIII.1}
+Suppose a smaller set $b_1, \dots, b_n$ in the same ratio existed.
+By ex aequali (VII.14) the ratio of extremes $b_1 : b_n$ equals $a_1
+: a_n$, so by VII.21 (least in a ratio are coprime) the original
+$a_1$, $a_n$ would not be coprime --- contradiction.
+\dependson{VIII.1}{VII.14}
+\dependson{VIII.1}{VII.20}
+\dependson{VIII.1}{VII.21}
+\end{evidence}
 
-\begin{claim}[Proposition VIII.7: Continued proportion implies divisibility]
+\begin{claim}[Proposition VIII.2: Construct a continued proportion with a given common ratio]
+\label{prop:VIII.2}
+To find numbers in continued proportion, as many as may be prescribed,
+and the least that are in a given ratio.
+\end{claim}
+\begin{evidence}[Proof of VIII.2]
+\label{ev:VIII.2}
+For $a : b$ with $\gcd(a, b) = 1$, the sequence $a^{n-1}, a^{n-2}
+b, \dots, b^{n-1}$ is in continued proportion with ratio $a : b$; by
+VII.27 the extremes are coprime, so by VIII.1 the sequence is least
+in its ratio.
+\dependson{VIII.2}{VII.27}
+\dependson{VIII.2}{VIII.1}
+\end{evidence}
+
+\begin{claim}[Proposition VIII.3: Least continued proportion has coprime extremes (converse setup)]
+\label{prop:VIII.3}
+If as many numbers as we please in continued proportion be the least
+of those which have the same ratio with them, the extremes of them
+are prime to one another.
+\end{claim}
+\begin{evidence}[Proof of VIII.3]
+\label{ev:VIII.3}
+Suppose the extremes shared a common divisor $d > 1$.  By VII.20
+each term would be divisible by some power of $d$, producing a
+smaller sequence in the same ratio --- contradicting minimality.
+\dependson{VIII.3}{VII.20}
+\dependson{VIII.3}{VII.21}
+\dependson{VIII.3}{VIII.1}
+\end{evidence}
+
+\begin{claim}[Proposition VIII.4: Common ratio across multiple chains]
+\label{prop:VIII.4}
+Given as many ratios as we please in least numbers, to find numbers
+in continued proportion which are the least in the given ratios.
+\end{claim}
+\begin{evidence}[Proof of VIII.4]
+\label{ev:VIII.4}
+Reduce each ratio to lowest terms by VII.33.  Compound them by
+multiplying numerators and denominators across; the resulting
+sequence is in continued proportion with the prescribed ratios.
+\dependson{VIII.4}{VII.33}
+\dependson{VIII.4}{VIII.2}
+\end{evidence}
+
+\begin{claim}[Proposition VIII.5: Plane numbers have a compound ratio of their sides]
+\label{prop:VIII.5}
+Plane numbers have to one another the ratio compounded of the ratios
+of their sides.
+\end{claim}
+\begin{evidence}[Proof of VIII.5]
+\label{ev:VIII.5}
+For plane numbers $ab$ and $cd$: $ab : cd = (a : c) \cdot (b : d)$
+in the language of compound ratios.  Verified by direct computation
+using VII.17 / VII.18.
+\dependson{VIII.5}{VII.17}
+\dependson{VIII.5}{VII.18}
+\dependson{VIII.5}{def:VII.16}
+\end{evidence}
+
+\begin{claim}[Proposition VIII.6: First measures last iff first measures second]
+\label{prop:VIII.6}
+If there be as many numbers as we please in continued proportion, and
+the first do not measure the second, neither will any other measure
+any other.
+\end{claim}
+\begin{evidence}[Proof of VIII.6]
+\label{ev:VIII.6}
+Contrapositive of VIII.7: divisibility propagates through the
+sequence, so failure at the first step prevents any later
+divisibility relation.
+\dependson{VIII.6}{VII.20}
+\dependson{VIII.6}{VIII.1}
+\end{evidence}
+
+\begin{claim}[Proposition VIII.7: First measures last implies first measures second]
 \label{prop:VIII.7}
 If there be as many numbers as we please in continued proportion, and
 the first measure the last, it will measure the second also.
 \end{claim}
-\begin{evidence}[Proof sketch of VIII.7]
+\begin{evidence}[Proof of VIII.7]
 \label{ev:VIII.7}
-Apply VII.21 (lowest terms) and the definition of continued proportion.
-\dependson{VIII.7}{VII.2}
+If $a_1 \mid a_n$, reduce $a_1, \dots, a_n$ to lowest terms (VIII.3);
+since the lowest extremes are coprime but $a_1$ divides $a_n$, the
+ratio $a_1 : a_n$ must be 1:1 in lowest terms, forcing $a_1 \mid
+a_2$ via VII.20.
+\dependson{VIII.7}{VII.20}
+\dependson{VIII.7}{VIII.3}
 \end{evidence}
 
-% TODO: All 27 propositions of Book VIII.
+\begin{claim}[Proposition VIII.8: Intermediate numbers in a proportion]
+\label{prop:VIII.8}
+If between two numbers there fall numbers in continued proportion
+with them, then, however many numbers fall between them in continued
+proportion, so many will also fall in continued proportion between
+the numbers which have the same ratio with the original numbers.
+\end{claim}
+\begin{evidence}[Proof of VIII.8]
+\label{ev:VIII.8}
+The number of geometric means between two numbers depends only on
+their ratio; scaling by a common factor changes the magnitudes but
+not the ratio, so the same number of means fall between the scaled
+pair.
+\dependson{VIII.8}{VII.13}
+\dependson{VIII.8}{VIII.2}
+\end{evidence}
+
+\begin{claim}[Proposition VIII.9: Coprimality between unit and a sequence]
+\label{prop:VIII.9}
+If two numbers be prime to one another, and numbers fall between them
+in continued proportion, then, however many numbers fall between them
+in continued proportion, so many will also fall in continued
+proportion between each of them and a unit.
+\end{claim}
+\begin{evidence}[Proof of VIII.9]
+\label{ev:VIII.9}
+Coprime extremes correspond to a least continued proportion (VIII.1);
+the unit extends the proportion at both ends, and VIII.2 gives the
+matching extension on each side.
+\dependson{VIII.9}{VIII.1}
+\dependson{VIII.9}{VIII.2}
+\end{evidence}
+
+\begin{claim}[Proposition VIII.10: Counting means between unit and number]
+\label{prop:VIII.10}
+If numbers fall between each of two numbers and a unit in continued
+proportion, however many numbers fall between each of them and a
+unit in continued proportion, so many also will fall between them in
+continued proportion.
+\end{claim}
+\begin{evidence}[Proof of VIII.10]
+\label{ev:VIII.10}
+Concatenate two unit-anchored continued proportions; VII.14 (ex
+aequali) confirms the joined sequence remains in continued
+proportion.
+\dependson{VIII.10}{VII.14}
+\dependson{VIII.10}{VIII.9}
+\end{evidence}
+
+\begin{claim}[Proposition VIII.11: Squares have one mean proportional]
+\label{prop:VIII.11}
+Between two square numbers there is one mean proportional number, and
+the square has to the square the ratio duplicate of that which the
+side has to the side.
+\end{claim}
+\begin{evidence}[Proof of VIII.11]
+\label{ev:VIII.11}
+For squares $a^2$, $b^2$: the mean proportional is $ab$ (since $a^2 :
+ab = ab : b^2 = a : b$), and $a^2 : b^2$ is the duplicate of $a : b$.
+\dependson{VIII.11}{VII.17}
+\dependson{VIII.11}{VII.18}
+\dependson{VIII.11}{def:VII.18}
+\end{evidence}
+
+\begin{claim}[Proposition VIII.12: Cubes have two mean proportionals]
+\label{prop:VIII.12}
+Between two cube numbers there are two mean proportional numbers,
+and the cube has to the cube the ratio triplicate of that which the
+side has to the side.
+\end{claim}
+\begin{evidence}[Proof of VIII.12]
+\label{ev:VIII.12}
+For cubes $a^3$, $b^3$: the two means are $a^2 b$ and $a b^2$, and
+$a^3 : b^3$ is the triplicate of $a : b$.
+\dependson{VIII.12}{VII.17}
+\dependson{VIII.12}{VII.18}
+\dependson{VIII.12}{def:VII.19}
+\dependson{VIII.12}{def:V.10}
+\end{evidence}
+
+\begin{claim}[Proposition VIII.13: Powers of a continued proportion are in continued proportion]
+\label{prop:VIII.13}
+If there be as many numbers as we please in continued proportion, and
+each by multiplying itself make some number, the products will be
+proportional; and if the original numbers by multiplying the products
+make certain numbers, the latter will also be proportional.
+\end{claim}
+\begin{evidence}[Proof of VIII.13]
+\label{ev:VIII.13}
+Squares (and cubes) of terms in continued proportion are themselves
+in continued proportion, by VII.27 and VIII.2.
+\dependson{VIII.13}{VII.27}
+\dependson{VIII.13}{VIII.2}
+\end{evidence}
+
+\begin{claim}[Proposition VIII.14: Square measures square iff side measures side]
+\label{prop:VIII.14}
+If a square measure a square, the side will also measure the side;
+and if the side measure the side, the square will also measure the
+square.
+\end{claim}
+\begin{evidence}[Proof of VIII.14]
+\label{ev:VIII.14}
+$a^2 \mid b^2 \iff a \mid b$, by Euclid's lemma (VII.30) applied
+prime-by-prime.
+\dependson{VIII.14}{VII.30}
+\dependson{VIII.14}{VIII.11}
+\end{evidence}
+
+\begin{claim}[Proposition VIII.15: Cube measures cube iff side measures side]
+\label{prop:VIII.15}
+If a cube number measure a cube number, the side will also measure
+the side; and if the side measure the side, the cube will also
+measure the cube.
+\end{claim}
+\begin{evidence}[Proof of VIII.15]
+\label{ev:VIII.15}
+Same prime-by-prime argument as VIII.14 for cubes.
+\dependson{VIII.15}{VIII.12}
+\dependson{VIII.15}{VIII.14}
+\end{evidence}
+
+\begin{claim}[Proposition VIII.16: Squares non-measuring]
+\label{prop:VIII.16}
+If a square measure not a square, neither will the side measure the
+side; and if the side measure not the side, neither will the square
+measure the square.
+\end{claim}
+\begin{evidence}[Proof of VIII.16]
+\label{ev:VIII.16}
+Contrapositive of VIII.14.
+\dependson{VIII.16}{VIII.14}
+\end{evidence}
+
+\begin{claim}[Proposition VIII.17: Cubes non-measuring]
+\label{prop:VIII.17}
+If a cube number measure not a cube number, neither will the side
+measure the side; and if the side measure not the side, neither will
+the cube measure the cube.
+\end{claim}
+\begin{evidence}[Proof of VIII.17]
+\label{ev:VIII.17}
+Contrapositive of VIII.15.
+\dependson{VIII.17}{VIII.15}
+\end{evidence}
+
+\begin{claim}[Proposition VIII.18: Mean proportional between similar plane numbers]
+\label{prop:VIII.18}
+Between two similar plane numbers there is one mean proportional
+number, and the plane number has to the plane number the ratio
+duplicate of that which the corresponding side has to the
+corresponding side.
+\end{claim}
+\begin{evidence}[Proof of VIII.18]
+\label{ev:VIII.18}
+For similar plane numbers $ab$ and $cd$ with $a : b = c : d$, the
+mean proportional is the geometric mean of $ab$ and $cd$, which by
+VII.19 / VIII.2 equals $ad$ (or $bc$, equal by VII.19).
+\dependson{VIII.18}{VII.19}
+\dependson{VIII.18}{VIII.5}
+\dependson{VIII.18}{def:VII.21}
+\end{evidence}
+
+\begin{claim}[Proposition VIII.19: Mean proportionals between similar solid numbers]
+\label{prop:VIII.19}
+Between two similar solid numbers there fall two mean proportional
+numbers, and the solid number has to the solid number the ratio
+triplicate of that which the corresponding side has to the
+corresponding side.
+\end{claim}
+\begin{evidence}[Proof of VIII.19]
+\label{ev:VIII.19}
+For similar solid numbers $abc$ and $def$: the two means are $abf$
+and $aef$ (or symmetric variants); together they give a continued
+proportion in triplicate ratio.
+\dependson{VIII.19}{VIII.12}
+\dependson{VIII.19}{VIII.18}
+\end{evidence}
+
+\begin{claim}[Proposition VIII.20: Mean proportional characterises similar plane numbers]
+\label{prop:VIII.20}
+If one mean proportional number fall between two numbers, the numbers
+will be similar plane numbers.
+\end{claim}
+\begin{evidence}[Proof of VIII.20]
+\label{ev:VIII.20}
+Converse of VIII.18: if $a : m = m : b$ then $a$ and $b$ admit
+factorisations as similar plane numbers via VII.19.
+\dependson{VIII.20}{VII.19}
+\dependson{VIII.20}{VIII.18}
+\end{evidence}
+
+\begin{claim}[Proposition VIII.21: Two mean proportionals characterise similar solid numbers]
+\label{prop:VIII.21}
+If two mean proportional numbers fall between two numbers, the
+numbers are similar solid numbers.
+\end{claim}
+\begin{evidence}[Proof of VIII.21]
+\label{ev:VIII.21}
+Converse of VIII.19.
+\dependson{VIII.21}{VIII.19}
+\dependson{VIII.21}{VIII.20}
+\end{evidence}
+
+\begin{claim}[Proposition VIII.22: Squares in continued proportion]
+\label{prop:VIII.22}
+If three numbers be in continued proportion, and the first be square,
+the third will also be square.
+\end{claim}
+\begin{evidence}[Proof of VIII.22]
+\label{ev:VIII.22}
+If $a^2 : m = m : c$, then $m^2 = a^2 c$ so $c = (m/a)^2$, hence $c$
+is square.  VII.19 ensures the division produces an integer.
+\dependson{VIII.22}{VII.19}
+\dependson{VIII.22}{VIII.11}
+\end{evidence}
+
+\begin{claim}[Proposition VIII.23: Cubes in continued proportion]
+\label{prop:VIII.23}
+If four numbers be in continued proportion, and the first be cube,
+the fourth will also be cube.
+\end{claim}
+\begin{evidence}[Proof of VIII.23]
+\label{ev:VIII.23}
+Same scheme as VIII.22 with two means; the fourth term is the cube
+of the ratio's denominator scaled appropriately.
+\dependson{VIII.23}{VIII.12}
+\dependson{VIII.23}{VIII.22}
+\end{evidence}
+
+\begin{claim}[Proposition VIII.24: Square ratio implies square ratio]
+\label{prop:VIII.24}
+If two numbers have to one another the ratio which a square number
+has to a square number, and the first be square, the second will
+also be square.
+\end{claim}
+\begin{evidence}[Proof of VIII.24]
+\label{ev:VIII.24}
+By VIII.11 the ratio of squares has a mean proportional; transferring
+that mean to $a^2 : b$ forces $b$ to be square by VIII.22.
+\dependson{VIII.24}{VIII.11}
+\dependson{VIII.24}{VIII.22}
+\end{evidence}
+
+\begin{claim}[Proposition VIII.25: Cube ratio implies cube ratio]
+\label{prop:VIII.25}
+If two numbers have to one another the ratio which a cube number has
+to a cube number, and the first be cube, the second will also be
+cube.
+\end{claim}
+\begin{evidence}[Proof of VIII.25]
+\label{ev:VIII.25}
+Same argument as VIII.24 for cubes via VIII.12 and VIII.23.
+\dependson{VIII.25}{VIII.12}
+\dependson{VIII.25}{VIII.23}
+\end{evidence}
+
+\begin{claim}[Proposition VIII.26: Similar plane numbers have square ratio]
+\label{prop:VIII.26}
+Similar plane numbers have to one another the ratio which a square
+number has to a square number.
+\end{claim}
+\begin{evidence}[Proof of VIII.26]
+\label{ev:VIII.26}
+By VIII.18 similar plane numbers admit a mean proportional, and the
+ratio (squares of corresponding sides) is a square-to-square ratio.
+\dependson{VIII.26}{VIII.18}
+\dependson{VIII.26}{def:VII.21}
+\end{evidence}
+
+\begin{claim}[Proposition VIII.27: Similar solid numbers have cube ratio]
+\label{prop:VIII.27}
+Similar solid numbers have to one another the ratio which a cube
+number has to a cube number.
+\end{claim}
+\begin{evidence}[Proof of VIII.27]
+\label{ev:VIII.27}
+By VIII.19 similar solid numbers admit two mean proportionals, and
+the ratio is in the triplicate (cube-to-cube) ratio of corresponding
+sides.
+\dependson{VIII.27}{VIII.19}
+\dependson{VIII.27}{def:VII.21}
+\end{evidence}

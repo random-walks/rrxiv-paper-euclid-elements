@@ -1,35 +1,568 @@
-% book06.tex — Book VI: Similar figures. Scaffolded.
+% book06.tex --- Book VI of Euclid's Elements: Similar Figures.
+%
+% All 33 propositions encoded. Book VI applies the Eudoxean proportion
+% machinery of Book V to plane figures: triangles, parallelograms, and
+% similar polygons. Highlights are VI.2 (the intercept theorem / "basic
+% proportionality theorem"), VI.4-VI.8 (similarity criteria), VI.13
+% (mean proportional construction), VI.30 (golden section by
+% application of areas), and VI.31 (generalised Pythagoras).
+%
+% Wording follows Heath (1908).
 
 \section{Book VI --- Similar Figures}
 \label{sec:book-VI}
 
-Book VI applies Book V's proportion machinery to similar plane
-figures, including the famous Proposition VI.1 (triangles with the
-same height are to one another as their bases).
-
-\begin{claim}[Proposition VI.1: Areas of triangles and parallelograms with the same height]
+\begin{claim}[Proposition VI.1: Triangles and parallelograms with the same height]
 \label{prop:VI.1}
 Triangles and parallelograms which are under the same height are to
 one another as their bases.
 \end{claim}
-\begin{evidence}[Proof sketch of VI.1]
+\begin{evidence}[Proof of VI.1]
 \label{ev:VI.1}
-Apply I.38 repeatedly and the definition of proportion (V.5).
+Repeated application of I.38 generates any multiple of a triangle on
+the corresponding multiple of the base; the resulting equimultiples
+test (V.5) is exactly the statement of proportionality.  The
+parallelogram version follows because each parallelogram is double
+its diagonal triangle (I.34, I.41).
+\dependson{VI.1}{I.34}
 \dependson{VI.1}{I.38}
-\dependson{VI.1}{V.5}
+\dependson{VI.1}{I.41}
+\dependson{VI.1}{def:V.5}
 \end{evidence}
 
-\begin{claim}[Proposition VI.31: Generalisation of Pythagoras]
+\begin{claim}[Proposition VI.2: Parallel to a side cuts proportionally]
+\label{prop:VI.2}
+If a straight line be drawn parallel to one of the sides of a
+triangle, it will cut the sides of the triangle proportionally; and
+if the sides of the triangle be cut proportionally, the line joining
+the points of section will be parallel to the remaining side of the
+triangle.
+\end{claim}
+\begin{evidence}[Proof of VI.2]
+\label{ev:VI.2}
+Drop a parallel $DE$ from a point $D$ on $AB$ to a point $E$ on $AC$,
+parallel to $BC$.  Triangles $\triangle DBC$ and $\triangle DCE$
+share the same base $DE$ and lie between the same parallels (with
+$BE$, $DC$ as transversals through I.29, I.37), so they are equal in
+area.  Applying VI.1 to $\triangle ADE$ versus the equal-area
+companion triangles gives $AD : DB = AE : EC$.  The converse runs the
+argument in reverse via I.39.
+\dependson{VI.2}{I.29}
+\dependson{VI.2}{I.37}
+\dependson{VI.2}{I.38}
+\dependson{VI.2}{I.39}
+\dependson{VI.2}{VI.1}
+\dependson{VI.2}{V.11}
+\end{evidence}
+
+\begin{claim}[Proposition VI.3: Angle bisector cuts opposite side proportionally]
+\label{prop:VI.3}
+If an angle of a triangle be bisected and the straight line cutting
+the angle cut the base also, the segments of the base will have the
+same ratio as the remaining sides of the triangle.
+\end{claim}
+\begin{evidence}[Proof of VI.3]
+\label{ev:VI.3}
+Through $C$ draw $CE$ parallel to the bisector $AD$ (I.31), meeting
+$BA$ produced at $E$.  By alternate angles (I.29) and the bisection
+hypothesis, $\angle ACE = \angle AEC$, so $AE = AC$ (I.6).  Applying
+VI.2 to $\triangle BCE$ with $AD \parallel CE$: $BD : DC = BA : AE =
+BA : AC$.
+\dependson{VI.3}{I.6}
+\dependson{VI.3}{I.29}
+\dependson{VI.3}{I.31}
+\dependson{VI.3}{VI.2}
+\end{evidence}
+
+\begin{claim}[Proposition VI.4: Equiangular triangles have proportional sides]
+\label{prop:VI.4}
+In equiangular triangles the sides about the equal angles are
+proportional, and those are corresponding sides which subtend the
+equal angles.
+\end{claim}
+\begin{evidence}[Proof of VI.4]
+\label{ev:VI.4}
+Lay the equiangular triangles side by side so that one pair of equal
+angles coincides; the remaining vertices and bases yield a
+parallelogram by I.28.  Apply VI.2 to the new figure to derive the
+proportionality of the sides.
+\dependson{VI.4}{I.28}
+\dependson{VI.4}{I.32}
+\dependson{VI.4}{VI.2}
+\end{evidence}
+
+\begin{claim}[Proposition VI.5: SSS-similarity criterion]
+\label{prop:VI.5}
+If two triangles have their sides proportional, the triangles will be
+equiangular and will have those angles equal which the corresponding
+sides subtend.
+\end{claim}
+\begin{evidence}[Proof of VI.5]
+\label{ev:VI.5}
+Construct on the second triangle's base a triangle equiangular with
+the first (I.23); by VI.4 its other sides are determined by the
+proportion, and by I.8 (SSS) it coincides with the second triangle.
+Therefore the second triangle is equiangular with the first.
+\dependson{VI.5}{I.8}
+\dependson{VI.5}{I.23}
+\dependson{VI.5}{VI.4}
+\end{evidence}
+
+\begin{claim}[Proposition VI.6: SAS-similarity criterion]
+\label{prop:VI.6}
+If two triangles have one angle equal to one angle and the sides
+about the equal angles proportional, the triangles will be
+equiangular and will have those angles equal which the corresponding
+sides subtend.
+\end{claim}
+\begin{evidence}[Proof of VI.6]
+\label{ev:VI.6}
+Same scheme as VI.5: extend one triangle so as to match the second
+on the equal-angle pair (I.23), apply VI.4 to deduce the missing
+side, then I.4 (SAS) for congruence of the auxiliary triangle with
+the second.
+\dependson{VI.6}{I.4}
+\dependson{VI.6}{I.23}
+\dependson{VI.6}{VI.4}
+\dependson{VI.6}{VI.5}
+\end{evidence}
+
+\begin{claim}[Proposition VI.7: Mixed SAS-similarity criterion]
+\label{prop:VI.7}
+If two triangles have one angle equal to one angle, the sides about
+other angles proportional, and the remaining angles either both less
+or both not less than a right angle, the triangles will be
+equiangular and will have those angles equal about which the sides
+are proportional.
+\end{claim}
+\begin{evidence}[Proof of VI.7]
+\label{ev:VI.7}
+Construct, at the vertex of the angle whose sides are proportional,
+an angle equal to the corresponding angle in the second triangle
+(I.23).  The resulting auxiliary triangle agrees with the first in
+two angles (and hence all three, by I.32) and shares a side with the
+second; the constraint on the remaining angle being acute or obtuse
+ensures the construction is non-ambiguous (essentially eliminates
+the SSA failure case).
+\dependson{VI.7}{I.23}
+\dependson{VI.7}{I.32}
+\dependson{VI.7}{VI.4}
+\dependson{VI.7}{VI.6}
+\end{evidence}
+
+\begin{claim}[Proposition VI.8: Right triangle altitude similarity]
+\label{prop:VI.8}
+If in a right-angled triangle a perpendicular be drawn from the right
+angle to the base, the triangles adjoining the perpendicular are
+similar both to the whole and to one another.
+\end{claim}
+\begin{evidence}[Proof of VI.8]
+\label{ev:VI.8}
+The two sub-triangles each share an angle with the original (the
+non-right angle at $B$ or $C$) and both have a right angle (at the
+foot of the altitude and at the apex), so they are equiangular with
+the original by I.32, hence similar by VI.4.  By transitivity (V.11)
+they are similar to each other.
+\dependson{VI.8}{I.32}
+\dependson{VI.8}{VI.4}
+\dependson{VI.8}{V.11}
+\end{evidence}
+
+\begin{claim}[Proposition VI.9: Cut off any part of a given segment]
+\label{prop:VI.9}
+From a given straight line to cut off a prescribed part.
+\end{claim}
+\begin{evidence}[Proof of VI.9]
+\label{ev:VI.9}
+Lay off a separate transversal containing the prescribed number of
+equal units (I.3 repeatedly).  Join the far ends and draw parallels
+to that join through each unit division (I.31).  By VI.2 these
+parallels mark off equal fractions on the given line.
+\dependson{VI.9}{I.3}
+\dependson{VI.9}{I.31}
+\dependson{VI.9}{VI.2}
+\end{evidence}
+
+\begin{claim}[Proposition VI.10: Divide a segment in a given ratio]
+\label{prop:VI.10}
+To cut a given uncut straight line similarly to a given cut straight
+line.
+\end{claim}
+\begin{evidence}[Proof of VI.10]
+\label{ev:VI.10}
+Lay the cut transversal alongside the given line meeting at one
+endpoint; join the far ends and draw parallels to that join through
+each cut point (I.31).  By VI.2 the parallels reproduce the same
+ratios on the given line.
+\dependson{VI.10}{I.31}
+\dependson{VI.10}{VI.2}
+\end{evidence}
+
+\begin{claim}[Proposition VI.11: Third proportional]
+\label{prop:VI.11}
+To two given straight lines to find a third proportional.
+\end{claim}
+\begin{evidence}[Proof of VI.11]
+\label{ev:VI.11}
+Place the two given segments on lines making an angle.  Mark off the
+second segment beyond the first; draw a parallel to the closing
+segment through the far endpoint (I.31).  By VI.2 the new mark-off
+is the required third proportional.
+\dependson{VI.11}{I.31}
+\dependson{VI.11}{VI.2}
+\end{evidence}
+
+\begin{claim}[Proposition VI.12: Fourth proportional]
+\label{prop:VI.12}
+To three given straight lines to find a fourth proportional.
+\end{claim}
+\begin{evidence}[Proof of VI.12]
+\label{ev:VI.12}
+Same construction as VI.11 but with three input segments: lay two on
+one transversal and one on the other, then drop a parallel from the
+last point.  VI.2 yields the fourth proportional.
+\dependson{VI.12}{I.31}
+\dependson{VI.12}{VI.2}
+\end{evidence}
+
+\begin{claim}[Proposition VI.13: Mean proportional]
+\label{prop:VI.13}
+To two given straight lines to find a mean proportional.
+\end{claim}
+\begin{evidence}[Proof of VI.13]
+\label{ev:VI.13}
+Lay the two segments end-to-end as $AB$, $BC$ on a single line; on
+$AC$ as diameter describe a semicircle (Postulate 3, III.31 implicit).
+Erect the perpendicular $BD$ at $B$ to the diameter; then $\triangle
+ABD$, $\triangle BDC$, and $\triangle ABC$ are similar by VI.8, so
+$AB : BD = BD : BC$, making $BD$ the required mean proportional.
+\dependson{VI.13}{I.11}
+\dependson{VI.13}{III.31}
+\dependson{VI.13}{VI.8}
+\dependson{VI.13}{post:3}
+\end{evidence}
+
+\begin{claim}[Proposition VI.14: Equal parallelograms have reciprocally proportional sides]
+\label{prop:VI.14}
+In equal and equiangular parallelograms the sides about the equal
+angles are reciprocally proportional; and equiangular parallelograms
+in which the sides about the equal angles are reciprocally
+proportional are equal.
+\end{claim}
+\begin{evidence}[Proof of VI.14]
+\label{ev:VI.14}
+Lay the two parallelograms so the equal angles coincide; their union
+forms a third parallelogram whose diagonal includes the original
+common-angle vertex.  By VI.1 the ratios of areas equal the ratios of
+adjacent sides; equality of the original areas forces the
+reciprocal-proportion relation.  Converse runs the same way.
+\dependson{VI.14}{VI.1}
+\dependson{VI.14}{V.11}
+\end{evidence}
+
+\begin{claim}[Proposition VI.15: Equal triangles with one common angle have reciprocally proportional sides]
+\label{prop:VI.15}
+In equal triangles which have one angle equal to one angle the sides
+about the equal angles are reciprocally proportional; and those
+triangles which have one angle equal to one angle, and in which the
+sides about the equal angles are reciprocally proportional, are equal.
+\end{claim}
+\begin{evidence}[Proof of VI.15]
+\label{ev:VI.15}
+Same scheme as VI.14 applied to triangles (each is half a
+parallelogram, so the areas-of-parallelograms result transfers).
+\dependson{VI.15}{I.41}
+\dependson{VI.15}{VI.14}
+\end{evidence}
+
+\begin{claim}[Proposition VI.16: Equal rectangles iff proportional sides]
+\label{prop:VI.16}
+If four straight lines be proportional, the rectangle contained by the
+extremes is equal to the rectangle contained by the means; and if the
+rectangle contained by the extremes be equal to the rectangle
+contained by the means, the four straight lines will be proportional.
+\end{claim}
+\begin{evidence}[Proof of VI.16]
+\label{ev:VI.16}
+If $a : b = c : d$, the rectangles $ad$ and $bc$ are equiangular
+(all right-angled) and have sides reciprocally proportional, so by
+VI.14 they are equal.  Conversely from $ad = bc$ and VI.14 (its
+converse) we recover the proportion.
+\dependson{VI.16}{VI.14}
+\end{evidence}
+
+\begin{claim}[Proposition VI.17: Mean proportional iff equal squares]
+\label{prop:VI.17}
+If three straight lines be proportional, the rectangle contained by
+the extremes is equal to the square on the mean; and if the rectangle
+contained by the extremes be equal to the square on the mean, the
+three straight lines will be proportional.
+\end{claim}
+\begin{evidence}[Proof of VI.17]
+\label{ev:VI.17}
+Specialise VI.16 to $b = c$.
+\dependson{VI.17}{VI.16}
+\end{evidence}
+
+\begin{claim}[Proposition VI.18: Construct a polygon similar to a given polygon]
+\label{prop:VI.18}
+On a given straight line to describe a rectilineal figure similar
+and similarly situated to a given rectilineal figure.
+\end{claim}
+\begin{evidence}[Proof of VI.18]
+\label{ev:VI.18}
+Triangulate the given polygon by joining a vertex to all others.  On
+the new base copy each angle (I.23) and use VI.4 to fix the side
+ratios; assemble the triangles into the similar polygon.
+\dependson{VI.18}{I.23}
+\dependson{VI.18}{VI.4}
+\end{evidence}
+
+\begin{claim}[Proposition VI.19: Similar triangles are as the squares on corresponding sides]
+\label{prop:VI.19}
+Similar triangles are to one another in the duplicate ratio of the
+corresponding sides.
+\end{claim}
+\begin{evidence}[Proof of VI.19]
+\label{ev:VI.19}
+Let $\triangle ABC \sim \triangle DEF$ with side ratio $k = BC / EF$.
+Construct $G$ on $BC$ so that $BG = EF \cdot k$ (i.e.\ a third
+proportional, VI.11).  By VI.1 the area ratio is $BG : EF = k$ along
+one dimension and the side ratio $k$ along the perpendicular, giving
+total area ratio $k^2$ in the sense of Definition V.9 (duplicate
+ratio).
+\dependson{VI.19}{VI.1}
+\dependson{VI.19}{VI.11}
+\dependson{VI.19}{def:V.9}
+\end{evidence}
+
+\begin{claim}[Proposition VI.20: Similar polygons are as the squares on corresponding sides]
+\label{prop:VI.20}
+Similar polygons are divided into similar triangles, equal in
+multitude and in the same ratio as the wholes; and the polygon has
+to the polygon a ratio duplicate of that which the corresponding side
+has to the corresponding side.
+\end{claim}
+\begin{evidence}[Proof of VI.20]
+\label{ev:VI.20}
+Decompose into similar triangles by joining one vertex to all others;
+apply VI.19 to each triangle and sum via V.12.
+\dependson{VI.20}{VI.18}
+\dependson{VI.20}{VI.19}
+\dependson{VI.20}{V.12}
+\end{evidence}
+
+\begin{claim}[Proposition VI.21: Figures similar to the same are similar]
+\label{prop:VI.21}
+Figures which are similar to the same rectilineal figure are also
+similar to one another.
+\end{claim}
+\begin{evidence}[Proof of VI.21]
+\label{ev:VI.21}
+Equiangularity transfers transitively, and the side ratios compose
+transitively by V.11.
+\dependson{VI.21}{V.11}
+\dependson{VI.21}{VI.4}
+\end{evidence}
+
+\begin{claim}[Proposition VI.22: Proportionality of figures on proportional sides]
+\label{prop:VI.22}
+If four straight lines be proportional, the rectilineal figures
+similar and similarly described upon them will also be proportional;
+and if the rectilineal figures similar and similarly described upon
+them be proportional, the straight lines will themselves also be
+proportional.
+\end{claim}
+\begin{evidence}[Proof of VI.22]
+\label{ev:VI.22}
+Apply VI.20: figures similar on proportional sides have areas in the
+duplicate ratio of the sides.  Equality of those duplicate ratios is
+equivalent to equality of the original side ratios.
+\dependson{VI.22}{VI.20}
+\dependson{VI.22}{def:V.9}
+\end{evidence}
+
+\begin{claim}[Proposition VI.23: Ratio of parallelograms is compound of side ratios]
+\label{prop:VI.23}
+Equiangular parallelograms have to one another the ratio compounded
+of the ratios of their sides.
+\end{claim}
+\begin{evidence}[Proof of VI.23]
+\label{ev:VI.23}
+Place the two parallelograms so the equal angles share a vertex; the
+resulting figure can be split by lines parallel to the sides into a
+rectangle whose dimensions are the four sides.  Two applications of
+VI.1 give the compounded ratio.
+\dependson{VI.23}{VI.1}
+\dependson{VI.23}{def:V.10}
+\end{evidence}
+
+\begin{claim}[Proposition VI.24: Parallelograms about the diagonal are similar to the whole]
+\label{prop:VI.24}
+In any parallelogram the parallelograms about the diameter are
+similar both to the whole and to one another.
+\end{claim}
+\begin{evidence}[Proof of VI.24]
+\label{ev:VI.24}
+Lines drawn parallel to the sides through a point on the diagonal
+make the inner parallelograms equiangular with the whole (I.29) and
+with corresponding sides cut in the same ratio (VI.2); hence similar
+(VI.4).
+\dependson{VI.24}{I.29}
+\dependson{VI.24}{VI.2}
+\dependson{VI.24}{VI.4}
+\end{evidence}
+
+\begin{claim}[Proposition VI.25: Construct a figure similar to one and equal to another]
+\label{prop:VI.25}
+To construct one and the same figure similar to a given rectilineal
+figure and equal to another given rectilineal figure.
+\end{claim}
+\begin{evidence}[Proof of VI.25]
+\label{ev:VI.25}
+Reduce both given figures to rectangles on a common base (I.44);
+the side opposite the common base measures each figure's area.  Take
+the mean proportional (VI.13) of those two opposite sides; build on
+that mean a figure similar to the first via VI.18.  By VI.20 the
+constructed figure has the required area.
+\dependson{VI.25}{I.44}
+\dependson{VI.25}{VI.13}
+\dependson{VI.25}{VI.18}
+\dependson{VI.25}{VI.20}
+\end{evidence}
+
+\begin{claim}[Proposition VI.26: Inner parallelogram about the diagonal must share a corner]
+\label{prop:VI.26}
+If from a parallelogram there be taken away a parallelogram similar
+and similarly situated to the whole and having a common angle with
+it, it is about the same diameter with the whole.
+\end{claim}
+\begin{evidence}[Proof of VI.26]
+\label{ev:VI.26}
+Reductio: if the inner parallelogram is not about the diagonal, then
+VI.24 forces a similar parallelogram on the actual diagonal that
+differs from the given one; matching corresponding sides via the
+similarity contradicts the assumed common-angle configuration.
+\dependson{VI.26}{VI.24}
+\dependson{VI.26}{V.9}
+\end{evidence}
+
+\begin{claim}[Proposition VI.27: Maximum-area parallelogram with deficiency]
+\label{prop:VI.27}
+Of all parallelograms applied to the same straight line and deficient
+by parallelogrammic figures similar and similarly situated to that
+described upon the half of the straight line, the greatest is that
+which is applied to the half and is similar to the deficient figure.
+\end{claim}
+\begin{evidence}[Proof of VI.27]
+\label{ev:VI.27}
+Comparison of areas via VI.20 and VI.24: the application to the half
+exhausts the bound, while any other application produces a smaller
+parallelogram by a square-on-the-deviation.
+\dependson{VI.27}{VI.20}
+\dependson{VI.27}{VI.24}
+\dependson{VI.27}{VI.26}
+\end{evidence}
+
+\begin{claim}[Proposition VI.28: Apply a parallelogram with deficiency]
+\label{prop:VI.28}
+To a given straight line to apply a parallelogram equal to a given
+rectilineal figure and deficient by a parallelogrammic figure similar
+to a given one; thus the given rectilineal figure must not be greater
+than the parallelogram described on the half of the straight line and
+similar to the defect.
+\end{claim}
+\begin{evidence}[Proof of VI.28]
+\label{ev:VI.28}
+Construct the application by VI.25 to match the given figure, then
+verify the bound via VI.27.  The construction effectively solves a
+quadratic equation in geometric form.
+\dependson{VI.28}{VI.25}
+\dependson{VI.28}{VI.27}
+\end{evidence}
+
+\begin{claim}[Proposition VI.29: Apply a parallelogram with excess]
+\label{prop:VI.29}
+To a given straight line to apply a parallelogram equal to a given
+rectilineal figure and exceeding by a parallelogrammic figure similar
+to a given one.
+\end{claim}
+\begin{evidence}[Proof of VI.29]
+\label{ev:VI.29}
+Dual to VI.28; solves the geometric quadratic with the opposite sign.
+\dependson{VI.29}{VI.25}
+\dependson{VI.29}{VI.28}
+\end{evidence}
+
+\begin{claim}[Proposition VI.30: Golden section by application of areas]
+\label{prop:VI.30}
+To cut a given finite straight line in extreme and mean ratio.
+\end{claim}
+\begin{evidence}[Proof of VI.30]
+\label{ev:VI.30}
+Apply to the given line a parallelogram equal to the square on it,
+exceeding by a square (VI.29).  The exceeding square's side $x$
+satisfies $x(a+x) = a^2$, equivalently $a : x = x : (a - x)$ in the
+language of II.11 -- the golden section.
+\dependson{VI.30}{II.11}
+\dependson{VI.30}{VI.17}
+\dependson{VI.30}{VI.29}
+\end{evidence}
+
+\begin{claim}[Proposition VI.31: Generalised Pythagoras]
 \label{prop:VI.31}
 In right-angled triangles the figure on the side subtending the right
 angle is equal to the similar and similarly described figures on the
 sides containing the right angle.
 \end{claim}
-\begin{evidence}[Proof sketch of VI.31]
+\begin{evidence}[Proof of VI.31]
 \label{ev:VI.31}
-Apply VI.20 (similar polygons), I.47, V.16.
-\dependson{VI.31}{I.47}
-\dependson{VI.31}{V.16}
+By VI.8 the altitude from the right angle cuts the hypotenuse into
+segments such that each leg is the mean proportional between the
+hypotenuse and the adjacent segment.  Applying VI.20 (areas of
+similar figures are in the duplicate ratio of corresponding sides)
+gives each leg-figure equal to its adjacent piece of the
+hypotenuse-figure.  Summing the two pieces by V.24 yields the
+hypotenuse-figure.
+\dependson{VI.31}{VI.8}
+\dependson{VI.31}{VI.19}
+\dependson{VI.31}{VI.20}
+\dependson{VI.31}{V.24}
 \end{evidence}
 
-% TODO: All 33 propositions of Book VI.
+\begin{claim}[Proposition VI.32: Similarly placed triangles share a vertex angle]
+\label{prop:VI.32}
+If two triangles having two sides proportional to two sides be placed
+together at one angle so that their corresponding sides are also
+parallel, the remaining sides of the triangles will be in a straight
+line.
+\end{claim}
+\begin{evidence}[Proof of VI.32]
+\label{ev:VI.32}
+Equal angles and proportional sides (VI.6) force the triangles to
+share the same straight-line continuation at the meeting vertex (I.14).
+\dependson{VI.32}{I.14}
+\dependson{VI.32}{I.29}
+\dependson{VI.32}{VI.6}
+\end{evidence}
+
+\begin{claim}[Proposition VI.33: Inscribed angles are as their arcs]
+\label{prop:VI.33}
+In equal circles angles have the same ratio as the circumferences on
+which they stand, whether they stand at the centres or at the
+circumferences.
+\end{claim}
+\begin{evidence}[Proof of VI.33]
+\label{ev:VI.33}
+Use III.27 (equal arcs subtend equal central angles in equal circles)
+to set up an equimultiples test: for any positive integers $m$, $n$,
+$m$ copies of one angle correspond to $m$ copies of its arc, and the
+order of $m \alpha$ versus $n \beta$ matches the order of $m \cdot
+\mathrm{arc}(\alpha)$ versus $n \cdot \mathrm{arc}(\beta)$.  This is
+exactly Definition V.5 for $\alpha : \beta = \mathrm{arc}(\alpha) :
+\mathrm{arc}(\beta)$.  The inscribed-angle case follows from III.20
+(inscribed angle is half the central).
+\dependson{VI.33}{III.20}
+\dependson{VI.33}{III.27}
+\dependson{VI.33}{def:V.5}
+\end{evidence}

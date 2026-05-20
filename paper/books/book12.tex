@@ -1,21 +1,283 @@
-% book12.tex — Book XII: Method of exhaustion. Scaffolded.
+% book12.tex --- Book XII of Euclid's Elements: Method of Exhaustion.
+%
+% All 18 propositions encoded.  Book XII develops the Eudoxean method of
+% exhaustion (X.1) to compute curvilinear and 3D volumes: circles
+% (XII.2), pyramids (XII.5-XII.9), cones (XII.10-XII.15), and spheres
+% (XII.16-XII.18).
+%
+% Wording follows Heath (1908).
 
 \section{Book XII --- Method of Exhaustion}
 \label{sec:book-XII}
 
-Book XII applies the exhaustion lemma (X.1) to circles, cones, and
-spheres, including XII.2 (circles are to one another as the squares
-on their diameters) and XII.18 (spheres are in the triplicate ratio
-of their diameters).
+\begin{claim}[Proposition XII.1: Similar inscribed polygons in circles are as squares on diameters]
+\label{prop:XII.1}
+Similar polygons inscribed in circles are to one another as the
+squares on the diameters.
+\end{claim}
+\begin{evidence}[Proof of XII.1]
+\label{ev:XII.1}
+Decompose each polygon into similar triangles by joining vertices to
+the centres; each pair of corresponding triangles is similar (VI.20)
+with side ratio equal to the diameter ratio; sum and combine via
+V.12.
+\dependson{XII.1}{VI.20}
+\dependson{XII.1}{V.12}
+\end{evidence}
 
-\begin{claim}[Proposition XII.2: Circles by squared diameters]
+\begin{claim}[Proposition XII.2: Circles are as squares on diameters]
 \label{prop:XII.2}
 Circles are to one another as the squares on the diameters.
 \end{claim}
-\begin{evidence}[Proof sketch of XII.2]
+\begin{evidence}[Proof of XII.2]
 \label{ev:XII.2}
-Apply the method of exhaustion (X.1) plus VI.20.
+Apply the method of exhaustion: inscribe similar polygons in the two
+circles; by XII.1 they are in the ratio of squares on the diameters.
+Any deviation from that ratio at the level of the circles leads, via
+X.1, to a contradiction by choosing inscribed polygons close enough
+to fill the circle.
 \dependson{XII.2}{X.1}
+\dependson{XII.2}{XII.1}
 \end{evidence}
 
-% TODO: All 18 propositions of Book XII.
+\begin{claim}[Proposition XII.3: A pyramid on a triangular base is split into two equal smaller pyramids and two equal prisms]
+\label{prop:XII.3}
+Any pyramid which has a triangular base is divided into two pyramids
+equal and similar to one another, similar to the whole, and having
+triangular bases, and into two equal prisms; and the two prisms are
+greater than the half of the whole pyramid.
+\end{claim}
+\begin{evidence}[Proof of XII.3]
+\label{ev:XII.3}
+Bisect each edge (I.10); the midpoint cuts split the pyramid into
+two corner pyramids and two prisms.  The two corner pyramids are
+similar to the original (their edges halved), and by I.34 the two
+prisms are congruent.
+\dependson{XII.3}{I.10}
+\dependson{XII.3}{I.34}
+\dependson{XII.3}{XI.39}
+\end{evidence}
+
+\begin{claim}[Proposition XII.4: Pyramids of equal height are as their bases (special case)]
+\label{prop:XII.4}
+If there be two pyramids of the same height which have triangular
+bases, and each of them be divided into two pyramids equal to one
+another and similar to the whole, and into two equal prisms, then,
+as the base of the one pyramid is to the base of the other pyramid,
+so will all the prisms in the one pyramid be to all the prisms in
+the other pyramid.
+\end{claim}
+\begin{evidence}[Proof of XII.4]
+\label{ev:XII.4}
+Each iteration of XII.3 doubles the number of prisms; by
+proportionality of bases (VI.1) the prism-sums maintain the same
+ratio as the original bases.
+\dependson{XII.4}{VI.1}
+\dependson{XII.4}{XII.3}
+\end{evidence}
+
+\begin{claim}[Proposition XII.5: Pyramids of equal height are as their bases]
+\label{prop:XII.5}
+Pyramids which are of the same height and have triangular bases are
+to one another as their bases.
+\end{claim}
+\begin{evidence}[Proof of XII.5]
+\label{ev:XII.5}
+Apply XII.4 in the limit of XII.3 iterations; the prism-sums
+exhaust the pyramids (X.1), so the base-ratio is the pyramid-ratio.
+\dependson{XII.5}{X.1}
+\dependson{XII.5}{XII.3}
+\dependson{XII.5}{XII.4}
+\end{evidence}
+
+\begin{claim}[Proposition XII.6: Pyramids of equal height on polygonal bases are as their bases]
+\label{prop:XII.6}
+Pyramids which are of the same height and have polygonal bases are
+to one another as the bases.
+\end{claim}
+\begin{evidence}[Proof of XII.6]
+\label{ev:XII.6}
+Triangulate each polygonal base; the polygon-pyramid is the sum of
+the triangular sub-pyramids; apply XII.5 and V.12.
+\dependson{XII.6}{V.12}
+\dependson{XII.6}{XII.5}
+\end{evidence}
+
+\begin{claim}[Proposition XII.7: Triangular prism is three equal pyramids]
+\label{prop:XII.7}
+Any prism which has a triangular base is divided into three pyramids
+equal to one another which have triangular bases.
+\end{claim}
+\begin{evidence}[Proof of XII.7]
+\label{ev:XII.7}
+Cut the prism by two planes through opposite edge-pairs; the three
+resulting pyramids share a common apex and have congruent base
+triangles, so by XII.5 they have equal volume.
+\dependson{XII.7}{XI.39}
+\dependson{XII.7}{XII.5}
+\end{evidence}
+
+\begin{claim}[Proposition XII.8: Similar pyramids are as the cubes on corresponding edges]
+\label{prop:XII.8}
+Similar pyramids which have triangular bases are in the triplicate
+ratio of their corresponding sides.
+\end{claim}
+\begin{evidence}[Proof of XII.8]
+\label{ev:XII.8}
+By XII.7 a prism is three equal pyramids; by XI.33 similar
+parallelepipeds (and hence prisms) are in the triplicate ratio of
+edges; transfer to pyramids by XII.5.
+\dependson{XII.8}{XI.33}
+\dependson{XII.8}{XII.5}
+\dependson{XII.8}{XII.7}
+\end{evidence}
+
+\begin{claim}[Proposition XII.9: Equal pyramids have reciprocally proportional bases and heights]
+\label{prop:XII.9}
+In equal pyramids which have triangular bases the bases are
+reciprocally proportional to the heights; and those pyramids which
+have triangular bases in which the bases are reciprocally
+proportional to the heights are equal.
+\end{claim}
+\begin{evidence}[Proof of XII.9]
+\label{ev:XII.9}
+3D analogue of VI.15 for pyramids; via XII.5 / XII.6 the area-times-
+height proportion factors into the reciprocal proportion of bases
+and heights.
+\dependson{XII.9}{VI.14}
+\dependson{XII.9}{XII.5}
+\dependson{XII.9}{XII.6}
+\end{evidence}
+
+\begin{claim}[Proposition XII.10: A cone is one-third of the cylinder on the same base and height]
+\label{prop:XII.10}
+Any cone is a third part of the cylinder which has the same base
+with it and equal height.
+\end{claim}
+\begin{evidence}[Proof of XII.10]
+\label{ev:XII.10}
+Inscribe a pyramid on a polygonal base in both cone and cylinder;
+XII.7 makes the pyramid one-third the prism; apply X.1 to refine the
+inscribed polygon to fill the circle (XII.2); the limit gives the
+cone-to-cylinder ratio.
+\dependson{XII.10}{X.1}
+\dependson{XII.10}{XII.2}
+\dependson{XII.10}{XII.7}
+\end{evidence}
+
+\begin{claim}[Proposition XII.11: Cones and cylinders of equal height are as their bases]
+\label{prop:XII.11}
+Cones and cylinders which are of the same height are to one another
+as their bases.
+\end{claim}
+\begin{evidence}[Proof of XII.11]
+\label{ev:XII.11}
+By XII.2 the bases (circles) are in the squared-diameter ratio; by
+the formula in XII.10, the volumes follow the same ratio.
+\dependson{XII.11}{XII.2}
+\dependson{XII.11}{XII.10}
+\end{evidence}
+
+\begin{claim}[Proposition XII.12: Similar cones and cylinders are as cubes on diameters]
+\label{prop:XII.12}
+Similar cones and cylinders are to one another in the triplicate
+ratio of the diameters in their bases.
+\end{claim}
+\begin{evidence}[Proof of XII.12]
+\label{ev:XII.12}
+Analogue of XII.8 for cones / cylinders: by similarity the height
+scales proportionally with the diameter; cube of the linear ratio
+gives the volume ratio.
+\dependson{XII.12}{XII.8}
+\dependson{XII.12}{XII.10}
+\dependson{XII.12}{XII.11}
+\end{evidence}
+
+\begin{claim}[Proposition XII.13: Parallel sections of a cylinder are in ratio of distances]
+\label{prop:XII.13}
+If a cylinder be cut by a plane which is parallel to its opposite
+planes, then, as the cylinder is to the cylinder, so will the axis
+be to the axis.
+\end{claim}
+\begin{evidence}[Proof of XII.13]
+\label{ev:XII.13}
+Parallel cross-sections give equal circles (XI.16 implies parallel
+diameters); the volume scales linearly with axial length by XII.11.
+\dependson{XII.13}{XI.16}
+\dependson{XII.13}{XII.11}
+\end{evidence}
+
+\begin{claim}[Proposition XII.14: Cylinders on equal bases are as their heights]
+\label{prop:XII.14}
+Cones and cylinders which are on equal bases are to one another as
+their heights.
+\end{claim}
+\begin{evidence}[Proof of XII.14]
+\label{ev:XII.14}
+By XII.13 the volume is proportional to the axis when the base is
+fixed.
+\dependson{XII.14}{XII.11}
+\dependson{XII.14}{XII.13}
+\end{evidence}
+
+\begin{claim}[Proposition XII.15: Equal cones / cylinders have reciprocal proportions]
+\label{prop:XII.15}
+In equal cones and cylinders the bases are reciprocally proportional
+to the heights; and those cones and cylinders in which the bases
+are reciprocally proportional to the heights are equal.
+\end{claim}
+\begin{evidence}[Proof of XII.15]
+\label{ev:XII.15}
+Analogue of XII.9 / VI.15 for cones and cylinders.
+\dependson{XII.15}{XII.9}
+\dependson{XII.15}{XII.11}
+\dependson{XII.15}{XII.14}
+\end{evidence}
+
+\begin{claim}[Proposition XII.16: Inscribe in the larger of two concentric circles a polygon not touching the smaller]
+\label{prop:XII.16}
+Given two circles about the same centre, to inscribe in the greater
+circle an equilateral polygon with an even number of sides which
+does not touch the lesser circle.
+\end{claim}
+\begin{evidence}[Proof of XII.16]
+\label{ev:XII.16}
+Bisect arcs repeatedly (III.30) until the chord-to-arc gap is
+smaller than the difference of radii; this guarantees that the
+inscribed polygon avoids touching the smaller circle.
+\dependson{XII.16}{III.30}
+\dependson{XII.16}{X.1}
+\end{evidence}
+
+\begin{claim}[Proposition XII.17: Inscribe in the larger of two concentric spheres a polyhedron not touching the smaller]
+\label{prop:XII.17}
+Given two spheres about the same centre, to inscribe in the greater
+sphere a polyhedral solid which does not touch the lesser sphere at
+its surface.
+\end{claim}
+\begin{evidence}[Proof of XII.17]
+\label{ev:XII.17}
+3D analogue of XII.16: apply XII.16 in great-circle cross-sections,
+then triangulate the sphere using XI.27 to assemble a polyhedron
+strictly inside the larger sphere and outside the smaller.
+\dependson{XII.17}{XI.27}
+\dependson{XII.17}{XII.16}
+\end{evidence}
+
+\begin{claim}[Proposition XII.18: Spheres are in triplicate ratio of diameters]
+\label{prop:XII.18}
+Spheres are to one another in the triplicate ratio of their
+respective diameters.
+\end{claim}
+\begin{evidence}[Proof of XII.18]
+\label{ev:XII.18}
+Apply the method of exhaustion: inscribe similar polyhedra (XII.17);
+by XII.12 (similar cones) and the polyhedron's similar-pyramid
+decomposition, the inscribed solids are in the triplicate ratio of
+diameters.  By X.1 the inscribed solids approach the spheres in
+volume; the limit gives the result.
+\dependson{XII.18}{X.1}
+\dependson{XII.18}{XII.8}
+\dependson{XII.18}{XII.12}
+\dependson{XII.18}{XII.17}
+\end{evidence}

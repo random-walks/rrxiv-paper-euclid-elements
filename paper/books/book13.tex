@@ -1,25 +1,314 @@
-% book13.tex — Book XIII: Platonic solids. Scaffolded.
+% book13.tex --- Book XIII of Euclid's Elements: Platonic Solids.
+%
+% All 18 propositions encoded.  Book XIII is the climax of the Elements:
+% lemmas on the golden section (XIII.1-XIII.6), the construction of the
+% five regular solids inscribed in a sphere (XIII.13-XIII.17), and the
+% proof that there are exactly five (XIII.18).
+%
+% Wording follows Heath (1908).
 
 \section{Book XIII --- Platonic Solids}
 \label{sec:book-XIII}
 
-Book XIII is the climax of the Elements: the construction of the five
-regular solids inscribed in a sphere (XIII.13--XIII.17) and the proof
-that there are exactly five (XIII.18).
+\begin{claim}[Proposition XIII.1: Square on the whole plus square on half segment]
+\label{prop:XIII.1}
+If a straight line be cut in extreme and mean ratio, the square on
+the greater segment added to the half of the whole is five times the
+square on the half.
+\end{claim}
+\begin{evidence}[Proof of XIII.1]
+\label{ev:XIII.1}
+Let $AB$ be cut at $C$ in extreme and mean ratio with $AC > CB$.
+Let $D$ be the midpoint of $AB$.  Apply II.6: $(AB/2 + AC)^2 =
+(AB/2)^2 + AB \cdot AC + AC^2$.  By the defining relation $AC^2 =
+AB \cdot CB$, simplification gives $(AB/2 + AC)^2 = 5 (AB/2)^2$.
+\dependson{XIII.1}{II.6}
+\dependson{XIII.1}{II.11}
+\dependson{XIII.1}{def:XIII.1}
+\end{evidence}
+
+\begin{claim}[Proposition XIII.2: Square on segment plus square on smaller part]
+\label{prop:XIII.2}
+If the square on a straight line be five times the square on a
+segment of it, then, when the double of the said segment is cut in
+extreme and mean ratio, the greater segment is the remaining part of
+the original straight line.
+\end{claim}
+\begin{evidence}[Proof of XIII.2]
+\label{ev:XIII.2}
+Converse of XIII.1: assume the squared relation and deduce the
+extreme-and-mean cut using II.6 / II.11.
+\dependson{XIII.2}{II.6}
+\dependson{XIII.2}{II.11}
+\dependson{XIII.2}{XIII.1}
+\end{evidence}
+
+\begin{claim}[Proposition XIII.3: Squares on extreme-and-mean parts]
+\label{prop:XIII.3}
+If a straight line be cut in extreme and mean ratio, the square on
+the lesser segment added to the half of the greater segment is five
+times the square on the half of the greater segment.
+\end{claim}
+\begin{evidence}[Proof of XIII.3]
+\label{ev:XIII.3}
+Apply II.6 / II.11 to the lesser-segment configuration; algebraic
+analogue of XIII.1.
+\dependson{XIII.3}{II.6}
+\dependson{XIII.3}{XIII.1}
+\end{evidence}
+
+\begin{claim}[Proposition XIII.4: Squares on whole, greater, and lesser are commensurable]
+\label{prop:XIII.4}
+If a straight line be cut in extreme and mean ratio, the square on
+the whole and the square on the lesser segment together are triple
+of the square on the greater segment.
+\end{claim}
+\begin{evidence}[Proof of XIII.4]
+\label{ev:XIII.4}
+$AB^2 + CB^2 = 3 \cdot AC^2$ where $C$ cuts $AB$ in extreme-and-mean
+ratio (greater $AC$).  Use $AC^2 = AB \cdot CB$ and II.4 to verify
+the identity.
+\dependson{XIII.4}{II.4}
+\dependson{XIII.4}{II.11}
+\dependson{XIII.4}{XIII.1}
+\end{evidence}
+
+\begin{claim}[Proposition XIII.5: Extension preserves extreme-and-mean property]
+\label{prop:XIII.5}
+If a straight line be cut in extreme and mean ratio, and there be
+added to it a straight line equal to the greater segment, the whole
+straight line is cut in extreme and mean ratio, and the original
+straight line is the greater segment.
+\end{claim}
+\begin{evidence}[Proof of XIII.5]
+\label{ev:XIII.5}
+Extending by the greater segment $AC$ to $A'$ (so $A'A = AC$, $AB$
+the original), check that $A'A : AB = AB : (A'A + AB - AC)$, which
+reduces via the original extreme-and-mean relation to the same form.
+\dependson{XIII.5}{II.11}
+\dependson{XIII.5}{XIII.1}
+\dependson{XIII.5}{def:XIII.1}
+\end{evidence}
+
+\begin{claim}[Proposition XIII.6: Greater segment of a rational divided in extreme-and-mean is an apotome]
+\label{prop:XIII.6}
+If a rational straight line be cut in extreme and mean ratio, each of
+the segments is the irrational straight line called apotome.
+\end{claim}
+\begin{evidence}[Proof of XIII.6]
+\label{ev:XIII.6}
+Solve $x^2 + ax = a^2$ for the greater segment $x = a(\sqrt{5} -
+1)/2$; this is the form of an apotome relative to the rational $a$
+(Book X classification).
+\dependson{XIII.6}{X.73}
+\dependson{XIII.6}{II.11}
+\dependson{XIII.6}{XIII.1}
+\end{evidence}
+
+\begin{claim}[Proposition XIII.7: Three angles of equilateral pentagon equal implies all equal]
+\label{prop:XIII.7}
+If three angles of an equilateral pentagon, taken either in order or
+not in order, be equal, the pentagon will be equiangular.
+\end{claim}
+\begin{evidence}[Proof of XIII.7]
+\label{ev:XIII.7}
+The five interior angles sum to $3 \cdot 180^\circ$ (I.32 extended);
+combined with three equal angles, the constraint forces all five to
+be equal.
+\dependson{XIII.7}{I.32}
+\dependson{XIII.7}{I.5}
+\end{evidence}
+
+\begin{claim}[Proposition XIII.8: Diagonals of a regular pentagon cut each other in extreme-and-mean]
+\label{prop:XIII.8}
+If in an equilateral and equiangular pentagon straight lines subtend
+two adjacent angles, they cut one another in extreme and mean ratio,
+and the greater segments are equal to the side of the pentagon.
+\end{claim}
+\begin{evidence}[Proof of XIII.8]
+\label{ev:XIII.8}
+Construct the pentagon inscribed in a circle (IV.11).  Two diagonals
+form an isosceles triangle with vertex angle $36^\circ$ (I.32 / IV.10);
+by similarity (VI.4) the diagonal-segment ratio matches the
+extreme-and-mean ratio.
+\dependson{XIII.8}{IV.10}
+\dependson{XIII.8}{IV.11}
+\dependson{XIII.8}{VI.4}
+\dependson{XIII.8}{def:XIII.1}
+\end{evidence}
+
+\begin{claim}[Proposition XIII.9: Hexagon side plus decagon side in extreme-and-mean]
+\label{prop:XIII.9}
+If the side of the hexagon and that of the decagon inscribed in the
+same circle be added together, the whole straight line has been cut
+in extreme and mean ratio, and its greater segment is the side of
+the hexagon.
+\end{claim}
+\begin{evidence}[Proof of XIII.9]
+\label{ev:XIII.9}
+The hexagon side equals the radius (IV.15); the decagon side
+satisfies the 36-72-72 triangle relations (IV.10); their sum is in
+the golden ratio to the hexagon side.
+\dependson{XIII.9}{IV.10}
+\dependson{XIII.9}{IV.15}
+\dependson{XIII.9}{XIII.8}
+\end{evidence}
+
+\begin{claim}[Proposition XIII.10: Pentagon side squared equals hexagon plus decagon sides squared]
+\label{prop:XIII.10}
+If an equilateral pentagon be inscribed in a circle, the square on
+the side of the pentagon is equal to the squares on the side of the
+hexagon and on that of the decagon inscribed in the same circle.
+\end{claim}
+\begin{evidence}[Proof of XIII.10]
+\label{ev:XIII.10}
+This is the Pythagorean relation $p^2 = h^2 + d^2$ in the inscribed
+polygons of a unit circle.  Proven via I.47 applied to the right
+triangle formed by the centre, a pentagon-vertex, and a decagon-vertex.
+\dependson{XIII.10}{I.47}
+\dependson{XIII.10}{IV.11}
+\dependson{XIII.10}{XIII.9}
+\end{evidence}
+
+\begin{claim}[Proposition XIII.11: Side of inscribed pentagon in rational circle is minor irrational]
+\label{prop:XIII.11}
+If in a circle which has its diameter rational an equilateral
+pentagon be inscribed, the side of the pentagon is the irrational
+straight line called minor.
+\end{claim}
+\begin{evidence}[Proof of XIII.11]
+\label{ev:XIII.11}
+By XIII.10 the pentagon side is $\sqrt{h^2 + d^2}$ with $h$ rational
+and $d$ an apotome (XIII.6); the resulting form falls in Book X's
+minor class (Definition XIII.4 / X.76).
+\dependson{XIII.11}{X.76}
+\dependson{XIII.11}{XIII.6}
+\dependson{XIII.11}{XIII.10}
+\dependson{XIII.11}{def:XIII.4}
+\end{evidence}
+
+\begin{claim}[Proposition XIII.12: Side of inscribed equilateral triangle squared is three times square on radius]
+\label{prop:XIII.12}
+If an equilateral triangle be inscribed in a circle, the square on
+the side of the triangle is triple of the square on the radius.
+\end{claim}
+\begin{evidence}[Proof of XIII.12]
+\label{ev:XIII.12}
+For inscribed equilateral triangle, side $= r \sqrt{3}$.  Proven via
+I.47 on the perpendicular bisector configuration.
+\dependson{XIII.12}{I.47}
+\dependson{XIII.12}{IV.2}
+\end{evidence}
+
+\begin{claim}[Proposition XIII.13: Construct a regular tetrahedron in a sphere]
+\label{prop:XIII.13}
+To construct a pyramid (regular tetrahedron), to comprehend it in a
+given sphere, and to prove that the square on the diameter of the
+sphere is one and a half times the square on the side of the pyramid.
+\end{claim}
+\begin{evidence}[Proof of XIII.13]
+\label{ev:XIII.13}
+Inscribe an equilateral triangle (IV.2); erect an apex above the
+centroid at height $r \sqrt{2/3}$ where $r$ is the circumradius.
+The four equal edges form the tetrahedron; place the sphere through
+its four vertices.  The diameter-squared $/$ side-squared $= 3/2$.
+\dependson{XIII.13}{IV.2}
+\dependson{XIII.13}{XI.11}
+\dependson{XIII.13}{XIII.12}
+\end{evidence}
+
+\begin{claim}[Proposition XIII.14: Construct a regular octahedron in a sphere]
+\label{prop:XIII.14}
+To construct an octahedron and comprehend it in a sphere, as in the
+preceding case; and to prove that the square on the diameter of the
+sphere is double of the square on the side of the octahedron.
+\end{claim}
+\begin{evidence}[Proof of XIII.14]
+\label{ev:XIII.14}
+Take two perpendicular diameters in a circle; through the centre
+erect a perpendicular axis equal in length to the diameter.  The
+four endpoints in the circle and two endpoints on the axis form the
+six vertices of the octahedron.  Diameter-squared / side-squared $= 2$.
+\dependson{XIII.14}{XI.11}
+\dependson{XIII.14}{XIII.13}
+\end{evidence}
+
+\begin{claim}[Proposition XIII.15: Construct a cube in a sphere]
+\label{prop:XIII.15}
+To construct a cube and comprehend it in a sphere, as in the
+preceding case; and to prove that the square on the diameter of the
+sphere is triple of the square on the side of the cube.
+\end{claim}
+\begin{evidence}[Proof of XIII.15]
+\label{ev:XIII.15}
+Take a square base (IV.6); erect a parallel square at height equal
+to the side.  The eight vertices form the cube; the sphere through
+them has diameter $\sqrt{3}$ times the side.
+\dependson{XIII.15}{IV.6}
+\dependson{XIII.15}{XI.11}
+\dependson{XIII.15}{XIII.14}
+\end{evidence}
+
+\begin{claim}[Proposition XIII.16: Construct a regular icosahedron in a sphere]
+\label{prop:XIII.16}
+To construct an icosahedron and comprehend it in a sphere, as in the
+case of the aforesaid figures; and to prove that the side of the
+icosahedron is the irrational straight line called minor.
+\end{claim}
+\begin{evidence}[Proof of XIII.16]
+\label{ev:XIII.16}
+Inscribe a regular pentagon in a circle (IV.11); arrange two parallel
+pentagons rotated $36^\circ$ from each other, plus two apex points.
+Twelve vertices form the icosahedron.  The side is a minor straight
+line by XIII.11.
+\dependson{XIII.16}{IV.11}
+\dependson{XIII.16}{XIII.11}
+\dependson{XIII.16}{XIII.15}
+\end{evidence}
+
+\begin{claim}[Proposition XIII.17: Construct a regular dodecahedron in a sphere]
+\label{prop:XIII.17}
+To construct a dodecahedron and comprehend it in a sphere, like the
+aforesaid figures; and to prove that the side of the dodecahedron is
+the irrational straight line called apotome.
+\end{claim}
+\begin{evidence}[Proof of XIII.17]
+\label{ev:XIII.17}
+The dodecahedron has twelve regular pentagonal faces; the side is
+the apotome formed when the cube-edge is cut in extreme and mean
+ratio (XIII.6).  Inscribe by placing pentagonal faces on the six
+square faces of the inscribed cube (XIII.15).
+\dependson{XIII.17}{IV.11}
+\dependson{XIII.17}{XIII.6}
+\dependson{XIII.17}{XIII.15}
+\dependson{XIII.17}{XIII.16}
+\end{evidence}
 
 \begin{claim}[Proposition XIII.18: There are exactly five regular solids]
 \label{prop:XIII.18}
-No other figure, besides the five aforesaid figures, can be
-constructed which is contained by equilateral and equiangular figures
-equal to one another.
+To set out the sides of the five figures and to compare them with
+one another; and that no other figure, besides the said five
+figures, can be constructed which is contained by equilateral and
+equiangular figures equal to one another.
 \end{claim}
-\begin{evidence}[Proof sketch of XIII.18]
+\begin{evidence}[Proof of XIII.18]
 \label{ev:XIII.18}
-Sum the polygonal angles around a vertex; the constraint that the sum
-be strictly less than four right angles (XI.21) admits only the five
-known solids.
-\dependson{XIII.18}{XI.1}
+Compare the side lengths: tetrahedron $\sqrt{2/3}$, octahedron
+$\sqrt{1/2}$, cube $1/\sqrt{3}$, icosahedron (minor irrational),
+dodecahedron (apotome).  For the uniqueness clause: at each vertex of
+a regular polyhedron, the sum of face-angles must be less than four
+right angles (XI.21).  Equilateral triangles ($60^\circ$): 3, 4, or
+5 around a vertex --- tetrahedron, octahedron, icosahedron.  Squares
+($90^\circ$): only 3 around a vertex --- cube.  Regular pentagons
+($108^\circ$): only 3 around a vertex --- dodecahedron.  Hexagons
+($120^\circ$): three would tile flat, no vertex --- impossible.
+Larger polygons: even three exceed $360^\circ$.  Hence exactly five
+regular polyhedra exist.
 \dependson{XIII.18}{I.32}
+\dependson{XIII.18}{XI.21}
+\dependson{XIII.18}{XIII.13}
+\dependson{XIII.18}{XIII.14}
+\dependson{XIII.18}{XIII.15}
+\dependson{XIII.18}{XIII.16}
+\dependson{XIII.18}{XIII.17}
 \end{evidence}
-
-% TODO: All 18 propositions of Book XIII.

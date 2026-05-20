@@ -1,12 +1,16 @@
-% book10.tex — Book X: Incommensurable magnitudes. Scaffolded.
+% book10.tex --- Book X of Euclid's Elements: Incommensurable Magnitudes.
+%
+% All 115 propositions encoded.  Book X is the longest of the Elements
+% and develops a classification of irrational magnitudes via repeated
+% quadratic operations: it covers commensurability (X.1-X.18), medials
+% (X.19-X.35), and the thirteen irrational lines including binomials and
+% apotomes (X.36-X.115).  Proof sketches are condensed; the dependency
+% structure is what we capture.
+%
+% Wording follows Heath (1908).
 
 \section{Book X --- Incommensurable Magnitudes}
 \label{sec:book-X}
-
-Book X is the longest of the Elements (115 propositions),
-classifying irrational magnitudes via repeated quadratic operations.
-A full encoding is a large project on its own; here we record only the
-opening proposition and the definitions block as a stub.
 
 \begin{claim}[Proposition X.1: Method of exhaustion lemma]
 \label{prop:X.1}
@@ -16,11 +20,1541 @@ left a magnitude greater than its half, and if this process be
 repeated continually, there will be left some magnitude which will be
 less than the lesser magnitude set out.
 \end{claim}
-\begin{evidence}[Proof sketch of X.1]
+\begin{evidence}[Proof of X.1]
 \label{ev:X.1}
-By Archimedean property of magnitudes (V.4).
-\dependson{X.1}{V.5}
+By the Archimedean property (Definition V.4), some multiple of the
+smaller magnitude exceeds the larger.  Iterated halving (or more)
+brings the remainder below the smaller in a finite number of steps.
+\dependson{X.1}{def:V.4}
 \end{evidence}
 
-% TODO: 115 propositions. Definitions in three groups (X.def.1, X.def.2,
-% X.def.3) require their own \scope listings.
+\begin{claim}[Proposition X.2: Anthyphairesis detects incommensurability]
+\label{prop:X.2}
+If, when the lesser of two unequal magnitudes is continually
+subtracted in turn from the greater, that which is left never
+measures the one before it, the magnitudes will be incommensurable.
+\end{claim}
+\begin{evidence}[Proof of X.2]
+\label{ev:X.2}
+A common measure would persist through anthyphairesis (Common Notion
+3); non-termination of the algorithm thus implies no common measure
+exists.
+\dependson{X.2}{X.1}
+\dependson{X.2}{cn:3}
+\dependson{X.2}{def:X.1}
+\end{evidence}
+
+\begin{claim}[Proposition X.3: Greatest common measure of commensurables]
+\label{prop:X.3}
+Given two commensurable magnitudes, to find their greatest common
+measure.
+\end{claim}
+\begin{evidence}[Proof of X.3]
+\label{ev:X.3}
+Apply anthyphairesis (the Euclidean algorithm on magnitudes); by X.2
+the algorithm terminates exactly when a common measure exists.
+\dependson{X.3}{X.2}
+\dependson{X.3}{def:X.1}
+\end{evidence}
+
+\begin{claim}[Proposition X.4: GCM of three commensurables]
+\label{prop:X.4}
+Given three commensurable magnitudes, to find their greatest common
+measure.
+\end{claim}
+\begin{evidence}[Proof of X.4]
+\label{ev:X.4}
+Apply X.3 to the first two; then to the result with the third.
+\dependson{X.4}{X.3}
+\end{evidence}
+
+\begin{claim}[Proposition X.5: Commensurables have a number ratio]
+\label{prop:X.5}
+Commensurable magnitudes have to one another the ratio which a number
+has to a number.
+\end{claim}
+\begin{evidence}[Proof of X.5]
+\label{ev:X.5}
+If $d$ is a common measure of $a$, $b$, then $a = md$, $b = nd$, so
+$a : b = m : n$ (a ratio of integers).
+\dependson{X.5}{def:V.5}
+\dependson{X.5}{def:X.1}
+\end{evidence}
+
+\begin{claim}[Proposition X.6: Number ratio implies commensurable]
+\label{prop:X.6}
+If two magnitudes have to one another the ratio which a number has
+to a number, the magnitudes will be commensurable.
+\end{claim}
+\begin{evidence}[Proof of X.6]
+\label{ev:X.6}
+Converse of X.5: if $a : b = m : n$, dividing $a$ by $m$ produces a
+common measure of $a$ and $b$.
+\dependson{X.6}{X.5}
+\end{evidence}
+
+\begin{claim}[Proposition X.7: Incommensurables have no number ratio]
+\label{prop:X.7}
+Incommensurable magnitudes have not to one another the ratio which
+a number has to a number.
+\end{claim}
+\begin{evidence}[Proof of X.7]
+\label{ev:X.7}
+Contrapositive of X.6.
+\dependson{X.7}{X.6}
+\end{evidence}
+
+\begin{claim}[Proposition X.8: No number ratio implies incommensurable]
+\label{prop:X.8}
+If two magnitudes have not to one another the ratio which a number
+has to a number, the magnitudes will be incommensurable.
+\end{claim}
+\begin{evidence}[Proof of X.8]
+\label{ev:X.8}
+Contrapositive of X.5.
+\dependson{X.8}{X.5}
+\end{evidence}
+
+\begin{claim}[Proposition X.9: Commensurability of squares from commensurability of sides]
+\label{prop:X.9}
+The squares on straight lines commensurable in length have to one
+another the ratio which a square number has to a square number; and
+squares which have to one another the ratio which a square number
+has to a square number will also have their sides commensurable in
+length.
+\end{claim}
+\begin{evidence}[Proof of X.9]
+\label{ev:X.9}
+If $a : b = m : n$ (integers) then $a^2 : b^2 = m^2 : n^2$; converse
+holds by VIII.14 applied to integers and VI.22 applied to magnitudes.
+\dependson{X.9}{VI.22}
+\dependson{X.9}{VIII.14}
+\dependson{X.9}{X.5}
+\dependson{X.9}{X.6}
+\end{evidence}
+
+\begin{claim}[Proposition X.10: Construct incommensurables]
+\label{prop:X.10}
+To find two straight lines incommensurable, the one in length only,
+the other in square also, with an assigned straight line.
+\end{claim}
+\begin{evidence}[Proof of X.10]
+\label{ev:X.10}
+Take a non-square integer ratio (e.g.\ $2 : 1$) and use it via X.9 to
+construct an incommensurable-in-length pair; build the
+incommensurable-in-square one similarly with a ratio that is neither
+square nor cube.
+\dependson{X.10}{VI.13}
+\dependson{X.10}{X.9}
+\end{evidence}
+
+\begin{claim}[Proposition X.11: Commensurability is transitive]
+\label{prop:X.11}
+If four magnitudes be proportional, and the first be commensurable
+with the second, the third also will be commensurable with the
+fourth; and if the first be incommensurable with the second, the
+third also will be incommensurable with the fourth.
+\end{claim}
+\begin{evidence}[Proof of X.11]
+\label{ev:X.11}
+Commensurability $\iff$ rational ratio (X.5 / X.6); rational ratios
+are preserved under equality of ratios.
+\dependson{X.11}{X.5}
+\dependson{X.11}{X.6}
+\end{evidence}
+
+\begin{claim}[Proposition X.12: Commensurability is transitive (three magnitudes)]
+\label{prop:X.12}
+Magnitudes commensurable with the same magnitude are commensurable
+with one another.
+\end{claim}
+\begin{evidence}[Proof of X.12]
+\label{ev:X.12}
+If $a \sim c$ and $b \sim c$ (commensurable), then $a \sim b$ by
+composing ratios (X.11).
+\dependson{X.12}{X.11}
+\end{evidence}
+
+\begin{claim}[Proposition X.13: Incommensurable preserved through transitivity]
+\label{prop:X.13}
+If two magnitudes be commensurable, and one of them be incommensurable
+with any magnitude, the remaining one will also be incommensurable
+with the same.
+\end{claim}
+\begin{evidence}[Proof of X.13]
+\label{ev:X.13}
+Contrapositive of X.12.
+\dependson{X.13}{X.12}
+\end{evidence}
+
+\begin{claim}[Proposition X.14: Squares preserve commensurability of sides]
+\label{prop:X.14}
+If four straight lines be proportional, and the square on the first
+be greater than the square on the second by the square on a straight
+line commensurable with the first, the square on the third will also
+be greater than the square on the fourth by the square on a straight
+line commensurable with the third.
+\end{claim}
+\begin{evidence}[Proof of X.14]
+\label{ev:X.14}
+Proportionality lifts to the squares; the deviation magnitude
+inherits the commensurability relation.
+\dependson{X.14}{VI.22}
+\dependson{X.14}{X.11}
+\end{evidence}
+
+\begin{claim}[Proposition X.15: Sum of commensurables is commensurable]
+\label{prop:X.15}
+If two commensurable magnitudes be added together, the whole will
+also be commensurable with each of them; and if the whole be
+commensurable with one of them, the original magnitudes will also be
+commensurable.
+\end{claim}
+\begin{evidence}[Proof of X.15]
+\label{ev:X.15}
+$a, b$ have a common measure $d$, so $a + b = (m + n) d$ shares $d$.
+Converse: if $a + b$ and $a$ share a measure, then so does $b$ by
+Common Notion 3.
+\dependson{X.15}{cn:3}
+\dependson{X.15}{def:X.1}
+\end{evidence}
+
+\begin{claim}[Proposition X.16: Sum with incommensurable]
+\label{prop:X.16}
+If two incommensurable magnitudes be added together, the whole will
+also be incommensurable with each of them; and if the whole be
+incommensurable with one of them, the original magnitudes will also
+be incommensurable.
+\end{claim}
+\begin{evidence}[Proof of X.16]
+\label{ev:X.16}
+Contrapositive of X.15.
+\dependson{X.16}{X.15}
+\end{evidence}
+
+\begin{claim}[Proposition X.17: Application of areas with commensurable difference]
+\label{prop:X.17}
+If there be two unequal straight lines, and to the greater there be
+applied a parallelogram equal to the fourth part of the square on the
+less and deficient by a square figure, and if it divide it into parts
+which are commensurable in length, then the square on the greater
+will be greater than the square on the less by the square on a
+straight line commensurable in length with the greater.
+\end{claim}
+\begin{evidence}[Proof of X.17]
+\label{ev:X.17}
+By VI.28 / VI.29 the application of areas with deficient/excess
+square corresponds to solving a quadratic; commensurability of the
+parts forces commensurability of the discriminant.
+\dependson{X.17}{VI.28}
+\dependson{X.17}{X.14}
+\dependson{X.17}{X.15}
+\end{evidence}
+
+\begin{claim}[Proposition X.18: Application of areas with incommensurable difference]
+\label{prop:X.18}
+If there be two unequal straight lines, and to the greater there be
+applied a parallelogram equal to the fourth part of the square on the
+less and deficient by a square figure, and if it divide it into parts
+incommensurable in length, then the square on the greater will be
+greater than the square on the less by the square on a straight line
+incommensurable in length with the greater.
+\end{claim}
+\begin{evidence}[Proof of X.18]
+\label{ev:X.18}
+Same construction as X.17 with the opposite hypothesis;
+incommensurability of the parts forces incommensurability of the
+discriminant.
+\dependson{X.18}{VI.28}
+\dependson{X.18}{X.16}
+\dependson{X.18}{X.17}
+\end{evidence}
+
+\begin{claim}[Proposition X.19: Rectangle on rationals is rational]
+\label{prop:X.19}
+The rectangle contained by rational straight lines commensurable in
+length is rational.
+\end{claim}
+\begin{evidence}[Proof of X.19]
+\label{ev:X.19}
+Rational sides commensurable in length have integer ratios; product
+of two such sides is in rational ratio to the assigned-square area.
+\dependson{X.19}{X.9}
+\dependson{X.19}{def:X.3}
+\dependson{X.19}{def:X.4}
+\end{evidence}
+
+\begin{claim}[Proposition X.20: Rational area divided by rational side is rational]
+\label{prop:X.20}
+If a rational area be applied to a rational straight line, it produces
+as breadth a straight line rational and commensurable in length with
+the straight line to which it is applied.
+\end{claim}
+\begin{evidence}[Proof of X.20]
+\label{ev:X.20}
+$A = \ell \cdot b$ with $A$ and $\ell$ rational forces $b$ rational by
+X.19 / X.9.
+\dependson{X.20}{X.19}
+\end{evidence}
+
+\begin{claim}[Proposition X.21: Medial rectangle]
+\label{prop:X.21}
+The rectangle contained by rational straight lines commensurable in
+square only is irrational, and the side of the square equal to it is
+irrational.  Let the latter be called medial.
+\end{claim}
+\begin{evidence}[Proof of X.21]
+\label{ev:X.21}
+Commensurable-in-square-only means the square on each is rational
+but the lengths are not in integer ratio.  The rectangle is then in
+a non-rational ratio to a rational area; its square root is the
+medial straight line (Definition XIII.3).
+\dependson{X.21}{X.9}
+\dependson{X.21}{def:X.3}
+\dependson{X.21}{def:XIII.3}
+\end{evidence}
+
+\begin{claim}[Proposition X.22: Square on a medial]
+\label{prop:X.22}
+The square on a medial straight line, if applied to a rational
+straight line, produces as breadth a straight line rational and
+incommensurable in length with that to which it is applied.
+\end{claim}
+\begin{evidence}[Proof of X.22]
+\label{ev:X.22}
+A medial squared is rational; applying it to a rational base, the
+breadth is rational; the incommensurability follows from the fact
+that the medial is incommensurable in length with the rational.
+\dependson{X.22}{X.21}
+\end{evidence}
+
+\begin{claim}[Proposition X.23: Magnitudes commensurable with medial are medial]
+\label{prop:X.23}
+A straight line commensurable with a medial straight line is medial.
+\end{claim}
+\begin{evidence}[Proof of X.23]
+\label{ev:X.23}
+Commensurability preserves the medial property: scaling a medial by
+a rational ratio leaves it medial.
+\dependson{X.23}{X.21}
+\dependson{X.23}{def:XIII.3}
+\end{evidence}
+
+\begin{claim}[Proposition X.24: Rectangle of commensurable medials]
+\label{prop:X.24}
+The rectangle contained by medial straight lines commensurable in
+length is medial.
+\end{claim}
+\begin{evidence}[Proof of X.24]
+\label{ev:X.24}
+Product of two medials in rational length-ratio is again the
+geometric mean of two rationals (Definition XIII.3).
+\dependson{X.24}{X.21}
+\dependson{X.24}{X.23}
+\end{evidence}
+
+\begin{claim}[Proposition X.25: Rectangle of medials commensurable in square only]
+\label{prop:X.25}
+The rectangle contained by medial straight lines commensurable in
+square only is either rational or medial.
+\end{claim}
+\begin{evidence}[Proof of X.25]
+\label{ev:X.25}
+Two cases depending on whether the rectangle has a rational
+square-root.  Both cases are realised by explicit constructions.
+\dependson{X.25}{X.21}
+\dependson{X.25}{X.24}
+\end{evidence}
+
+\begin{claim}[Proposition X.26: Medial difference is not rational]
+\label{prop:X.26}
+A medial area does not exceed a medial area by a rational area.
+\end{claim}
+\begin{evidence}[Proof of X.26]
+\label{ev:X.26}
+A difference $M_1 - M_2 = R$ with $R$ rational and $M_1$, $M_2$
+medial would force $M_1$, $M_2$ to be in a rational ratio,
+contradicting their being medial in distinct families.
+\dependson{X.26}{X.21}
+\dependson{X.26}{X.25}
+\end{evidence}
+
+\begin{claim}[Proposition X.27: Two medial lines commensurable in square]
+\label{prop:X.27}
+To find medial straight lines commensurable in square only which
+contain a rational rectangle.
+\end{claim}
+\begin{evidence}[Proof of X.27]
+\label{ev:X.27}
+Construct two such medials from a fixed rational by extracting two
+square-roots of ratios in lowest terms.
+\dependson{X.27}{X.21}
+\dependson{X.27}{X.22}
+\end{evidence}
+
+\begin{claim}[Proposition X.28: Medials enclosing a medial rectangle]
+\label{prop:X.28}
+To find medial straight lines commensurable in square only which
+contain a medial rectangle.
+\end{claim}
+\begin{evidence}[Proof of X.28]
+\label{ev:X.28}
+Same construction as X.27 with an extra medial step.
+\dependson{X.28}{X.21}
+\dependson{X.28}{X.27}
+\end{evidence}
+
+\begin{claim}[Proposition X.29: Two rationals commensurable in square, square-difference of commensurable kind, Lemma 1]
+\label{prop:X.29}
+To find two rational straight lines commensurable in square only such
+that the square on the greater is greater than the square on the
+less by the square on a straight line commensurable in length with
+the greater.
+\end{claim}
+\begin{evidence}[Proof of X.29]
+\label{ev:X.29}
+Take a rational line $a$ and apply X.17 with a deficient square; the
+construction gives the required pair.
+\dependson{X.29}{X.17}
+\end{evidence}
+
+\begin{claim}[Proposition X.30: Same as X.29 with the discriminant incommensurable]
+\label{prop:X.30}
+To find two rational straight lines commensurable in square only such
+that the square on the greater is greater than the square on the
+less by the square on a straight line incommensurable in length with
+the greater.
+\end{claim}
+\begin{evidence}[Proof of X.30]
+\label{ev:X.30}
+Apply X.18 (the incommensurable analogue of X.17).
+\dependson{X.30}{X.18}
+\end{evidence}
+
+\begin{claim}[Proposition X.31: Two medials with rational discriminant relation]
+\label{prop:X.31}
+To find two medial straight lines commensurable in square only,
+containing a rational rectangle, such that the square on the greater
+is greater than the square on the less by the square on a straight
+line commensurable in length with the greater.
+\end{claim}
+\begin{evidence}[Proof of X.31]
+\label{ev:X.31}
+Combine X.27 with the discriminant-control of X.29.
+\dependson{X.31}{X.27}
+\dependson{X.31}{X.29}
+\end{evidence}
+
+\begin{claim}[Proposition X.32: Two medials, medial rectangle, commensurable discriminant]
+\label{prop:X.32}
+To find two medial straight lines commensurable in square only,
+containing a medial rectangle, such that the square on the greater
+is greater than the square on the less by the square on a straight
+line commensurable in length with the greater.
+\end{claim}
+\begin{evidence}[Proof of X.32]
+\label{ev:X.32}
+Same as X.31 with X.28 in place of X.27.
+\dependson{X.32}{X.28}
+\dependson{X.32}{X.31}
+\end{evidence}
+
+\begin{claim}[Proposition X.33: Sum of squares rational, rectangle medial, sides incommensurable in square]
+\label{prop:X.33}
+To find two straight lines incommensurable in square which make the
+sum of the squares on them rational but the rectangle contained by
+them medial.
+\end{claim}
+\begin{evidence}[Proof of X.33]
+\label{ev:X.33}
+Apply X.30: a difference-of-squares construction with an
+incommensurable discriminant produces such a pair.
+\dependson{X.33}{X.30}
+\end{evidence}
+
+\begin{claim}[Proposition X.34: Sum medial, rectangle rational]
+\label{prop:X.34}
+To find two straight lines incommensurable in square which make the
+sum of the squares on them medial but the rectangle contained by
+them rational.
+\end{claim}
+\begin{evidence}[Proof of X.34]
+\label{ev:X.34}
+Variant of X.33 with the medial/rational roles swapped, via X.31.
+\dependson{X.34}{X.31}
+\dependson{X.34}{X.33}
+\end{evidence}
+
+\begin{claim}[Proposition X.35: Sum medial, rectangle medial, sum incommensurable with rectangle]
+\label{prop:X.35}
+To find two straight lines incommensurable in square which make the
+sum of the squares on them medial and the rectangle contained by
+them medial and moreover incommensurable with the sum of the squares
+on them.
+\end{claim}
+\begin{evidence}[Proof of X.35]
+\label{ev:X.35}
+Variant of X.34 with both quantities medial; use X.32.
+\dependson{X.35}{X.32}
+\dependson{X.35}{X.34}
+\end{evidence}
+
+\begin{claim}[Proposition X.36: Binomial straight line]
+\label{prop:X.36}
+If two rational straight lines commensurable in square only be added
+together, the whole is irrational; and let it be called binomial.
+\end{claim}
+\begin{evidence}[Proof of X.36]
+\label{ev:X.36}
+The sum $a + b$ with $a$, $b$ rational and incommensurable in length
+has square $a^2 + b^2 + 2ab$ where $2ab$ is medial (X.21), so the
+square on the sum is the sum of a rational and a medial: irrational.
+\dependson{X.36}{X.21}
+\dependson{X.36}{def:X.II.1}
+\end{evidence}
+
+\begin{claim}[Proposition X.37: First bimedial straight line]
+\label{prop:X.37}
+If two medial straight lines commensurable in square only and
+containing a rational rectangle be added together, the whole is
+irrational; and let it be called first bimedial.
+\end{claim}
+\begin{evidence}[Proof of X.37]
+\label{ev:X.37}
+Sum of two medials with rational rectangle; the square consists of
+two medials and a rational --- irrational.
+\dependson{X.37}{X.27}
+\dependson{X.37}{X.36}
+\end{evidence}
+
+\begin{claim}[Proposition X.38: Second bimedial straight line]
+\label{prop:X.38}
+If two medial straight lines commensurable in square only and
+containing a medial rectangle be added together, the whole is
+irrational; and let it be called second bimedial.
+\end{claim}
+\begin{evidence}[Proof of X.38]
+\label{ev:X.38}
+Same scheme as X.37 with the rectangle medial instead of rational.
+\dependson{X.38}{X.28}
+\dependson{X.38}{X.37}
+\end{evidence}
+
+\begin{claim}[Proposition X.39: Major straight line]
+\label{prop:X.39}
+If two straight lines incommensurable in square which make the sum
+of the squares on them rational, but the rectangle contained by them
+medial, be added together, the whole straight line is irrational;
+and let it be called major.
+\end{claim}
+\begin{evidence}[Proof of X.39]
+\label{ev:X.39}
+Sum of an X.33 pair has square = rational + medial: irrational.
+\dependson{X.39}{X.33}
+\dependson{X.39}{X.36}
+\end{evidence}
+
+\begin{claim}[Proposition X.40: Side of a rational plus medial area]
+\label{prop:X.40}
+If two straight lines incommensurable in square which make the sum
+of the squares on them medial, but the rectangle contained by them
+rational, be added together, the whole straight line is irrational;
+and let it be called the side of a rational plus a medial area.
+\end{claim}
+\begin{evidence}[Proof of X.40]
+\label{ev:X.40}
+Sum of an X.34 pair; same scheme as X.39.
+\dependson{X.40}{X.34}
+\dependson{X.40}{X.39}
+\end{evidence}
+
+\begin{claim}[Proposition X.41: Side of the sum of two medial areas]
+\label{prop:X.41}
+If two straight lines incommensurable in square which make the sum
+of the squares on them medial, and the rectangle contained by them
+medial and also incommensurable with the sum of the squares on them,
+be added together, the remaining straight line is irrational; and
+let it be called the side of the sum of two medial areas.
+\end{claim}
+\begin{evidence}[Proof of X.41]
+\label{ev:X.41}
+Sum of an X.35 pair; same scheme as X.39.
+\dependson{X.41}{X.35}
+\dependson{X.41}{X.40}
+\end{evidence}
+
+\begin{claim}[Proposition X.42: A binomial has unique decomposition]
+\label{prop:X.42}
+A binomial straight line is divided into its terms at one point only.
+\end{claim}
+\begin{evidence}[Proof of X.42]
+\label{ev:X.42}
+Suppose two decompositions $a_1 + b_1 = a_2 + b_2$ of the same
+binomial.  Comparing rationals and medials in the squares forces
+$a_1 = a_2$ and $b_1 = b_2$.
+\dependson{X.42}{X.36}
+\end{evidence}
+
+\begin{claim}[Proposition X.43: A first bimedial has unique decomposition]
+\label{prop:X.43}
+A first bimedial straight line is divided at one and the same point
+only.
+\end{claim}
+\begin{evidence}[Proof of X.43]
+\label{ev:X.43}
+Same uniqueness argument as X.42 applied to the first bimedial.
+\dependson{X.43}{X.37}
+\dependson{X.43}{X.42}
+\end{evidence}
+
+\begin{claim}[Proposition X.44: A second bimedial has unique decomposition]
+\label{prop:X.44}
+A second bimedial straight line is divided at one point only.
+\end{claim}
+\begin{evidence}[Proof of X.44]
+\label{ev:X.44}
+Same uniqueness argument applied to the second bimedial.
+\dependson{X.44}{X.38}
+\dependson{X.44}{X.43}
+\end{evidence}
+
+\begin{claim}[Proposition X.45: A major has unique decomposition]
+\label{prop:X.45}
+A major straight line is divided at one and the same point only.
+\end{claim}
+\begin{evidence}[Proof of X.45]
+\label{ev:X.45}
+Same uniqueness argument applied to the major.
+\dependson{X.45}{X.39}
+\dependson{X.45}{X.44}
+\end{evidence}
+
+\begin{claim}[Proposition X.46: Side of rational+medial has unique decomposition]
+\label{prop:X.46}
+The side of a rational plus a medial area is divided at one and the
+same point only.
+\end{claim}
+\begin{evidence}[Proof of X.46]
+\label{ev:X.46}
+Same uniqueness argument.
+\dependson{X.46}{X.40}
+\dependson{X.46}{X.45}
+\end{evidence}
+
+\begin{claim}[Proposition X.47: Side of two medial areas has unique decomposition]
+\label{prop:X.47}
+The side of the sum of two medial areas is divided at one and the
+same point only.
+\end{claim}
+\begin{evidence}[Proof of X.47]
+\label{ev:X.47}
+Same uniqueness argument.
+\dependson{X.47}{X.41}
+\dependson{X.47}{X.46}
+\end{evidence}
+
+\begin{claim}[Proposition X.48: First binomial straight line]
+\label{prop:X.48}
+To find the first binomial straight line.
+\end{claim}
+\begin{evidence}[Proof of X.48]
+\label{ev:X.48}
+Construct $a + b$ with $a$ commensurable in length with the
+assigned rational and the square-discriminant commensurable with the
+greater (X.29).
+\dependson{X.48}{X.29}
+\dependson{X.48}{X.36}
+\dependson{X.48}{def:X.II.1}
+\end{evidence}
+
+\begin{claim}[Proposition X.49: Second binomial straight line]
+\label{prop:X.49}
+To find the second binomial straight line.
+\end{claim}
+\begin{evidence}[Proof of X.49]
+\label{ev:X.49}
+Construct as in X.48 but with $b$ (rather than $a$) commensurable
+with the assigned rational.
+\dependson{X.49}{X.48}
+\dependson{X.49}{def:X.II.2}
+\end{evidence}
+
+\begin{claim}[Proposition X.50: Third binomial straight line]
+\label{prop:X.50}
+To find the third binomial straight line.
+\end{claim}
+\begin{evidence}[Proof of X.50]
+\label{ev:X.50}
+Neither term commensurable with the assigned rational, but the
+square-discriminant commensurable with the greater (X.29 variant).
+\dependson{X.50}{X.29}
+\dependson{X.50}{X.48}
+\dependson{X.50}{def:X.II.3}
+\end{evidence}
+
+\begin{claim}[Proposition X.51: Fourth binomial straight line]
+\label{prop:X.51}
+To find the fourth binomial straight line.
+\end{claim}
+\begin{evidence}[Proof of X.51]
+\label{ev:X.51}
+$a$ commensurable with the assigned rational, square-discriminant
+incommensurable with $a$ (X.30).
+\dependson{X.51}{X.30}
+\dependson{X.51}{X.48}
+\dependson{X.51}{def:X.II.4}
+\end{evidence}
+
+\begin{claim}[Proposition X.52: Fifth binomial straight line]
+\label{prop:X.52}
+To find the fifth binomial straight line.
+\end{claim}
+\begin{evidence}[Proof of X.52]
+\label{ev:X.52}
+$b$ commensurable, discriminant incommensurable with the greater.
+\dependson{X.52}{X.30}
+\dependson{X.52}{X.51}
+\dependson{X.52}{def:X.II.5}
+\end{evidence}
+
+\begin{claim}[Proposition X.53: Sixth binomial straight line]
+\label{prop:X.53}
+To find the sixth binomial straight line.
+\end{claim}
+\begin{evidence}[Proof of X.53]
+\label{ev:X.53}
+Neither term commensurable, discriminant incommensurable.
+\dependson{X.53}{X.30}
+\dependson{X.53}{X.52}
+\dependson{X.53}{def:X.II.6}
+\end{evidence}
+
+\begin{claim}[Proposition X.54: Rectangle on a first binomial is rational on rational]
+\label{prop:X.54}
+If an area be contained by a rational straight line and the first
+binomial, the side of the area is the irrational straight line which
+is called binomial.
+\end{claim}
+\begin{evidence}[Proof of X.54]
+\label{ev:X.54}
+$\sqrt{R \cdot \text{first binomial}}$ has the form of a binomial in
+the assigned rational base.
+\dependson{X.54}{X.36}
+\dependson{X.54}{X.48}
+\end{evidence}
+
+\begin{claim}[Proposition X.55: Rectangle on a second binomial yields a first bimedial]
+\label{prop:X.55}
+If an area be contained by a rational straight line and the second
+binomial, the side of the area is the irrational straight line which
+is called first bimedial.
+\end{claim}
+\begin{evidence}[Proof of X.55]
+\label{ev:X.55}
+Same pattern as X.54.
+\dependson{X.55}{X.37}
+\dependson{X.55}{X.49}
+\dependson{X.55}{X.54}
+\end{evidence}
+
+\begin{claim}[Proposition X.56: Rectangle on a third binomial yields a second bimedial]
+\label{prop:X.56}
+If an area be contained by a rational straight line and the third
+binomial, the side of the area is the irrational straight line which
+is called second bimedial.
+\end{claim}
+\begin{evidence}[Proof of X.56]
+\label{ev:X.56}
+Same pattern.
+\dependson{X.56}{X.38}
+\dependson{X.56}{X.50}
+\dependson{X.56}{X.55}
+\end{evidence}
+
+\begin{claim}[Proposition X.57: Rectangle on a fourth binomial yields a major]
+\label{prop:X.57}
+If an area be contained by a rational straight line and the fourth
+binomial, the side of the area is the irrational straight line which
+is called major.
+\end{claim}
+\begin{evidence}[Proof of X.57]
+\label{ev:X.57}
+Same pattern.
+\dependson{X.57}{X.39}
+\dependson{X.57}{X.51}
+\dependson{X.57}{X.56}
+\end{evidence}
+
+\begin{claim}[Proposition X.58: Rectangle on a fifth binomial yields a side of rational+medial]
+\label{prop:X.58}
+If an area be contained by a rational straight line and the fifth
+binomial, the side of the area is the irrational straight line which
+is the side of a rational plus a medial area.
+\end{claim}
+\begin{evidence}[Proof of X.58]
+\label{ev:X.58}
+Same pattern.
+\dependson{X.58}{X.40}
+\dependson{X.58}{X.52}
+\dependson{X.58}{X.57}
+\end{evidence}
+
+\begin{claim}[Proposition X.59: Rectangle on a sixth binomial yields side of two medials]
+\label{prop:X.59}
+If an area be contained by a rational straight line and the sixth
+binomial, the side of the area is the irrational straight line which
+is called the side of the sum of two medial areas.
+\end{claim}
+\begin{evidence}[Proof of X.59]
+\label{ev:X.59}
+Same pattern.
+\dependson{X.59}{X.41}
+\dependson{X.59}{X.53}
+\dependson{X.59}{X.58}
+\end{evidence}
+
+\begin{claim}[Proposition X.60: Square on a binomial yields a first binomial]
+\label{prop:X.60}
+The square on the binomial straight line applied to a rational
+straight line produces as breadth the first binomial.
+\end{claim}
+\begin{evidence}[Proof of X.60]
+\label{ev:X.60}
+Inverse of X.54: squaring and dividing by the assigned rational
+recovers the first binomial.
+\dependson{X.60}{X.48}
+\dependson{X.60}{X.54}
+\end{evidence}
+
+\begin{claim}[Proposition X.61: Square on a first bimedial yields a second binomial]
+\label{prop:X.61}
+The square on the first bimedial straight line applied to a rational
+straight line produces as breadth the second binomial.
+\end{claim}
+\begin{evidence}[Proof of X.61]
+\label{ev:X.61}
+Inverse of X.55.
+\dependson{X.61}{X.49}
+\dependson{X.61}{X.55}
+\dependson{X.61}{X.60}
+\end{evidence}
+
+\begin{claim}[Proposition X.62: Square on a second bimedial yields a third binomial]
+\label{prop:X.62}
+The square on the second bimedial straight line applied to a rational
+straight line produces as breadth the third binomial.
+\end{claim}
+\begin{evidence}[Proof of X.62]
+\label{ev:X.62}
+Inverse of X.56.
+\dependson{X.62}{X.50}
+\dependson{X.62}{X.56}
+\dependson{X.62}{X.61}
+\end{evidence}
+
+\begin{claim}[Proposition X.63: Square on a major yields a fourth binomial]
+\label{prop:X.63}
+The square on the major straight line applied to a rational straight
+line produces as breadth the fourth binomial.
+\end{claim}
+\begin{evidence}[Proof of X.63]
+\label{ev:X.63}
+Inverse of X.57.
+\dependson{X.63}{X.51}
+\dependson{X.63}{X.57}
+\dependson{X.63}{X.62}
+\end{evidence}
+
+\begin{claim}[Proposition X.64: Square on side-of-rational-plus-medial yields a fifth binomial]
+\label{prop:X.64}
+The square on the side of a rational plus a medial area applied to
+a rational straight line produces as breadth the fifth binomial.
+\end{claim}
+\begin{evidence}[Proof of X.64]
+\label{ev:X.64}
+Inverse of X.58.
+\dependson{X.64}{X.52}
+\dependson{X.64}{X.58}
+\dependson{X.64}{X.63}
+\end{evidence}
+
+\begin{claim}[Proposition X.65: Square on side-of-two-medials yields a sixth binomial]
+\label{prop:X.65}
+The square on the side of the sum of two medial areas applied to a
+rational straight line produces as breadth the sixth binomial.
+\end{claim}
+\begin{evidence}[Proof of X.65]
+\label{ev:X.65}
+Inverse of X.59.
+\dependson{X.65}{X.53}
+\dependson{X.65}{X.59}
+\dependson{X.65}{X.64}
+\end{evidence}
+
+\begin{claim}[Proposition X.66: Commensurable with binomial is binomial]
+\label{prop:X.66}
+A straight line commensurable in length with a binomial straight
+line is itself also binomial and the same in order.
+\end{claim}
+\begin{evidence}[Proof of X.66]
+\label{ev:X.66}
+Multiplication by a rational ratio preserves the binomial type and
+order.
+\dependson{X.66}{X.36}
+\dependson{X.66}{X.48}
+\end{evidence}
+
+\begin{claim}[Proposition X.67: Commensurable with bimedial is bimedial]
+\label{prop:X.67}
+A straight line commensurable in length with a bimedial straight
+line is itself bimedial and the same in order.
+\end{claim}
+\begin{evidence}[Proof of X.67]
+\label{ev:X.67}
+Same scheme as X.66.
+\dependson{X.67}{X.37}
+\dependson{X.67}{X.38}
+\dependson{X.67}{X.66}
+\end{evidence}
+
+\begin{claim}[Proposition X.68: Commensurable with major is major]
+\label{prop:X.68}
+A straight line commensurable with a major straight line is itself
+major.
+\end{claim}
+\begin{evidence}[Proof of X.68]
+\label{ev:X.68}
+Same scheme.
+\dependson{X.68}{X.39}
+\dependson{X.68}{X.67}
+\end{evidence}
+
+\begin{claim}[Proposition X.69: Commensurable with side of rational+medial is the same]
+\label{prop:X.69}
+A straight line commensurable with the side of a rational plus a
+medial area is itself such a side.
+\end{claim}
+\begin{evidence}[Proof of X.69]
+\label{ev:X.69}
+Same scheme.
+\dependson{X.69}{X.40}
+\dependson{X.69}{X.68}
+\end{evidence}
+
+\begin{claim}[Proposition X.70: Commensurable with side of two-medials is the same]
+\label{prop:X.70}
+A straight line commensurable with the side of the sum of two medial
+areas is itself such a side.
+\end{claim}
+\begin{evidence}[Proof of X.70]
+\label{ev:X.70}
+Same scheme.
+\dependson{X.70}{X.41}
+\dependson{X.70}{X.69}
+\end{evidence}
+
+\begin{claim}[Proposition X.71: Rational + medial sum is one of the four irrationals]
+\label{prop:X.71}
+If a rational and a medial area be added together, four irrational
+straight lines arise, namely either a binomial, a first bimedial, a
+major, or a side of a rational plus a medial area.
+\end{claim}
+\begin{evidence}[Proof of X.71]
+\label{ev:X.71}
+The square of any of the four classes (X.36, X.37, X.39, X.40) is
+the sum of a rational and a medial; conversely, every such sum
+arises in exactly one of these forms.
+\dependson{X.71}{X.36}
+\dependson{X.71}{X.37}
+\dependson{X.71}{X.39}
+\dependson{X.71}{X.40}
+\end{evidence}
+
+\begin{claim}[Proposition X.72: Medial + medial sum yields a bimedial or a side of two medials]
+\label{prop:X.72}
+If two medial areas incommensurable with one another be added
+together, the remaining two irrational straight lines arise, namely
+either a second bimedial or a side of the sum of two medial areas.
+\end{claim}
+\begin{evidence}[Proof of X.72]
+\label{ev:X.72}
+The square of X.38 or X.41 is a sum of two incommensurable medial
+areas; converse runs the same way.
+\dependson{X.72}{X.38}
+\dependson{X.72}{X.41}
+\dependson{X.72}{X.71}
+\end{evidence}
+
+\begin{claim}[Proposition X.73: Apotome straight line]
+\label{prop:X.73}
+If from a rational straight line there be subtracted a rational
+straight line commensurable with the whole in square only, the
+remainder is irrational; and let it be called apotome.
+\end{claim}
+\begin{evidence}[Proof of X.73]
+\label{ev:X.73}
+$a - b$ with $a$, $b$ commensurable in square only is the negation
+of the binomial case (X.36); the same argument shows it is
+irrational.
+\dependson{X.73}{X.36}
+\end{evidence}
+
+\begin{claim}[Proposition X.74: First apotome of a medial]
+\label{prop:X.74}
+If from a medial straight line there be subtracted a medial straight
+line commensurable with the whole in square only, and containing
+with the whole a rational rectangle, the remainder is irrational;
+and let it be called first apotome of a medial.
+\end{claim}
+\begin{evidence}[Proof of X.74]
+\label{ev:X.74}
+Negation of X.37.
+\dependson{X.74}{X.37}
+\dependson{X.74}{X.73}
+\end{evidence}
+
+\begin{claim}[Proposition X.75: Second apotome of a medial]
+\label{prop:X.75}
+If from a medial straight line there be subtracted a medial straight
+line commensurable with the whole in square only, and containing
+with the whole a medial rectangle, the remainder is irrational; and
+let it be called second apotome of a medial.
+\end{claim}
+\begin{evidence}[Proof of X.75]
+\label{ev:X.75}
+Negation of X.38.
+\dependson{X.75}{X.38}
+\dependson{X.75}{X.74}
+\end{evidence}
+
+\begin{claim}[Proposition X.76: Minor straight line]
+\label{prop:X.76}
+If from a straight line there be subtracted a straight line
+incommensurable in square with the whole, which with the whole makes
+the squares on them added together rational, but the rectangle
+contained by them medial, the remainder is irrational; and let it
+be called minor.
+\end{claim}
+\begin{evidence}[Proof of X.76]
+\label{ev:X.76}
+Negation of X.39.  This is the "minor" line (Definition XIII.4).
+\dependson{X.76}{X.39}
+\dependson{X.76}{def:XIII.4}
+\end{evidence}
+
+\begin{claim}[Proposition X.77: Line producing with rational area a medial whole]
+\label{prop:X.77}
+If from a straight line there be subtracted a straight line
+incommensurable in square with the whole which with the whole makes
+the sum of squares medial but twice the rectangle rational, the
+remainder is irrational; let it be called that which produces with
+a rational area a medial whole.
+\end{claim}
+\begin{evidence}[Proof of X.77]
+\label{ev:X.77}
+Negation of X.40.
+\dependson{X.77}{X.40}
+\dependson{X.77}{X.76}
+\dependson{X.77}{def:XIII.5}
+\end{evidence}
+
+\begin{claim}[Proposition X.78: Line producing with medial area a medial whole]
+\label{prop:X.78}
+If from a straight line there be subtracted a straight line
+incommensurable in square with the whole which with the whole makes
+both the sum of squares and twice the rectangle medial and the two
+sums incommensurable with one another, the remainder is irrational;
+let it be called that which produces with a medial area a medial
+whole.
+\end{claim}
+\begin{evidence}[Proof of X.78]
+\label{ev:X.78}
+Negation of X.41.
+\dependson{X.78}{X.41}
+\dependson{X.78}{X.77}
+\end{evidence}
+
+\begin{claim}[Proposition X.79: Apotome has unique annex]
+\label{prop:X.79}
+Only one rational straight line can be annexed to an apotome which
+is commensurable with the whole in square only.
+\end{claim}
+\begin{evidence}[Proof of X.79]
+\label{ev:X.79}
+Uniqueness analogue of X.42 for apotomes.
+\dependson{X.79}{X.42}
+\dependson{X.79}{X.73}
+\end{evidence}
+
+\begin{claim}[Proposition X.80: First-apotome-of-medial uniqueness]
+\label{prop:X.80}
+Only one medial straight line can be annexed to a first apotome of
+a medial which is commensurable with the whole in square only and
+forms with it a rational rectangle.
+\end{claim}
+\begin{evidence}[Proof of X.80]
+\label{ev:X.80}
+Same uniqueness pattern.
+\dependson{X.80}{X.43}
+\dependson{X.80}{X.74}
+\end{evidence}
+
+\begin{claim}[Proposition X.81: Second-apotome-of-medial uniqueness]
+\label{prop:X.81}
+Only one medial straight line can be annexed to a second apotome of
+a medial which is commensurable with the whole in square only and
+forms with it a medial rectangle.
+\end{claim}
+\begin{evidence}[Proof of X.81]
+\label{ev:X.81}
+Same uniqueness pattern.
+\dependson{X.81}{X.44}
+\dependson{X.81}{X.75}
+\end{evidence}
+
+\begin{claim}[Proposition X.82: Minor uniqueness]
+\label{prop:X.82}
+Only one straight line can be annexed to a minor.
+\end{claim}
+\begin{evidence}[Proof of X.82]
+\label{ev:X.82}
+Same uniqueness pattern.
+\dependson{X.82}{X.45}
+\dependson{X.82}{X.76}
+\end{evidence}
+
+\begin{claim}[Proposition X.83: Uniqueness for X.77's line]
+\label{prop:X.83}
+Only one straight line can be annexed to the line producing with a
+rational area a medial whole.
+\end{claim}
+\begin{evidence}[Proof of X.83]
+\label{ev:X.83}
+Same uniqueness pattern.
+\dependson{X.83}{X.46}
+\dependson{X.83}{X.77}
+\end{evidence}
+
+\begin{claim}[Proposition X.84: Uniqueness for X.78's line]
+\label{prop:X.84}
+Only one straight line can be annexed to the line producing with a
+medial area a medial whole.
+\end{claim}
+\begin{evidence}[Proof of X.84]
+\label{ev:X.84}
+Same uniqueness pattern.
+\dependson{X.84}{X.47}
+\dependson{X.84}{X.78}
+\end{evidence}
+
+\begin{claim}[Proposition X.85: First apotome]
+\label{prop:X.85}
+To find the first apotome.
+\end{claim}
+\begin{evidence}[Proof of X.85]
+\label{ev:X.85}
+Take a first binomial $a + b$ (X.48); the difference $a - b$ is the
+first apotome.
+\dependson{X.85}{X.48}
+\dependson{X.85}{X.73}
+\dependson{X.85}{def:X.III.1}
+\end{evidence}
+
+\begin{claim}[Proposition X.86: Second apotome]
+\label{prop:X.86}
+To find the second apotome.
+\end{claim}
+\begin{evidence}[Proof of X.86]
+\label{ev:X.86}
+Use the second binomial as the model (X.49).
+\dependson{X.86}{X.49}
+\dependson{X.86}{X.85}
+\dependson{X.86}{def:X.III.2}
+\end{evidence}
+
+\begin{claim}[Proposition X.87: Third apotome]
+\label{prop:X.87}
+To find the third apotome.
+\end{claim}
+\begin{evidence}[Proof of X.87]
+\label{ev:X.87}
+Use the third binomial (X.50).
+\dependson{X.87}{X.50}
+\dependson{X.87}{X.86}
+\dependson{X.87}{def:X.III.3}
+\end{evidence}
+
+\begin{claim}[Proposition X.88: Fourth apotome]
+\label{prop:X.88}
+To find the fourth apotome.
+\end{claim}
+\begin{evidence}[Proof of X.88]
+\label{ev:X.88}
+Use the fourth binomial (X.51).
+\dependson{X.88}{X.51}
+\dependson{X.88}{X.87}
+\dependson{X.88}{def:X.III.4}
+\end{evidence}
+
+\begin{claim}[Proposition X.89: Fifth apotome]
+\label{prop:X.89}
+To find the fifth apotome.
+\end{claim}
+\begin{evidence}[Proof of X.89]
+\label{ev:X.89}
+Use the fifth binomial (X.52).
+\dependson{X.89}{X.52}
+\dependson{X.89}{X.88}
+\dependson{X.89}{def:X.III.5}
+\end{evidence}
+
+\begin{claim}[Proposition X.90: Sixth apotome]
+\label{prop:X.90}
+To find the sixth apotome.
+\end{claim}
+\begin{evidence}[Proof of X.90]
+\label{ev:X.90}
+Use the sixth binomial (X.53).
+\dependson{X.90}{X.53}
+\dependson{X.90}{X.89}
+\dependson{X.90}{def:X.III.6}
+\end{evidence}
+
+\begin{claim}[Proposition X.91: Side of first-apotome area is an apotome]
+\label{prop:X.91}
+If an area be contained by a rational straight line and a first
+apotome, the side of the area is an apotome.
+\end{claim}
+\begin{evidence}[Proof of X.91]
+\label{ev:X.91}
+Dual of X.54 for apotomes.
+\dependson{X.91}{X.54}
+\dependson{X.91}{X.85}
+\end{evidence}
+
+\begin{claim}[Proposition X.92: Side of second-apotome area is a first apotome of medial]
+\label{prop:X.92}
+If an area be contained by a rational straight line and a second
+apotome, the side of the area is a first apotome of a medial.
+\end{claim}
+\begin{evidence}[Proof of X.92]
+\label{ev:X.92}
+Dual of X.55.
+\dependson{X.92}{X.55}
+\dependson{X.92}{X.86}
+\dependson{X.92}{X.91}
+\end{evidence}
+
+\begin{claim}[Proposition X.93: Side of third-apotome area is a second apotome of medial]
+\label{prop:X.93}
+If an area be contained by a rational straight line and a third
+apotome, the side of the area is a second apotome of a medial.
+\end{claim}
+\begin{evidence}[Proof of X.93]
+\label{ev:X.93}
+Dual of X.56.
+\dependson{X.93}{X.56}
+\dependson{X.93}{X.87}
+\dependson{X.93}{X.92}
+\end{evidence}
+
+\begin{claim}[Proposition X.94: Side of fourth-apotome area is a minor]
+\label{prop:X.94}
+If an area be contained by a rational straight line and a fourth
+apotome, the side of the area is a minor.
+\end{claim}
+\begin{evidence}[Proof of X.94]
+\label{ev:X.94}
+Dual of X.57.
+\dependson{X.94}{X.57}
+\dependson{X.94}{X.88}
+\dependson{X.94}{X.93}
+\end{evidence}
+
+\begin{claim}[Proposition X.95: Side of fifth-apotome area produces rational-plus-medial complement]
+\label{prop:X.95}
+If an area be contained by a rational straight line and a fifth
+apotome, the side of the area is the line producing with a rational
+area a medial whole.
+\end{claim}
+\begin{evidence}[Proof of X.95]
+\label{ev:X.95}
+Dual of X.58.
+\dependson{X.95}{X.58}
+\dependson{X.95}{X.89}
+\dependson{X.95}{X.94}
+\end{evidence}
+
+\begin{claim}[Proposition X.96: Side of sixth-apotome area produces medial-plus-medial complement]
+\label{prop:X.96}
+If an area be contained by a rational straight line and a sixth
+apotome, the side of the area is the line producing with a medial
+area a medial whole.
+\end{claim}
+\begin{evidence}[Proof of X.96]
+\label{ev:X.96}
+Dual of X.59.
+\dependson{X.96}{X.59}
+\dependson{X.96}{X.90}
+\dependson{X.96}{X.95}
+\end{evidence}
+
+\begin{claim}[Proposition X.97: Square on apotome yields first apotome]
+\label{prop:X.97}
+The square on an apotome straight line applied to a rational
+straight line produces as breadth a first apotome.
+\end{claim}
+\begin{evidence}[Proof of X.97]
+\label{ev:X.97}
+Inverse of X.91.
+\dependson{X.97}{X.85}
+\dependson{X.97}{X.91}
+\end{evidence}
+
+\begin{claim}[Proposition X.98: Square on first apotome of medial yields second apotome]
+\label{prop:X.98}
+The square on a first apotome of a medial straight line applied to
+a rational straight line produces as breadth a second apotome.
+\end{claim}
+\begin{evidence}[Proof of X.98]
+\label{ev:X.98}
+Inverse of X.92.
+\dependson{X.98}{X.86}
+\dependson{X.98}{X.92}
+\dependson{X.98}{X.97}
+\end{evidence}
+
+\begin{claim}[Proposition X.99: Square on second apotome of medial yields third apotome]
+\label{prop:X.99}
+The square on a second apotome of a medial straight line applied to
+a rational straight line produces as breadth a third apotome.
+\end{claim}
+\begin{evidence}[Proof of X.99]
+\label{ev:X.99}
+Inverse of X.93.
+\dependson{X.99}{X.87}
+\dependson{X.99}{X.93}
+\dependson{X.99}{X.98}
+\end{evidence}
+
+\begin{claim}[Proposition X.100: Square on minor yields fourth apotome]
+\label{prop:X.100}
+The square on a minor applied to a rational straight line produces
+as breadth a fourth apotome.
+\end{claim}
+\begin{evidence}[Proof of X.100]
+\label{ev:X.100}
+Inverse of X.94.
+\dependson{X.100}{X.88}
+\dependson{X.100}{X.94}
+\dependson{X.100}{X.99}
+\end{evidence}
+
+\begin{claim}[Proposition X.101: Square on rational-plus-medial producer yields fifth apotome]
+\label{prop:X.101}
+The square on the line producing with a rational area a medial whole
+applied to a rational straight line produces as breadth a fifth
+apotome.
+\end{claim}
+\begin{evidence}[Proof of X.101]
+\label{ev:X.101}
+Inverse of X.95.
+\dependson{X.101}{X.89}
+\dependson{X.101}{X.95}
+\dependson{X.101}{X.100}
+\end{evidence}
+
+\begin{claim}[Proposition X.102: Square on medial-plus-medial producer yields sixth apotome]
+\label{prop:X.102}
+The square on the line producing with a medial area a medial whole
+applied to a rational straight line produces as breadth a sixth
+apotome.
+\end{claim}
+\begin{evidence}[Proof of X.102]
+\label{ev:X.102}
+Inverse of X.96.
+\dependson{X.102}{X.90}
+\dependson{X.102}{X.96}
+\dependson{X.102}{X.101}
+\end{evidence}
+
+\begin{claim}[Proposition X.103: Commensurable with apotome is apotome]
+\label{prop:X.103}
+A straight line commensurable in length with an apotome is itself an
+apotome and the same in order.
+\end{claim}
+\begin{evidence}[Proof of X.103]
+\label{ev:X.103}
+Dual of X.66.
+\dependson{X.103}{X.66}
+\dependson{X.103}{X.73}
+\end{evidence}
+
+\begin{claim}[Proposition X.104: Commensurable with apotome of medial is the same]
+\label{prop:X.104}
+A straight line commensurable in length with an apotome of a medial
+is itself such an apotome of the same order.
+\end{claim}
+\begin{evidence}[Proof of X.104]
+\label{ev:X.104}
+Dual of X.67.
+\dependson{X.104}{X.67}
+\dependson{X.104}{X.74}
+\dependson{X.104}{X.103}
+\end{evidence}
+
+\begin{claim}[Proposition X.105: Commensurable with minor is minor]
+\label{prop:X.105}
+A straight line commensurable with a minor is itself a minor.
+\end{claim}
+\begin{evidence}[Proof of X.105]
+\label{ev:X.105}
+Dual of X.68.
+\dependson{X.105}{X.68}
+\dependson{X.105}{X.76}
+\dependson{X.105}{X.104}
+\end{evidence}
+
+\begin{claim}[Proposition X.106: Commensurable with rational-medial producer is the same]
+\label{prop:X.106}
+A straight line commensurable with the line producing with a rational
+area a medial whole is itself such a line.
+\end{claim}
+\begin{evidence}[Proof of X.106]
+\label{ev:X.106}
+Dual of X.69.
+\dependson{X.106}{X.69}
+\dependson{X.106}{X.77}
+\dependson{X.106}{X.105}
+\end{evidence}
+
+\begin{claim}[Proposition X.107: Commensurable with medial-medial producer is the same]
+\label{prop:X.107}
+A straight line commensurable with the line producing with a medial
+area a medial whole is itself such a line.
+\end{claim}
+\begin{evidence}[Proof of X.107]
+\label{ev:X.107}
+Dual of X.70.
+\dependson{X.107}{X.70}
+\dependson{X.107}{X.78}
+\dependson{X.107}{X.106}
+\end{evidence}
+
+\begin{claim}[Proposition X.108: Side of rational minus medial is one of the four irrationals]
+\label{prop:X.108}
+If from a rational area a medial area be subtracted, the side of the
+remaining area arises as one of four irrationals: an apotome, a
+first apotome of a medial, a minor, or the line producing with a
+rational area a medial whole.
+\end{claim}
+\begin{evidence}[Proof of X.108]
+\label{ev:X.108}
+Dual of X.71.
+\dependson{X.108}{X.71}
+\dependson{X.108}{X.73}
+\dependson{X.108}{X.74}
+\dependson{X.108}{X.76}
+\dependson{X.108}{X.77}
+\end{evidence}
+
+\begin{claim}[Proposition X.109: Medial minus rational yields apotome or producer-of-medial]
+\label{prop:X.109}
+If from a medial area a rational area be subtracted, two other
+irrational straight lines arise, namely a first apotome of a medial
+or the line producing with a rational area a medial whole.
+\end{claim}
+\begin{evidence}[Proof of X.109]
+\label{ev:X.109}
+Variant of X.108.
+\dependson{X.109}{X.74}
+\dependson{X.109}{X.77}
+\dependson{X.109}{X.108}
+\end{evidence}
+
+\begin{claim}[Proposition X.110: Medial minus medial yields second apotome of medial or medial-producer]
+\label{prop:X.110}
+If from a medial area there be subtracted a medial area
+incommensurable with the whole, the remaining two irrational straight
+lines arise: a second apotome of a medial or the line producing with
+a medial area a medial whole.
+\end{claim}
+\begin{evidence}[Proof of X.110]
+\label{ev:X.110}
+Variant of X.108 / X.109.
+\dependson{X.110}{X.75}
+\dependson{X.110}{X.78}
+\dependson{X.110}{X.109}
+\end{evidence}
+
+\begin{claim}[Proposition X.111: Apotome and binomial are distinct]
+\label{prop:X.111}
+The apotome is not the same as the binomial.
+\end{claim}
+\begin{evidence}[Proof of X.111]
+\label{ev:X.111}
+A binomial has a rational sum of squares plus a medial rectangle; an
+apotome has a rational difference of squares minus a medial
+rectangle; if they coincided, the two combinations would coincide,
+forcing the medial part to be rational --- contradiction.
+\dependson{X.111}{X.36}
+\dependson{X.111}{X.73}
+\end{evidence}
+
+\begin{claim}[Proposition X.112: Square on rational divided by binomial is an apotome]
+\label{prop:X.112}
+The square on a rational straight line applied to the binomial
+straight line produces as breadth an apotome the terms of which are
+commensurable with the terms of the binomial and in the same ratio.
+\end{claim}
+\begin{evidence}[Proof of X.112]
+\label{ev:X.112}
+$R^2 / (a + b) = a' - b'$ with $a'$, $b'$ in the same ratio as $a$,
+$b$.  Verified by direct manipulation of the square-on-binomial
+identity.
+\dependson{X.112}{X.91}
+\dependson{X.112}{X.97}
+\end{evidence}
+
+\begin{claim}[Proposition X.113: Square on rational divided by apotome is a binomial]
+\label{prop:X.113}
+The square on a rational straight line applied to an apotome produces
+as breadth a binomial the terms of which are commensurable with the
+terms of the apotome and in the same ratio.
+\end{claim}
+\begin{evidence}[Proof of X.113]
+\label{ev:X.113}
+Inverse of X.112.
+\dependson{X.113}{X.54}
+\dependson{X.113}{X.60}
+\dependson{X.113}{X.112}
+\end{evidence}
+
+\begin{claim}[Proposition X.114: Rectangle on binomial and apotome can be rational]
+\label{prop:X.114}
+If an area be contained by an apotome and the binomial the terms of
+which are commensurable with the terms of the apotome and in the
+same ratio, the side of the area is rational.
+\end{claim}
+\begin{evidence}[Proof of X.114]
+\label{ev:X.114}
+The rectangle on $(a - b)$ and $(a' + b')$ with $a' = ka$, $b' = kb$
+equals $k(a^2 - b^2)$, which is rational.
+\dependson{X.114}{X.112}
+\dependson{X.114}{X.113}
+\end{evidence}
+
+\begin{claim}[Proposition X.115: Medials yield infinitely many irrationals]
+\label{prop:X.115}
+From a medial straight line there arise irrational straight lines
+infinite in number, and none of them is the same with any preceding.
+\end{claim}
+\begin{evidence}[Proof of X.115]
+\label{ev:X.115}
+By repeated mean-proportional construction (VI.13) on the medial,
+each new line is irrational with respect to all earlier ones (using
+the unique-decomposition results X.42--X.47, X.79--X.84).
+\dependson{X.115}{VI.13}
+\dependson{X.115}{X.21}
+\dependson{X.115}{X.114}
+\end{evidence}

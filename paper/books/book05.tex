@@ -1,22 +1,397 @@
-% book05.tex — Book V: Eudoxean proportion. Scaffolded.
+% book05.tex --- Book V of Euclid's Elements: Eudoxean Theory of Proportion.
+%
+% All 25 propositions encoded. The proofs are essentially algebraic
+% manipulations of the equimultiples definition (V.5), so the dependency
+% structure is dense within Book V itself rather than reaching back into
+% Book I. Cross-book dependencies on V are heavy: Book VI (similarity)
+% and Book XII (exhaustion) both rely on this machinery.
+%
+% Wording follows Heath (1908).
 
 \section{Book V --- Eudoxean Theory of Proportion}
 \label{sec:book-V}
 
-Book V develops the theory of proportion for magnitudes
-(including incommensurable ones), credited to Eudoxus. It is
-machinery for Books VI and XII.
+\begin{claim}[Proposition V.1: Multiplication is distributive over magnitudes]
+\label{prop:V.1}
+If there be any number of magnitudes whatever which are, respectively,
+equimultiples of any magnitudes equal in multitude, then, whatever
+multiple one of the magnitudes is of one, that multiple also will all
+be of all.
+\end{claim}
+\begin{evidence}[Proof of V.1]
+\label{ev:V.1}
+Each magnitude is a sum of $m$ copies of the corresponding base
+magnitude.  Sum across the $n$ magnitudes; by Common Notion 2 the
+total is $m$ copies of the sum.
+\dependson{V.1}{cn:2}
+\dependson{V.1}{def:V.2}
+\end{evidence}
+
+\begin{claim}[Proposition V.2: Equimultiples sum to equimultiples]
+\label{prop:V.2}
+If a first magnitude be the same multiple of a second that a third is
+of a fourth, and a fifth also be the same multiple of the second that
+a sixth is of the fourth, then the sum of the first and fifth will
+also be the same multiple of the second that the sum of the third and
+sixth is of the fourth.
+\end{claim}
+\begin{evidence}[Proof of V.2]
+\label{ev:V.2}
+If $a = mb$ and $c = md$, $e = nb$ and $f = nd$, then $a + e = (m+n)b$
+and $c + f = (m+n)d$ by Common Notion 2.
+\dependson{V.2}{V.1}
+\dependson{V.2}{cn:2}
+\dependson{V.2}{def:V.2}
+\end{evidence}
+
+\begin{claim}[Proposition V.3: Multiple of a multiple is a multiple]
+\label{prop:V.3}
+If a first magnitude be the same multiple of a second that a third is
+of a fourth, and if equimultiples be taken of the first and third,
+they will also be equimultiples respectively, the one of the second
+and the other of the fourth.
+\end{claim}
+\begin{evidence}[Proof of V.3]
+\label{ev:V.3}
+If $a = mb$ and $c = md$, then $na = (nm)b$ and $nc = (nm)d$ by
+iterated application of V.1.
+\dependson{V.3}{V.1}
+\dependson{V.3}{def:V.2}
+\end{evidence}
+
+\begin{claim}[Proposition V.4: Proportionality preserved under equimultiples]
+\label{prop:V.4}
+If a first magnitude have to a second the same ratio as a third to a
+fourth, any equimultiples whatever of the first and third will also
+have the same ratio to any equimultiples whatever of the second and
+fourth respectively, taken in corresponding order.
+\end{claim}
+\begin{evidence}[Proof of V.4]
+\label{ev:V.4}
+By definition V.5, the original proportion gives an equimultiple
+relation across all multipliers.  Substituting $m a$ for $a$ and $m c$
+for $c$ throughout simply rescales the test multipliers; the test
+itself still passes for the rescaled magnitudes.
+\dependson{V.4}{V.3}
+\dependson{V.4}{def:V.5}
+\end{evidence}
+
+\begin{claim}[Proposition V.5: Subtraction of equimultiples]
+\label{prop:V.5}
+If a magnitude be the same multiple of a magnitude that a subtracted
+part is of a subtracted part, the remainder also will be the same
+multiple of the remainder that the whole is of the whole.
+\end{claim}
+\begin{evidence}[Proof of V.5]
+\label{ev:V.5}
+If $a = mb$ and $a' = mb'$ with $a' < a$, then $a - a' = m(b - b')$
+by Common Notion 3 applied to each of the $m$ copies.
+\dependson{V.5}{cn:3}
+\dependson{V.5}{def:V.2}
+\end{evidence}
+
+\begin{claim}[Proposition V.6: Difference of equimultiples is again an equimultiple]
+\label{prop:V.6}
+If two magnitudes be equimultiples of two magnitudes, and any
+magnitudes subtracted from them be equimultiples of the same, the
+remainders also are either equal to the same or equimultiples of them.
+\end{claim}
+\begin{evidence}[Proof of V.6]
+\label{ev:V.6}
+With $a = mb$, $c = md$, and subtractions $a' = nb$, $c' = nd$:
+$a - a' = (m-n)b$ and $c - c' = (m-n)d$ by Common Notion 3.  If $m = n$
+the remainders are zero (equal); otherwise both remainders are
+$(m-n)$-fold of $b$, $d$ respectively.
+\dependson{V.6}{V.5}
+\dependson{V.6}{cn:3}
+\end{evidence}
+
+\begin{claim}[Proposition V.7: Equal magnitudes have the same ratio to a third]
+\label{prop:V.7}
+Equal magnitudes have to the same the same ratio, as also has the
+same to equal magnitudes.
+\end{claim}
+\begin{evidence}[Proof of V.7]
+\label{ev:V.7}
+Let $a = b$ and $c$ arbitrary.  For any equimultiples $ma$, $mb$ of
+$a$, $b$, and $nc$ of $c$, the test of V.5 succeeds vacuously because
+$ma = mb$.  Therefore $a:c = b:c$ and $c:a = c:b$.
+\dependson{V.7}{def:V.5}
+\dependson{V.7}{cn:1}
+\end{evidence}
+
+\begin{claim}[Proposition V.8: Greater magnitude has greater ratio]
+\label{prop:V.8}
+Of unequal magnitudes the greater has to the same a greater ratio
+than the less has, and the same has to the less a greater ratio than
+it has to the greater.
+\end{claim}
+\begin{evidence}[Proof of V.8]
+\label{ev:V.8}
+Let $a > b$.  Pick a multiplier $n$ such that $n(a-b) > c$ (the
+Archimedean property of magnitudes, Definition V.4) and an $m$ such
+that $mc$ falls between $nb$ and $na$.  Then $na > mc$ but $nb < mc$;
+by Definition V.7 this is precisely the assertion $a:c > b:c$.
+\dependson{V.8}{def:V.4}
+\dependson{V.8}{def:V.7}
+\end{evidence}
+
+\begin{claim}[Proposition V.9: Magnitudes with the same ratio to a third are equal]
+\label{prop:V.9}
+Magnitudes which have the same ratio to the same are equal to one
+another; and magnitudes to which the same has the same ratio are
+equal.
+\end{claim}
+\begin{evidence}[Proof of V.9]
+\label{ev:V.9}
+Contrapositive of V.8: if $a \neq b$, then $a:c \neq b:c$.  Hence if
+$a:c = b:c$ then $a = b$.  Same argument with $c$ as antecedent.
+\dependson{V.9}{V.8}
+\end{evidence}
+
+\begin{claim}[Proposition V.10: Greater ratio implies greater antecedent]
+\label{prop:V.10}
+Of magnitudes which have a ratio to the same, that which has a greater
+ratio is greater; and that to which the same has a greater ratio is
+less.
+\end{claim}
+\begin{evidence}[Proof of V.10]
+\label{ev:V.10}
+Same contrapositive of V.8: if $a:c > b:c$ then $a > b$, since if
+$a \le b$ then $a:c \le b:c$ by V.7 or V.8 applied in reverse.
+\dependson{V.10}{V.7}
+\dependson{V.10}{V.8}
+\end{evidence}
+
+\begin{claim}[Proposition V.11: Transitivity of ratios]
+\label{prop:V.11}
+Ratios which are the same with the same ratio are also the same with
+one another.
+\end{claim}
+\begin{evidence}[Proof of V.11]
+\label{ev:V.11}
+If $a:b = c:d$ and $c:d = e:f$, then for any equimultiples the same
+inequality test holds for $(a,b)$ as for $(c,d)$, and that same test
+holds for $(c,d)$ as for $(e,f)$; hence by transitivity of the
+inequality test, the test holds for $(a,b)$ versus $(e,f)$.
+\dependson{V.11}{def:V.5}
+\end{evidence}
+
+\begin{claim}[Proposition V.12: Sum of antecedents to sum of consequents]
+\label{prop:V.12}
+If any number of magnitudes be proportional, as one of the antecedents
+is to one of the consequents, so will all the antecedents be to all
+the consequents.
+\end{claim}
+\begin{evidence}[Proof of V.12]
+\label{ev:V.12}
+Let $a_i : b_i$ all equal $r$ in the sense of Definition V.5.  For
+any test multipliers $m$, $n$ the sign of $m a_i - n b_i$ is the same
+for every $i$; therefore the sign of $m \sum a_i - n \sum b_i$ is the
+same too.  By V.5 this is the equimultiples test for $\sum a_i : \sum
+b_i = r$.
+\dependson{V.12}{V.1}
+\dependson{V.12}{V.2}
+\dependson{V.12}{def:V.5}
+\end{evidence}
+
+\begin{claim}[Proposition V.13: Substitution into a greater ratio]
+\label{prop:V.13}
+If a first magnitude have to a second the same ratio as a third to a
+fourth, and the third have to the fourth a greater ratio than a fifth
+has to a sixth, the first will also have to the second a greater ratio
+than the fifth to the sixth.
+\end{claim}
+\begin{evidence}[Proof of V.13]
+\label{ev:V.13}
+Combine V.11 (sameness transitivity) with Definition V.7 (greater
+ratio): the witness equimultiples for $c:d > e:f$ work for $a:b$ via
+the V.5 sameness of $a:b$ and $c:d$.
+\dependson{V.13}{V.11}
+\dependson{V.13}{def:V.5}
+\dependson{V.13}{def:V.7}
+\end{evidence}
+
+\begin{claim}[Proposition V.14: Ordering of magnitudes follows ordering of ratios]
+\label{prop:V.14}
+If a first magnitude have to a second the same ratio as a third to a
+fourth, and the first be greater than the third, the second will also
+be greater than the fourth; and if equal, equal; and if less, less.
+\end{claim}
+\begin{evidence}[Proof of V.14]
+\label{ev:V.14}
+By V.8 and V.13: if $a > c$, then $a:b > c:b$.  Combined with $a:b =
+c:d$ (the hypothesis), V.13 gives $c:d > c:b$, whence $b > d$ by V.10.
+\dependson{V.14}{V.8}
+\dependson{V.14}{V.10}
+\dependson{V.14}{V.13}
+\end{evidence}
+
+\begin{claim}[Proposition V.15: Parts have the same ratio as multiples]
+\label{prop:V.15}
+Parts have the same ratio as the same multiples of them taken in
+corresponding order.
+\end{claim}
+\begin{evidence}[Proof of V.15]
+\label{ev:V.15}
+If $A = mB$ and $C = mD$, group the $m$ copies of $B$ and $D$ in
+parallel.  Each parallel pair $(B_i, D_i)$ satisfies $B_i : D_i = B :
+D$ (identity), and V.12 sums these to give $A : C = B : D$.
+\dependson{V.15}{V.12}
+\dependson{V.15}{def:V.2}
+\end{evidence}
 
 \begin{claim}[Proposition V.16: Alternation of proportionals]
 \label{prop:V.16}
 If four magnitudes be proportional, they will also be proportional
 alternately.
 \end{claim}
-\begin{evidence}[Proof sketch of V.16]
+\begin{evidence}[Proof of V.16]
 \label{ev:V.16}
-Apply the definition of proportion (V.5) directly.
-\dependson{V.16}{V.5}
+Let $a : b = c : d$.  Test $a : c$ against $b : d$ with equimultiples
+$ma$, $mc$, $nb$, $nd$: by V.4 the original proportion lifts to $ma :
+mb = nc : nd$, and by V.15 to $ma : nc = mb : nd$.  The sign of $ma -
+nc$ matches the sign of $mb - nd$ for all $m$, $n$, which by V.5 is
+the alternated proportion $a : c = b : d$.
+\dependson{V.16}{V.4}
+\dependson{V.16}{V.11}
+\dependson{V.16}{V.15}
+\dependson{V.16}{def:V.5}
 \end{evidence}
 
-% TODO: All 25 propositions of Book V. The definitions block (V.1–V.18)
-% requires its own \scope listing similar to definitions.tex for Book I.
+\begin{claim}[Proposition V.17: Separation of proportions]
+\label{prop:V.17}
+If magnitudes composed be proportional, they will also be proportional
+separando.
+\end{claim}
+\begin{evidence}[Proof of V.17]
+\label{ev:V.17}
+If $(a + b) : b = (c + d) : d$, then subtracting the consequents from
+the antecedents using V.5 / V.6 gives $a : b = c : d$.
+\dependson{V.17}{V.5}
+\dependson{V.17}{V.6}
+\dependson{V.17}{def:V.5}
+\end{evidence}
+
+\begin{claim}[Proposition V.18: Composition of proportions]
+\label{prop:V.18}
+If magnitudes separated be proportional, they will also be
+proportional componendo.
+\end{claim}
+\begin{evidence}[Proof of V.18]
+\label{ev:V.18}
+The converse of V.17: if $a : b = c : d$, then by V.2 plus V.4
+combined, $(a + b) : b = (c + d) : d$.
+\dependson{V.18}{V.2}
+\dependson{V.18}{V.4}
+\dependson{V.18}{V.17}
+\end{evidence}
+
+\begin{claim}[Proposition V.19: Subtraction of proportionals]
+\label{prop:V.19}
+If, as a whole is to a whole, so is a part subtracted to a part
+subtracted, the remainder will also be to the remainder as whole to
+whole.
+\end{claim}
+\begin{evidence}[Proof of V.19]
+\label{ev:V.19}
+If $a : c = a' : c'$ with $a' < a$, $c' < c$, apply V.17 (separation)
+to obtain $(a - a') : a' = (c - c') : c'$, and V.11 / V.16 to
+re-express as $(a - a') : (c - c') = a : c$.
+\dependson{V.19}{V.16}
+\dependson{V.19}{V.17}
+\end{evidence}
+
+\begin{claim}[Proposition V.20: Ex aequali for three magnitudes]
+\label{prop:V.20}
+If there be three magnitudes, and others equal to them in multitude,
+which taken two and two are in the same ratio, and if ex aequali the
+first be greater than the third, the fourth will also be greater than
+the sixth; and if equal, equal; and if less, less.
+\end{claim}
+\begin{evidence}[Proof of V.20]
+\label{ev:V.20}
+With $a : b = d : e$ and $b : c = e : f$, the relative order of $a$
+versus $c$ matches the relative order of $d$ versus $f$ by repeated
+application of V.13 and V.14 across the three pairs.
+\dependson{V.20}{V.13}
+\dependson{V.20}{V.14}
+\end{evidence}
+
+\begin{claim}[Proposition V.21: Ex aequali in perturbed proportion]
+\label{prop:V.21}
+If there be three magnitudes, and others equal to them in multitude,
+which taken two and two together are in the same ratio, and the
+proportion of them be perturbed, then if ex aequali the first be
+greater than the third, the fourth will also be greater than the
+sixth.
+\end{claim}
+\begin{evidence}[Proof of V.21]
+\label{ev:V.21}
+A perturbed version of V.20: with $a : b = e : f$ and $b : c = d : e$
+the ratio chain still imposes the same ordering between $a$ versus
+$c$ and $d$ versus $f$, by V.13 and V.14.
+\dependson{V.21}{V.13}
+\dependson{V.21}{V.14}
+\dependson{V.21}{def:V.18}
+\end{evidence}
+
+\begin{claim}[Proposition V.22: Transitivity of ex aequali]
+\label{prop:V.22}
+If there be any number of magnitudes whatever, and others equal to
+them in multitude, which taken two and two together are in the same
+ratio, they will also be in the same ratio ex aequali.
+\end{claim}
+\begin{evidence}[Proof of V.22]
+\label{ev:V.22}
+Apply V.20 inductively across the chain $a_1 : a_2 = b_1 : b_2$, $a_2
+: a_3 = b_2 : b_3$, $\dots$, $a_{n-1} : a_n = b_{n-1} : b_n$ to
+conclude $a_1 : a_n = b_1 : b_n$.
+\dependson{V.22}{V.20}
+\dependson{V.22}{def:V.17}
+\end{evidence}
+
+\begin{claim}[Proposition V.23: Ex aequali in perturbed proportion (general)]
+\label{prop:V.23}
+If there be any number of magnitudes whatever, and others equal to
+them in multitude, which taken two and two together are in the same
+ratio, and the proportion of them be perturbed, they will also be in
+the same ratio ex aequali.
+\end{claim}
+\begin{evidence}[Proof of V.23]
+\label{ev:V.23}
+Inductive form of V.21.
+\dependson{V.23}{V.21}
+\dependson{V.23}{def:V.18}
+\end{evidence}
+
+\begin{claim}[Proposition V.24: Sums of antecedents are proportional]
+\label{prop:V.24}
+If a first magnitude have to a second the same ratio as a third has
+to a fourth, and also a fifth have to the second the same ratio as a
+sixth to the fourth, the first and fifth added together will have to
+the second the same ratio as the third and sixth have to the fourth.
+\end{claim}
+\begin{evidence}[Proof of V.24]
+\label{ev:V.24}
+With $a : b = c : d$ and $e : b = f : d$: by V.12 applied to the two
+proportions side-by-side, $(a + e) : b = (c + f) : d$.
+\dependson{V.24}{V.12}
+\dependson{V.24}{V.22}
+\end{evidence}
+
+\begin{claim}[Proposition V.25: Sum of extremes exceeds sum of means]
+\label{prop:V.25}
+If four magnitudes be proportional, the greatest and least are greater
+than the remaining two.
+\end{claim}
+\begin{evidence}[Proof of V.25]
+\label{ev:V.25}
+Let $a : b = c : d$ with $a$ greatest.  By V.14 $b > d$, so
+considering $a - c$ and $d - b$ or vice versa, the difference $a - c$
+equals $b - d$ in ratio, and rearrangement (with Common Notion 5)
+yields $a + d > b + c$.
+\dependson{V.25}{V.14}
+\dependson{V.25}{V.19}
+\dependson{V.25}{cn:5}
+\end{evidence}

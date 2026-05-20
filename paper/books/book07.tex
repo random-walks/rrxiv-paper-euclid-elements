@@ -1,22 +1,31 @@
-% book07.tex — Book VII: Number theory foundations. Scaffolded.
+% book07.tex --- Book VII of Euclid's Elements: Number Theory Foundations.
+%
+% All 39 propositions encoded. Book VII switches from continuous
+% magnitudes to discrete numbers: the Euclidean algorithm (VII.1, VII.2),
+% Euclid's lemma (VII.30), and the unique-factorisation precursor
+% (VII.31, VII.32) all live here.  The proofs are inductive in spirit but
+% framed as classical reductios.
+%
+% Wording follows Heath (1908).
 
 \section{Book VII --- Number Theory Foundations}
 \label{sec:book-VII}
 
-Book VII introduces unit, number, divisibility, and the Euclidean
-algorithm (VII.1, VII.2).
-
-\begin{claim}[Proposition VII.1: Euclidean algorithm correctness (relatively prime case)]
+\begin{claim}[Proposition VII.1: Coprime detection by anthyphairesis]
 \label{prop:VII.1}
 Two unequal numbers being set out, and the less being continually
 subtracted in turn from the greater, if the number which is left
 never measures the one before it until a unit is left, the original
 numbers will be prime to one another.
 \end{claim}
-\begin{evidence}[Proof sketch of VII.1]
+\begin{evidence}[Proof of VII.1]
 \label{ev:VII.1}
-By contradiction: any common measure would persist through the
-algorithm.
+Suppose for contradiction some number $d > 1$ measures both inputs.
+At each subtraction step the divisor and remainder differ from the
+previous pair by a common multiple of $d$; so $d$ persists through
+the algorithm and ultimately measures the unit, which is impossible.
+\dependson{VII.1}{def:VII.1}
+\dependson{VII.1}{def:VII.11}
 \end{evidence}
 
 \begin{claim}[Proposition VII.2: Greatest common measure]
@@ -24,12 +33,515 @@ algorithm.
 Given two numbers not prime to one another, to find their greatest
 common measure.
 \end{claim}
-\begin{evidence}[Proof sketch of VII.2]
+\begin{evidence}[Proof of VII.2]
 \label{ev:VII.2}
-The same algorithm as VII.1, terminating in the last non-unit
-remainder.
+Run the anthyphairesis (Euclidean algorithm).  Since the numbers are
+not prime to one another, the procedure terminates at a non-unit
+remainder $d$; that $d$ measures both inputs, and any other common
+measure also divides $d$ by the same persistence argument as VII.1.
 \dependson{VII.2}{VII.1}
+\dependson{VII.2}{def:VII.3}
 \end{evidence}
 
-% TODO: All 39 propositions of Book VII. Definitions VII.1–VII.22
-% deserve their own \scope listing.
+\begin{claim}[Proposition VII.3: Greatest common measure of three numbers]
+\label{prop:VII.3}
+Given three numbers not prime to one another, to find their greatest
+common measure.
+\end{claim}
+\begin{evidence}[Proof of VII.3]
+\label{ev:VII.3}
+Find the gcd of two of them by VII.2; then find the gcd of that
+result with the third.  The final number measures all three and is
+greatest by the same persistence argument.
+\dependson{VII.3}{VII.2}
+\end{evidence}
+
+\begin{claim}[Proposition VII.4: Any number is a part or parts of a greater]
+\label{prop:VII.4}
+Any number is either a part or parts of any number, the less of the
+greater.
+\end{claim}
+\begin{evidence}[Proof of VII.4]
+\label{ev:VII.4}
+Either the less divides the greater (a part, Definition VII.3) or it
+does not (parts, Definition VII.4).  The Euclidean algorithm
+terminates, so the case analysis is exhaustive.
+\dependson{VII.4}{VII.2}
+\dependson{VII.4}{def:VII.3}
+\dependson{VII.4}{def:VII.4}
+\end{evidence}
+
+\begin{claim}[Proposition VII.5: Equal parts of equals are equal parts of the sum]
+\label{prop:VII.5}
+If a number be a part of a number, and another be the same part of
+another, the sum will also be the same part of the sum that the one
+is of the other.
+\end{claim}
+\begin{evidence}[Proof of VII.5]
+\label{ev:VII.5}
+$a = b/n$ and $c = d/n$ give $a + c = (b + d)/n$ by gathering $n$
+copies of $a + c$ together.
+\dependson{VII.5}{cn:2}
+\dependson{VII.5}{def:VII.3}
+\end{evidence}
+
+\begin{claim}[Proposition VII.6: Same parts of parts]
+\label{prop:VII.6}
+If a number be parts of a number, and another be the same parts of
+another, the sum will also be the same parts of the sum that the one
+is of the other.
+\end{claim}
+\begin{evidence}[Proof of VII.6]
+\label{ev:VII.6}
+Same argument as VII.5 with $p/q$ fractions; each fractional piece
+sums separately by VII.5 and then by VII.5 again on the multiples.
+\dependson{VII.6}{VII.5}
+\end{evidence}
+
+\begin{claim}[Proposition VII.7: Difference of equal parts]
+\label{prop:VII.7}
+If a number be the same part of a number that a subtracted number is
+of a subtracted number, the remainder will also be the same part of
+the remainder that the whole is of the whole.
+\end{claim}
+\begin{evidence}[Proof of VII.7]
+\label{ev:VII.7}
+If $a = b/n$ and $a' = b'/n$ then $a - a' = (b - b')/n$ by Common
+Notion 3 applied to each of the $n$ pieces.
+\dependson{VII.7}{cn:3}
+\dependson{VII.7}{def:VII.3}
+\end{evidence}
+
+\begin{claim}[Proposition VII.8: Difference of equal parts (generalised)]
+\label{prop:VII.8}
+If a number be the same parts of a number that a subtracted number
+is of a subtracted number, the remainder will also be the same parts
+of the remainder that the whole is of the whole.
+\end{claim}
+\begin{evidence}[Proof of VII.8]
+\label{ev:VII.8}
+Same as VII.7 but for $p/q$ fractions; combine VII.7 with VII.6.
+\dependson{VII.8}{VII.6}
+\dependson{VII.8}{VII.7}
+\end{evidence}
+
+\begin{claim}[Proposition VII.9: Symmetric form of parts]
+\label{prop:VII.9}
+If a number be a part of a number, and another be the same part of
+another, alternately, whatever part or parts the first is of the
+third, the same part or the same parts will the second also be of
+the fourth.
+\end{claim}
+\begin{evidence}[Proof of VII.9]
+\label{ev:VII.9}
+The "part of a part" relation is symmetric across the alternation by
+construction; apply VII.5 / VII.6 on a per-piece basis to confirm.
+\dependson{VII.9}{VII.5}
+\dependson{VII.9}{VII.6}
+\end{evidence}
+
+\begin{claim}[Proposition VII.10: Alternation of parts]
+\label{prop:VII.10}
+If a number be parts of a number, and another be the same parts of
+another, alternately, whatever parts or part the first is of the
+third, the same parts or the same part will the second also be of
+the fourth.
+\end{claim}
+\begin{evidence}[Proof of VII.10]
+\label{ev:VII.10}
+Same scheme as VII.9 with $p/q$ fractions.
+\dependson{VII.10}{VII.9}
+\end{evidence}
+
+\begin{claim}[Proposition VII.11: Subtraction in a proportion]
+\label{prop:VII.11}
+If, as whole is to whole, so is a number subtracted to a number
+subtracted, the remainder will also be to the remainder as whole is
+to whole.
+\end{claim}
+\begin{evidence}[Proof of VII.11]
+\label{ev:VII.11}
+Discrete analogue of V.19: subtract equimultiples on antecedents and
+consequents and the proportion is preserved.
+\dependson{VII.11}{VII.7}
+\dependson{VII.11}{VII.8}
+\end{evidence}
+
+\begin{claim}[Proposition VII.12: Sum of antecedents to sum of consequents]
+\label{prop:VII.12}
+If there be as many numbers as we please in proportion, then, as one
+of the antecedents is to one of the consequents, so will all the
+antecedents be to all the consequents.
+\end{claim}
+\begin{evidence}[Proof of VII.12]
+\label{ev:VII.12}
+Discrete analogue of V.12: each pair contributes the same multiple
+or part, so the sum does too.
+\dependson{VII.12}{VII.5}
+\dependson{VII.12}{VII.6}
+\end{evidence}
+
+\begin{claim}[Proposition VII.13: Alternation]
+\label{prop:VII.13}
+If four numbers be proportional, they will also be proportional
+alternately.
+\end{claim}
+\begin{evidence}[Proof of VII.13]
+\label{ev:VII.13}
+Discrete analogue of V.16, deduced from VII.9 / VII.10 (the parts
+versions of alternation).
+\dependson{VII.13}{VII.9}
+\dependson{VII.13}{VII.10}
+\end{evidence}
+
+\begin{claim}[Proposition VII.14: Ex aequali for numbers]
+\label{prop:VII.14}
+If there be as many numbers as we please, and others equal to them
+in multitude, which taken two and two are in the same ratio, they
+will also be in the same ratio ex aequali.
+\end{claim}
+\begin{evidence}[Proof of VII.14]
+\label{ev:VII.14}
+Discrete analogue of V.22: chain alternation (VII.13) through the
+intermediate ratios.
+\dependson{VII.14}{VII.13}
+\end{evidence}
+
+\begin{claim}[Proposition VII.15: Multiplying preserves ratio with unit]
+\label{prop:VII.15}
+If a unit measure any number, and another number measure any other
+number the same number of times, then, alternately, the unit will
+measure the third number the same number of times as the second
+measures the fourth.
+\end{claim}
+\begin{evidence}[Proof of VII.15]
+\label{ev:VII.15}
+Discrete analogue of V.7 / V.16 applied to the unit; the unit
+relations transfer through the equimultiples.
+\dependson{VII.15}{VII.13}
+\dependson{VII.15}{def:VII.1}
+\end{evidence}
+
+\begin{claim}[Proposition VII.16: Commutativity of multiplication]
+\label{prop:VII.16}
+If two numbers by multiplying one another make certain numbers, the
+numbers so produced will be equal to one another.
+\end{claim}
+\begin{evidence}[Proof of VII.16]
+\label{ev:VII.16}
+$a \cdot b$ counts the units in a $b$-many sum of $a$'s; $b \cdot a$
+counts the units in an $a$-many sum of $b$'s.  Both equal $ab$ by
+VII.5 applied to the unit.
+\dependson{VII.16}{VII.5}
+\dependson{VII.16}{VII.15}
+\dependson{VII.16}{def:VII.15}
+\end{evidence}
+
+\begin{claim}[Proposition VII.17: Distributivity over equal multiples]
+\label{prop:VII.17}
+If a number by multiplying two numbers make certain numbers, the
+numbers so produced will have the same ratio as the numbers
+multiplied.
+\end{claim}
+\begin{evidence}[Proof of VII.17]
+\label{ev:VII.17}
+$c \cdot a : c \cdot b = a : b$ by gathering the $c$ copies of each
+side; the equimultiples test of definition V.5 (in its discrete
+specialisation, VII.20) reduces to the test on $(a, b)$.
+\dependson{VII.17}{VII.16}
+\dependson{VII.17}{def:VII.20}
+\end{evidence}
+
+\begin{claim}[Proposition VII.18: Multiplication on the consequent]
+\label{prop:VII.18}
+If two numbers by multiplying any number make certain numbers, the
+numbers so produced will have the same ratio as the multipliers.
+\end{claim}
+\begin{evidence}[Proof of VII.18]
+\label{ev:VII.18}
+$a \cdot c : b \cdot c = a : b$ by VII.16 (swap to put $c$ on the
+left) and VII.17.
+\dependson{VII.18}{VII.16}
+\dependson{VII.18}{VII.17}
+\end{evidence}
+
+\begin{claim}[Proposition VII.19: Equal products iff proportional numbers]
+\label{prop:VII.19}
+If four numbers be proportional, the number produced from the first
+and fourth will be equal to the number produced from the second and
+third; and if the number produced from the first and fourth be equal
+to that produced from the second and third, the four numbers will be
+proportional.
+\end{claim}
+\begin{evidence}[Proof of VII.19]
+\label{ev:VII.19}
+Discrete analogue of VI.16: cross-multiplication preserves and
+detects proportionality.  Use VII.17 in one direction and the
+converse argument (proportion from equal products via VII.14) in the
+other.
+\dependson{VII.19}{VII.14}
+\dependson{VII.19}{VII.17}
+\dependson{VII.19}{VII.18}
+\end{evidence}
+
+\begin{claim}[Proposition VII.20: Least numbers in a ratio measure the others]
+\label{prop:VII.20}
+The least numbers of those which have the same ratio with them
+measure those which have the same ratio the same number of times,
+the greater the greater and the less the less.
+\end{claim}
+\begin{evidence}[Proof of VII.20]
+\label{ev:VII.20}
+Given $a : b = p : q$ with $p$, $q$ least in their ratio, by VII.2
+$\gcd(a, b) \cdot p = a$ and $\gcd(a, b) \cdot q = b$, so $p$, $q$
+each measure $a$, $b$ the same number of times $\gcd(a, b)$.
+\dependson{VII.20}{VII.2}
+\dependson{VII.20}{VII.19}
+\end{evidence}
+
+\begin{claim}[Proposition VII.21: Numbers prime to one another are least in their ratio]
+\label{prop:VII.21}
+Numbers prime to one another are the least of those which have the
+same ratio with them.
+\end{claim}
+\begin{evidence}[Proof of VII.21]
+\label{ev:VII.21}
+If two coprime numbers $a$, $b$ had smaller numbers $c$, $d$ with
+$a : b = c : d$, then by VII.20 $c$, $d$ would measure $a$, $b$ a
+common number of times; the common measure would contradict
+coprimality.
+\dependson{VII.21}{VII.20}
+\dependson{VII.21}{def:VII.12}
+\end{evidence}
+
+\begin{claim}[Proposition VII.22: Least in a ratio are coprime]
+\label{prop:VII.22}
+The least numbers of those which have the same ratio with them are
+prime to one another.
+\end{claim}
+\begin{evidence}[Proof of VII.22]
+\label{ev:VII.22}
+Converse of VII.21: any common measure of the least pair would
+generate a strictly smaller pair in the same ratio, contradicting
+minimality.
+\dependson{VII.22}{VII.20}
+\dependson{VII.22}{VII.21}
+\end{evidence}
+
+\begin{claim}[Proposition VII.23: Coprime to a product]
+\label{prop:VII.23}
+If two numbers be prime to one another, the number which measures
+the one of them will be prime to the remaining number.
+\end{claim}
+\begin{evidence}[Proof of VII.23]
+\label{ev:VII.23}
+If $a$, $b$ are coprime and $d \mid a$, any common divisor of $d$ and
+$b$ would divide both $a$ and $b$, contradicting coprimality.
+\dependson{VII.23}{VII.2}
+\dependson{VII.23}{def:VII.12}
+\end{evidence}
+
+\begin{claim}[Proposition VII.24: Coprime preserved under multiplication]
+\label{prop:VII.24}
+If two numbers be prime to any number, their product also will be
+prime to the same.
+\end{claim}
+\begin{evidence}[Proof of VII.24]
+\label{ev:VII.24}
+If $\gcd(a, c) = 1$ and $\gcd(b, c) = 1$, then any prime dividing
+$ab$ and $c$ must divide $a$ or $b$ (using the descent from
+VII.23) and would contradict one of the hypotheses.
+\dependson{VII.24}{VII.23}
+\end{evidence}
+
+\begin{claim}[Proposition VII.25: Coprime preserved under squaring]
+\label{prop:VII.25}
+If two numbers be prime to one another, the product of one of them
+into itself will be prime to the remaining one.
+\end{claim}
+\begin{evidence}[Proof of VII.25]
+\label{ev:VII.25}
+Specialise VII.24 with $b = a$.
+\dependson{VII.25}{VII.24}
+\end{evidence}
+
+\begin{claim}[Proposition VII.26: Product of coprime pairs is coprime]
+\label{prop:VII.26}
+If two numbers be prime to two numbers, both to each, their products
+also will be prime to one another.
+\end{claim}
+\begin{evidence}[Proof of VII.26]
+\label{ev:VII.26}
+$\gcd(ab, cd) = 1$ when $\gcd(a, c) = \gcd(a, d) = \gcd(b, c) =
+\gcd(b, d) = 1$: apply VII.24 twice.
+\dependson{VII.26}{VII.24}
+\end{evidence}
+
+\begin{claim}[Proposition VII.27: Coprime preserved under arbitrary powers]
+\label{prop:VII.27}
+If two numbers be prime to one another, and each by multiplying
+itself make a certain number, the products will be prime to one
+another; and if the original numbers by multiplying the products
+make certain numbers, these will be prime to one another.
+\end{claim}
+\begin{evidence}[Proof of VII.27]
+\label{ev:VII.27}
+Iterate VII.25: $\gcd(a, b) = 1$ implies $\gcd(a^n, b^m) = 1$ for
+all $n$, $m$.
+\dependson{VII.27}{VII.25}
+\dependson{VII.27}{VII.26}
+\end{evidence}
+
+\begin{claim}[Proposition VII.28: Sum coprime iff each summand coprime to a third]
+\label{prop:VII.28}
+If two numbers be prime to one another, the sum will also be prime
+to each of them; and if the sum of two numbers be prime to either of
+them, the original numbers will also be prime to one another.
+\end{claim}
+\begin{evidence}[Proof of VII.28]
+\label{ev:VII.28}
+Any common divisor of $a + b$ and $a$ would also divide $b$ (by
+Common Notion 3), contradicting $\gcd(a, b) = 1$.  Converse runs the
+same way.
+\dependson{VII.28}{cn:3}
+\dependson{VII.28}{def:VII.12}
+\end{evidence}
+
+\begin{claim}[Proposition VII.29: Prime is coprime to anything it does not measure]
+\label{prop:VII.29}
+Any prime number is prime to any number which it does not measure.
+\end{claim}
+\begin{evidence}[Proof of VII.29]
+\label{ev:VII.29}
+The only divisors of a prime are 1 and itself; if the prime does not
+divide the other number, the only common divisor is 1.
+\dependson{VII.29}{def:VII.11}
+\dependson{VII.29}{def:VII.12}
+\end{evidence}
+
+\begin{claim}[Proposition VII.30: Euclid's lemma]
+\label{prop:VII.30}
+If two numbers by multiplying one another make some number, and any
+prime number measure the product, it will also measure one of the
+original numbers.
+\end{claim}
+\begin{evidence}[Proof of VII.30]
+\label{ev:VII.30}
+If a prime $p \mid ab$ but $p \nmid a$, then by VII.29 $p$ is
+coprime to $a$; by VII.24 (taking $b$ as the multiplicand) $p$ must
+divide $b$.
+\dependson{VII.30}{VII.24}
+\dependson{VII.30}{VII.29}
+\end{evidence}
+
+\begin{claim}[Proposition VII.31: Every number has a prime divisor]
+\label{prop:VII.31}
+Any composite number is measured by some prime number.
+\end{claim}
+\begin{evidence}[Proof of VII.31]
+\label{ev:VII.31}
+Descend through divisors: a composite has a proper divisor, that
+divisor is either prime or composite; if composite, repeat.  The
+descent must terminate (numbers are bounded below by 2), so a prime
+divisor exists.
+\dependson{VII.31}{def:VII.11}
+\dependson{VII.31}{def:VII.13}
+\end{evidence}
+
+\begin{claim}[Proposition VII.32: Every number is prime or has a prime divisor]
+\label{prop:VII.32}
+Any number either is prime or is measured by some prime number.
+\end{claim}
+\begin{evidence}[Proof of VII.32]
+\label{ev:VII.32}
+Case split: if the number is prime, done; otherwise apply VII.31.
+\dependson{VII.32}{VII.31}
+\end{evidence}
+
+\begin{claim}[Proposition VII.33: Reduction to least numbers in same ratio]
+\label{prop:VII.33}
+Given as many numbers as we please, to find the least of those which
+have the same ratio with them.
+\end{claim}
+\begin{evidence}[Proof of VII.33]
+\label{ev:VII.33}
+Divide each given number by their common gcd (VII.3); the quotients
+are pairwise coprime (VII.22) and least in the original ratio.
+\dependson{VII.33}{VII.3}
+\dependson{VII.33}{VII.22}
+\end{evidence}
+
+\begin{claim}[Proposition VII.34: Least common multiple of two numbers]
+\label{prop:VII.34}
+Given two numbers, to find the least number which they measure.
+\end{claim}
+\begin{evidence}[Proof of VII.34]
+\label{ev:VII.34}
+$\mathrm{lcm}(a, b) = ab / \gcd(a, b)$: multiply $a$ by $b$ then
+divide by the gcd (VII.2).
+\dependson{VII.34}{VII.2}
+\dependson{VII.34}{VII.20}
+\end{evidence}
+
+\begin{claim}[Proposition VII.35: Common multiple is a multiple of the lcm]
+\label{prop:VII.35}
+If two numbers measure any number, the least number measured by them
+will also measure the same.
+\end{claim}
+\begin{evidence}[Proof of VII.35]
+\label{ev:VII.35}
+Let $L = \mathrm{lcm}(a, b)$ and suppose $a, b \mid n$.  Divide $n$
+by $L$ with remainder; the remainder $r$ is measured by both $a$ and
+$b$ (Common Notion 3 on the equimultiples) and is less than $L$.  By
+minimality of $L$, $r = 0$.
+\dependson{VII.35}{VII.34}
+\dependson{VII.35}{cn:3}
+\end{evidence}
+
+\begin{claim}[Proposition VII.36: Least common multiple of three numbers]
+\label{prop:VII.36}
+Given three numbers, to find the least number which they measure.
+\end{claim}
+\begin{evidence}[Proof of VII.36]
+\label{ev:VII.36}
+Compute $\mathrm{lcm}(a, b)$ by VII.34, then $\mathrm{lcm}$ of that
+with $c$.  By VII.35 the result is the least common multiple of all
+three.
+\dependson{VII.36}{VII.34}
+\dependson{VII.36}{VII.35}
+\end{evidence}
+
+\begin{claim}[Proposition VII.37: Number measures iff it is a quotient]
+\label{prop:VII.37}
+If a number be measured by any number, the number which is measured
+will have a part called by the same name as the measuring number.
+\end{claim}
+\begin{evidence}[Proof of VII.37]
+\label{ev:VII.37}
+$a \mid b$ means $b = ka$ for some $k$; then $b / k = a$, i.e.\ the
+$k$-th part of $b$ is $a$.
+\dependson{VII.37}{def:VII.3}
+\end{evidence}
+
+\begin{claim}[Proposition VII.38: Quotient existence]
+\label{prop:VII.38}
+If a number have any part whatever, it will be measured by a number
+called by the same name as the part.
+\end{claim}
+\begin{evidence}[Proof of VII.38]
+\label{ev:VII.38}
+Converse of VII.37: if $b/k = a$ then $a \mid b$ with quotient $k$.
+\dependson{VII.38}{VII.37}
+\end{evidence}
+
+\begin{claim}[Proposition VII.39: Least number with prescribed parts]
+\label{prop:VII.39}
+To find the number which is the least that will have given parts.
+\end{claim}
+\begin{evidence}[Proof of VII.39]
+\label{ev:VII.39}
+Take the lcm (VII.34, VII.36) of the prescribed denominators; that
+is the smallest number containing all the prescribed parts.
+\dependson{VII.39}{VII.34}
+\dependson{VII.39}{VII.36}
+\end{evidence}

@@ -1,20 +1,615 @@
-% book11.tex — Book XI: Solid geometry. Scaffolded.
+% book11.tex --- Book XI of Euclid's Elements: Solid Geometry.
+%
+% All 39 propositions encoded.  Book XI extends the plane geometry of
+% Books I-IV to three dimensions: lines and planes in space, parallel
+% planes, dihedral angles, parallelepipeds, and the foundational lemmas
+% for the Platonic solids of Book XIII.
+%
+% Wording follows Heath (1908).
 
 \section{Book XI --- Solid Geometry}
 \label{sec:book-XI}
-
-Book XI begins three-dimensional geometry: parallelepipeds, prisms,
-and the foundational definitions for the Platonic solids of Book XIII.
 
 \begin{claim}[Proposition XI.1: A straight line cannot have part in a plane and part not]
 \label{prop:XI.1}
 A part of a straight line cannot be in the plane of reference and a
 part in a plane more elevated.
 \end{claim}
-\begin{evidence}[Proof sketch of XI.1]
+\begin{evidence}[Proof of XI.1]
 \label{ev:XI.1}
-Reductio via Postulate 1 and the uniqueness of straight lines.
+If a straight line $AB$ had part in one plane and continued part in
+another, then through $B$ there would be two distinct straight lines
+from $A$ (one in each plane), contradicting Postulate 1 (uniqueness
+of the straight line through two points).
 \dependson{XI.1}{post:1}
+\dependson{XI.1}{def:I.4}
 \end{evidence}
 
-% TODO: All 39 propositions of Book XI.
+\begin{claim}[Proposition XI.2: Intersecting lines determine a plane]
+\label{prop:XI.2}
+If two straight lines cut one another, they are in one plane, and
+every triangle is in one plane.
+\end{claim}
+\begin{evidence}[Proof of XI.2]
+\label{ev:XI.2}
+Two intersecting lines pick out three non-collinear points (one at
+the intersection, one on each line); through these three points
+passes exactly one plane (the analogue in 3D of Postulate 1).
+\dependson{XI.2}{XI.1}
+\dependson{XI.2}{def:I.7}
+\end{evidence}
+
+\begin{claim}[Proposition XI.3: Intersection of two planes is a straight line]
+\label{prop:XI.3}
+If two planes cut one another, their common section is a straight
+line.
+\end{claim}
+\begin{evidence}[Proof of XI.3]
+\label{ev:XI.3}
+Take two points $A$, $B$ in the common section.  Draw the straight
+line $AB$ in each plane; by XI.1 each segment of $AB$ lies in its
+plane, and uniqueness of the line forces both segments to coincide.
+\dependson{XI.3}{XI.1}
+\dependson{XI.3}{post:1}
+\end{evidence}
+
+\begin{claim}[Proposition XI.4: Line perpendicular to two intersecting lines is perpendicular to their plane]
+\label{prop:XI.4}
+If a straight line be set up at right angles to two straight lines
+which cut one another, at their common point of section, it will
+also be at right angles to the plane through them.
+\end{claim}
+\begin{evidence}[Proof of XI.4]
+\label{ev:XI.4}
+Take any other straight line $\ell$ through the foot in the plane;
+$\ell$ can be expressed as a sum of perpendicular components on the
+two given lines (by I.46-style decomposition), and the perpendicular
+to both is perpendicular to the sum by I.4 applied to the right
+triangles formed.
+\dependson{XI.4}{I.4}
+\dependson{XI.4}{I.8}
+\dependson{XI.4}{def:XI.3}
+\end{evidence}
+
+\begin{claim}[Proposition XI.5: Three lines through a point each perpendicular to a fourth lie in a plane]
+\label{prop:XI.5}
+If a straight line be set up at right angles to three straight lines
+which meet one another, at their common point of section, the three
+straight lines are in one plane.
+\end{claim}
+\begin{evidence}[Proof of XI.5]
+\label{ev:XI.5}
+Two of the three meeting lines determine a plane (XI.2); if the
+third were out of that plane, the perpendicular relation combined
+with XI.4 would force two distinct planes through the same set of
+perpendicular lines, contradiction.
+\dependson{XI.5}{XI.2}
+\dependson{XI.5}{XI.4}
+\end{evidence}
+
+\begin{claim}[Proposition XI.6: Two lines perpendicular to the same plane are parallel]
+\label{prop:XI.6}
+If two straight lines be at right angles to the same plane, the
+straight lines will be parallel.
+\end{claim}
+\begin{evidence}[Proof of XI.6]
+\label{ev:XI.6}
+Suppose the two perpendiculars $AB$, $CD$ met or were skew.  Drop
+the segment $BD$ in the plane; the angles at $B$ and $D$ are right.
+In the plane through $AB$ and $BD$, by I.28 the line $CD$ would
+need to be parallel to $AB$, fixing the plane through $AB$, $CD$.
+Then within that plane the two right angles force $AB \parallel CD$.
+\dependson{XI.6}{I.28}
+\dependson{XI.6}{XI.2}
+\dependson{XI.6}{XI.3}
+\dependson{XI.6}{XI.4}
+\end{evidence}
+
+\begin{claim}[Proposition XI.7: A line in a plane parallel to a parallel line in another plane lies in the connecting plane]
+\label{prop:XI.7}
+If two straight lines be parallel, and points be taken at random on
+each of them, the straight line joining the points is in the same
+plane with the parallels.
+\end{claim}
+\begin{evidence}[Proof of XI.7]
+\label{ev:XI.7}
+Two parallel lines determine a plane (XI.2 extended).  Any joining
+segment between points on the two parallels lies in this plane by
+XI.1.
+\dependson{XI.7}{XI.1}
+\dependson{XI.7}{XI.2}
+\end{evidence}
+
+\begin{claim}[Proposition XI.8: Two parallel lines, one perpendicular to a plane, the other also perpendicular]
+\label{prop:XI.8}
+If two straight lines be parallel, and one of them be at right angles
+to any plane, the remaining one will also be at right angles to the
+same plane.
+\end{claim}
+\begin{evidence}[Proof of XI.8]
+\label{ev:XI.8}
+By XI.7 the connecting segment lies in the plane of the parallels;
+combine XI.4 (perpendicularity transferred along parallel lines via
+shared plane structure) with I.29 (alternate angles) to obtain
+perpendicularity of the second line.
+\dependson{XI.8}{I.29}
+\dependson{XI.8}{XI.4}
+\dependson{XI.8}{XI.6}
+\dependson{XI.8}{XI.7}
+\end{evidence}
+
+\begin{claim}[Proposition XI.9: Lines parallel to the same line are parallel]
+\label{prop:XI.9}
+Straight lines which are parallel to the same straight line and are
+not in the same plane with it are also parallel to one another.
+\end{claim}
+\begin{evidence}[Proof of XI.9]
+\label{ev:XI.9}
+Construct in each plane perpendiculars from a common point to the
+shared straight line; the perpendiculars are equal in length, and
+by I.33 the resulting transversal is parallel to both targets.
+\dependson{XI.9}{I.33}
+\dependson{XI.9}{XI.6}
+\dependson{XI.9}{XI.8}
+\end{evidence}
+
+\begin{claim}[Proposition XI.10: Two angles with parallel sides are equal in space]
+\label{prop:XI.10}
+If two straight lines meeting one another be parallel to two straight
+lines meeting one another, not in the same plane, they will contain
+equal angles.
+\end{claim}
+\begin{evidence}[Proof of XI.10]
+\label{ev:XI.10}
+Construct the parallelogram joining corresponding points; by I.33
+opposite sides are equal, and by I.8 (SSS) the two triangles formed
+at the vertex angles are congruent.
+\dependson{XI.10}{I.8}
+\dependson{XI.10}{I.33}
+\dependson{XI.10}{XI.9}
+\end{evidence}
+
+\begin{claim}[Proposition XI.11: Drop a perpendicular from an external point to a plane]
+\label{prop:XI.11}
+From a given elevated point to draw a straight line perpendicular to
+a given plane.
+\end{claim}
+\begin{evidence}[Proof of XI.11]
+\label{ev:XI.11}
+Drop a chord through the point parallel to the plane; drop a
+perpendicular from the chord to its foot in the plane; the
+constructed line, being perpendicular to two intersecting lines at
+the foot, is perpendicular to the plane (XI.4).
+\dependson{XI.11}{I.11}
+\dependson{XI.11}{I.12}
+\dependson{XI.11}{XI.4}
+\end{evidence}
+
+\begin{claim}[Proposition XI.12: Erect a perpendicular to a plane at a given point in the plane]
+\label{prop:XI.12}
+To set up a straight line at right angles to a given plane from a
+given point in it.
+\end{claim}
+\begin{evidence}[Proof of XI.12]
+\label{ev:XI.12}
+Take an external point above the plane; drop a perpendicular from it
+to the plane via XI.11; the foot may be made to coincide with the
+given point by an additional parallel translation (using XI.8).
+\dependson{XI.12}{XI.8}
+\dependson{XI.12}{XI.11}
+\end{evidence}
+
+\begin{claim}[Proposition XI.13: A unique perpendicular to a plane from a given point]
+\label{prop:XI.13}
+From the same point two straight lines cannot be set up at right
+angles to the same plane on the same side.
+\end{claim}
+\begin{evidence}[Proof of XI.13]
+\label{ev:XI.13}
+Two such perpendiculars would meet two lines in the plane at the
+same right angles; by XI.4 / XI.6 the two perpendiculars would have
+to be parallel; but parallels do not meet -- contradicting their
+common origin.
+\dependson{XI.13}{XI.4}
+\dependson{XI.13}{XI.6}
+\end{evidence}
+
+\begin{claim}[Proposition XI.14: Planes perpendicular to the same line are parallel]
+\label{prop:XI.14}
+Planes to which the same straight line is at right angles will be
+parallel.
+\end{claim}
+\begin{evidence}[Proof of XI.14]
+\label{ev:XI.14}
+If the two planes met, the line of intersection (XI.3) would meet
+the common perpendicular at right angles in two distinct places --
+contradicting XI.13.
+\dependson{XI.14}{XI.3}
+\dependson{XI.14}{XI.13}
+\dependson{XI.14}{def:XI.8}
+\end{evidence}
+
+\begin{claim}[Proposition XI.15: Two intersecting line-pairs parallel to two other line-pairs give parallel planes]
+\label{prop:XI.15}
+If two straight lines meeting one another be parallel to two straight
+lines meeting one another, not being in the same plane, the planes
+through them are parallel.
+\end{claim}
+\begin{evidence}[Proof of XI.15]
+\label{ev:XI.15}
+By XI.10 the angles are equal; drop a common perpendicular line; by
+XI.14 the two planes share a common perpendicular and are parallel.
+\dependson{XI.15}{XI.9}
+\dependson{XI.15}{XI.10}
+\dependson{XI.15}{XI.14}
+\end{evidence}
+
+\begin{claim}[Proposition XI.16: A plane cuts parallel planes in parallel lines]
+\label{prop:XI.16}
+If two parallel planes be cut by any plane, their common sections
+are parallel.
+\end{claim}
+\begin{evidence}[Proof of XI.16]
+\label{ev:XI.16}
+The two intersection lines lie in the cutting plane, and if they
+met, the meeting point would belong to both parallel planes -- which
+is impossible.
+\dependson{XI.16}{XI.3}
+\dependson{XI.16}{def:XI.8}
+\end{evidence}
+
+\begin{claim}[Proposition XI.17: Two parallel planes cut a transversal proportionally]
+\label{prop:XI.17}
+If two straight lines be cut by parallel planes, they will be cut in
+the same ratios.
+\end{claim}
+\begin{evidence}[Proof of XI.17]
+\label{ev:XI.17}
+Draw a parallelogram structure between the parallel planes; apply
+VI.2 (basic proportionality) in each pair of cross-sectional lines.
+\dependson{XI.17}{VI.2}
+\dependson{XI.17}{XI.16}
+\end{evidence}
+
+\begin{claim}[Proposition XI.18: A line perpendicular to a plane makes the plane through it perpendicular to that plane]
+\label{prop:XI.18}
+If a straight line be at right angles to any plane, all the planes
+through it will also be at right angles to the same plane.
+\end{claim}
+\begin{evidence}[Proof of XI.18]
+\label{ev:XI.18}
+Any plane through the perpendicular contains the perpendicular line;
+by Definition XI.4 (perpendicular planes) the containing plane is
+perpendicular to the original plane.
+\dependson{XI.18}{XI.4}
+\dependson{XI.18}{def:XI.4}
+\end{evidence}
+
+\begin{claim}[Proposition XI.19: Two perpendicular planes intersect in a line perpendicular to the base]
+\label{prop:XI.19}
+If two planes which cut one another be at right angles to any plane,
+their common section will also be at right angles to the same plane.
+\end{claim}
+\begin{evidence}[Proof of XI.19]
+\label{ev:XI.19}
+The intersection line lies in both planes; by Definition XI.4 the
+perpendiculars from any point of the intersection within each plane
+are perpendicular to the base plane; XI.13 then forces the
+intersection line itself to be perpendicular.
+\dependson{XI.19}{XI.13}
+\dependson{XI.19}{XI.18}
+\dependson{XI.19}{def:XI.4}
+\end{evidence}
+
+\begin{claim}[Proposition XI.20: Solid angle inequality (triangle inequality for face-angles)]
+\label{prop:XI.20}
+If a solid angle be contained by three plane angles, any two, taken
+together in any manner, are greater than the remaining one.
+\end{claim}
+\begin{evidence}[Proof of XI.20]
+\label{ev:XI.20}
+Suppose the largest face-angle is $\angle BAC$.  Within $\angle BAC$
+construct $\angle BAD$ equal to $\angle BAE$ (one of the other
+face-angles).  By I.4 / I.24, the corresponding chord arcs in space
+give the desired strict triangle-style inequality among the
+face-angles.
+\dependson{XI.20}{I.4}
+\dependson{XI.20}{I.20}
+\dependson{XI.20}{I.24}
+\end{evidence}
+
+\begin{claim}[Proposition XI.21: Sum of face-angles at a solid angle is less than four right angles]
+\label{prop:XI.21}
+Any solid angle is contained by plane angles less than four right
+angles.
+\end{claim}
+\begin{evidence}[Proof of XI.21]
+\label{ev:XI.21}
+Cut a small polygon by a plane near the apex; the sum of the
+exterior angles of this polygon is less than $4 \cdot 90^\circ$ (by
+I.32 / I.34 applied to the polygon).  The interior face-angles at
+the apex are the supplements of these exterior angles, so their sum
+falls strictly short of $4 \cdot 90^\circ$.
+\dependson{XI.21}{I.32}
+\dependson{XI.21}{XI.20}
+\end{evidence}
+
+\begin{claim}[Proposition XI.22: Three face-angles whose sum is less than four right angles can form a solid angle]
+\label{prop:XI.22}
+If there be three plane angles of which two, taken together in any
+manner, are greater than the remaining one, and they are contained
+by equal straight lines, it is possible to construct a triangle out
+of the straight lines joining the extremities of the equal straight
+lines.
+\end{claim}
+\begin{evidence}[Proof of XI.22]
+\label{ev:XI.22}
+The plane-angle inequality (XI.20) is precisely the triangle
+inequality for the joining chords; by I.22 (construction of a
+triangle on three given segments) the resulting triangle exists.
+\dependson{XI.22}{I.22}
+\dependson{XI.22}{XI.20}
+\end{evidence}
+
+\begin{claim}[Proposition XI.23: Construct a solid angle from three given face-angles]
+\label{prop:XI.23}
+To construct a solid angle out of three plane angles, two of which,
+taken together in any manner, are greater than the remaining one;
+thus the sum of the three angles must be less than four right angles.
+\end{claim}
+\begin{evidence}[Proof of XI.23]
+\label{ev:XI.23}
+Apply XI.22 to obtain the triangle of chords; mount that triangle so
+that the three face-angles meet at a common apex; the bound of XI.21
+ensures consistency.
+\dependson{XI.23}{XI.20}
+\dependson{XI.23}{XI.21}
+\dependson{XI.23}{XI.22}
+\end{evidence}
+
+\begin{claim}[Proposition XI.24: Parallelepiped has parallelogram faces]
+\label{prop:XI.24}
+If a solid be contained by parallel planes, the opposite planes in
+it are equal and similar parallelograms.
+\end{claim}
+\begin{evidence}[Proof of XI.24]
+\label{ev:XI.24}
+Opposite faces share parallel sides (by XI.16) and equal angles (by
+XI.10), so they are congruent parallelograms by I.33 / I.34.
+\dependson{XI.24}{I.33}
+\dependson{XI.24}{I.34}
+\dependson{XI.24}{XI.10}
+\dependson{XI.24}{XI.16}
+\end{evidence}
+
+\begin{claim}[Proposition XI.25: Parallelepiped cut by a plane parallel to a face is divided proportionally]
+\label{prop:XI.25}
+If a parallelepipedal solid be cut by a plane parallel to opposite
+planes, then, as the base is to the base, so will the solid be to
+the solid.
+\end{claim}
+\begin{evidence}[Proof of XI.25]
+\label{ev:XI.25}
+Apply XI.17 to the side faces and VI.1 to the parallel base-pairs;
+the volume is proportional to one varying side at constant
+cross-section.
+\dependson{XI.25}{VI.1}
+\dependson{XI.25}{XI.17}
+\dependson{XI.25}{XI.24}
+\end{evidence}
+
+\begin{claim}[Proposition XI.26: Construct a solid angle equal to a given solid angle]
+\label{prop:XI.26}
+At a given point on a given straight line to construct a solid angle
+equal to a given solid angle contained by three plane angles.
+\end{claim}
+\begin{evidence}[Proof of XI.26]
+\label{ev:XI.26}
+Reproduce each face-angle by I.23 in the appropriate planes; by XI.23
+the resulting figure determines a solid angle congruent to the given
+one.
+\dependson{XI.26}{I.23}
+\dependson{XI.26}{XI.10}
+\dependson{XI.26}{XI.23}
+\end{evidence}
+
+\begin{claim}[Proposition XI.27: Construct a parallelepiped similar to a given parallelepiped on a given edge]
+\label{prop:XI.27}
+On a given straight line to construct a parallelepipedal solid
+similar and similarly situated to a given parallelepipedal solid.
+\end{claim}
+\begin{evidence}[Proof of XI.27]
+\label{ev:XI.27}
+Apply the face-angle construction of XI.26 at each vertex; by VI.18
+the resulting faces are similar to the corresponding faces of the
+given solid.
+\dependson{XI.27}{VI.18}
+\dependson{XI.27}{XI.24}
+\dependson{XI.27}{XI.26}
+\end{evidence}
+
+\begin{claim}[Proposition XI.28: Parallelepiped bisected by its diagonal plane]
+\label{prop:XI.28}
+If a parallelepipedal solid be cut by a plane through the diagonals
+of the opposite planes, the solid will be bisected by the plane.
+\end{claim}
+\begin{evidence}[Proof of XI.28]
+\label{ev:XI.28}
+The two pieces are mirror-image prisms with congruent base-triangles
+(by I.34); by XI.24 their volumes are equal.
+\dependson{XI.28}{I.34}
+\dependson{XI.28}{XI.24}
+\dependson{XI.28}{XI.25}
+\end{evidence}
+
+\begin{claim}[Proposition XI.29: Parallelepipeds on equal bases with same height are equal]
+\label{prop:XI.29}
+Parallelepipedal solids which are on the same base and of the same
+height, and in which the extremities of the sides which stand up are
+on the same straight lines, are equal to one another.
+\end{claim}
+\begin{evidence}[Proof of XI.29]
+\label{ev:XI.29}
+The two parallelepipeds can be decomposed into congruent prisms via
+XI.28 and I.34 applied repeatedly; the equality is the 3D analogue
+of I.35 (parallelograms on the same base between the same parallels).
+\dependson{XI.29}{I.35}
+\dependson{XI.29}{XI.24}
+\dependson{XI.29}{XI.28}
+\end{evidence}
+
+\begin{claim}[Proposition XI.30: Parallelepipeds on equal bases with same height but different oblique placement are equal]
+\label{prop:XI.30}
+Parallelepipedal solids which are on the same base and of the same
+height, and in which the extremities of the sides which stand up are
+not on the same straight lines, are equal to one another.
+\end{claim}
+\begin{evidence}[Proof of XI.30]
+\label{ev:XI.30}
+Variant of XI.29 with the oblique sides at different angles; the
+decomposition argument still applies after a shear.
+\dependson{XI.30}{XI.29}
+\end{evidence}
+
+\begin{claim}[Proposition XI.31: Parallelepipeds on equal bases are in the ratio of their heights]
+\label{prop:XI.31}
+Parallelepipedal solids which are on equal bases and of the same
+height are equal to one another.
+\end{claim}
+\begin{evidence}[Proof of XI.31]
+\label{ev:XI.31}
+By XI.25 the volume is proportional to the base at fixed height; if
+the bases are equal, the volumes are equal.
+\dependson{XI.31}{XI.25}
+\dependson{XI.31}{XI.29}
+\dependson{XI.31}{XI.30}
+\end{evidence}
+
+\begin{claim}[Proposition XI.32: Parallelepipeds of equal height are as their bases]
+\label{prop:XI.32}
+Parallelepipedal solids which are of the same height are to one
+another as their bases.
+\end{claim}
+\begin{evidence}[Proof of XI.32]
+\label{ev:XI.32}
+By XI.25 applied with one shared dimension fixed.
+\dependson{XI.32}{XI.25}
+\dependson{XI.32}{XI.31}
+\end{evidence}
+
+\begin{claim}[Proposition XI.33: Similar parallelepipeds are in the triplicate ratio of corresponding edges]
+\label{prop:XI.33}
+Similar parallelepipedal solids are to one another in the triplicate
+ratio of their corresponding sides.
+\end{claim}
+\begin{evidence}[Proof of XI.33]
+\label{ev:XI.33}
+The 3D analogue of VI.20: scaling each of the three edges by ratio
+$k$ multiplies the volume by $k^3$.  Apply VI.20 to two faces and
+XI.32 to extrude.
+\dependson{XI.33}{VI.20}
+\dependson{XI.33}{XI.32}
+\dependson{XI.33}{def:V.10}
+\end{evidence}
+
+\begin{claim}[Proposition XI.34: Equal parallelepipeds have reciprocally proportional edges]
+\label{prop:XI.34}
+In equal parallelepipedal solids the bases are reciprocally
+proportional to the heights; and those parallelepipedal solids in
+which the bases are reciprocally proportional to the heights are
+equal.
+\end{claim}
+\begin{evidence}[Proof of XI.34]
+\label{ev:XI.34}
+3D analogue of VI.14: by XI.32 the ratio of volumes is the
+compounded ratio of bases and heights; equal volumes force the
+compounded ratio to be unity, i.e.\ reciprocal proportion.
+\dependson{XI.34}{VI.14}
+\dependson{XI.34}{XI.32}
+\dependson{XI.34}{XI.33}
+\end{evidence}
+
+\begin{claim}[Proposition XI.35: Planes equally inclined to a base have equal perpendiculars]
+\label{prop:XI.35}
+If there be two equal plane angles, and on their vertices there be
+set up elevated straight lines containing equal angles with the
+original straight lines respectively, if on the elevated straight
+lines points be taken at random and perpendiculars be drawn from them
+to the planes in which the original angles are, and if from the
+points so arising in the planes straight lines be joined to the
+vertices of the original angles, they will contain, with the elevated
+straight lines, equal angles.
+\end{claim}
+\begin{evidence}[Proof of XI.35]
+\label{ev:XI.35}
+By I.4 (SAS) applied to the right triangles in each plane: equal
+oblique segments and equal perpendiculars produce equal angles at
+the foot.
+\dependson{XI.35}{I.4}
+\dependson{XI.35}{XI.10}
+\dependson{XI.35}{XI.11}
+\end{evidence}
+
+\begin{claim}[Proposition XI.36: Parallelepiped on three proportionals is equal to a cube whose side is the mean]
+\label{prop:XI.36}
+If three straight lines be proportional, the parallelepipedal solid
+formed out of the three is equal to the parallelepipedal solid on the
+mean which is equilateral, but equiangular with the aforesaid solid.
+\end{claim}
+\begin{evidence}[Proof of XI.36]
+\label{ev:XI.36}
+For $a : b = b : c$ (with $b$ the mean), $abc = b^3$ and the
+parallelepipeds on $\{a, b, c\}$ versus $\{b, b, b\}$ have equal
+volumes by XI.34 / XI.33.
+\dependson{XI.36}{VI.17}
+\dependson{XI.36}{XI.32}
+\dependson{XI.36}{XI.34}
+\end{evidence}
+
+\begin{claim}[Proposition XI.37: Similar parallelepipeds in proportion]
+\label{prop:XI.37}
+If four straight lines be proportional, the similar and similarly
+described parallelepipedal solids upon them will also be
+proportional; and if the similar and similarly described
+parallelepipedal solids upon them be proportional, the straight lines
+will themselves also be proportional.
+\end{claim}
+\begin{evidence}[Proof of XI.37]
+\label{ev:XI.37}
+3D analogue of VI.22: similar parallelepipeds are in the triplicate
+ratio of edges; equality of triplicate ratios is equivalent to
+equality of edge ratios.
+\dependson{XI.37}{VI.22}
+\dependson{XI.37}{XI.33}
+\end{evidence}
+
+\begin{claim}[Proposition XI.38: Joining diagonals of opposite faces in a cube]
+\label{prop:XI.38}
+If the sides of the opposite planes of a cube be bisected, and planes
+be carried through the points of section, the common section of the
+planes and the diameter of the cube bisect one another.
+\end{claim}
+\begin{evidence}[Proof of XI.38]
+\label{ev:XI.38}
+By symmetry of the cube under the half-turns about the centre; the
+diagonal and the median plane both pass through the centre.
+\dependson{XI.38}{I.10}
+\dependson{XI.38}{XI.3}
+\dependson{XI.38}{XI.24}
+\end{evidence}
+
+\begin{claim}[Proposition XI.39: Prisms on equal triangular bases with same height are equal]
+\label{prop:XI.39}
+If there be two prisms of equal height, and one have a parallelogram
+as base and the other a triangle, and if the parallelogram be double
+of the triangle, the prisms will be equal.
+\end{claim}
+\begin{evidence}[Proof of XI.39]
+\label{ev:XI.39}
+A triangular prism is half a parallelogram prism on the same height
+(by I.34 applied to the cross-sections); the area-doubling condition
+makes the two prisms have equal volume.
+\dependson{XI.39}{I.34}
+\dependson{XI.39}{XI.28}
+\dependson{XI.39}{XI.32}
+\end{evidence}

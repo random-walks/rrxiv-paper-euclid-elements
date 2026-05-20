@@ -1,36 +1,513 @@
-% book09.tex — Book IX: Advanced number theory. Scaffolded.
+% book09.tex --- Book IX of Euclid's Elements: Advanced Number Theory.
+%
+% All 36 propositions encoded.  Book IX continues from Book VIII with
+% propositions on squares, cubes, and the parity of products.  Two
+% propositions are particularly famous: IX.20 (there are infinitely many
+% primes) and IX.36 (every even perfect number arises from a Mersenne
+% prime).
+%
+% Wording follows Heath (1908).
 
 \section{Book IX --- Advanced Number Theory}
 \label{sec:book-IX}
 
-Book IX contains Proposition 20 (infinitude of primes) and Proposition
-36 (Mersenne-style construction of even perfect numbers).
+\begin{claim}[Proposition IX.1: Product of similar plane numbers is square]
+\label{prop:IX.1}
+If two similar plane numbers by multiplying one another make some
+number, the product will be square.
+\end{claim}
+\begin{evidence}[Proof of IX.1]
+\label{ev:IX.1}
+Similar plane numbers $ab$ and $cd$ with $a:b = c:d$ have product
+$(ab)(cd) = (ac)(bd)$, and the side $ac : bd$ is the square ratio,
+so the product is a square (VIII.26).
+\dependson{IX.1}{VIII.18}
+\dependson{IX.1}{VIII.26}
+\end{evidence}
 
-\begin{claim}[Proposition IX.20: Infinitude of primes]
+\begin{claim}[Proposition IX.2: Square product implies similar plane factors]
+\label{prop:IX.2}
+If two numbers by multiplying one another make a square number, they
+are similar plane numbers.
+\end{claim}
+\begin{evidence}[Proof of IX.2]
+\label{ev:IX.2}
+Converse of IX.1.  If $mn$ is square then $m : n$ has a mean
+proportional in integers; by VIII.20 this means $m$, $n$ are similar
+plane.
+\dependson{IX.2}{VIII.20}
+\dependson{IX.2}{IX.1}
+\end{evidence}
+
+\begin{claim}[Proposition IX.3: Cube times itself is a cube]
+\label{prop:IX.3}
+If a cube number by multiplying itself make some number, the product
+will be cube.
+\end{claim}
+\begin{evidence}[Proof of IX.3]
+\label{ev:IX.3}
+$(a^3)^2 = a^6 = (a^2)^3$.  Verified via VII.16 / VII.17.
+\dependson{IX.3}{VII.17}
+\dependson{IX.3}{def:VII.19}
+\end{evidence}
+
+\begin{claim}[Proposition IX.4: Cube times cube is cube]
+\label{prop:IX.4}
+If a cube number by multiplying a cube number make some number, the
+product will be cube.
+\end{claim}
+\begin{evidence}[Proof of IX.4]
+\label{ev:IX.4}
+$a^3 \cdot b^3 = (ab)^3$ by commutativity (VII.16).
+\dependson{IX.4}{VII.16}
+\dependson{IX.4}{IX.3}
+\end{evidence}
+
+\begin{claim}[Proposition IX.5: Cube product implies cube factor]
+\label{prop:IX.5}
+If a cube number by multiplying any number make a cube number, the
+multiplied number will also be cube.
+\end{claim}
+\begin{evidence}[Proof of IX.5]
+\label{ev:IX.5}
+If $a^3 \cdot n = m^3$ then $n = m^3 / a^3$; by VIII.25 the quotient
+of two cubes (when integer) is a cube.
+\dependson{IX.5}{VIII.25}
+\dependson{IX.5}{IX.4}
+\end{evidence}
+
+\begin{claim}[Proposition IX.6: Square root of a square product]
+\label{prop:IX.6}
+If a number by multiplying itself make a cube number, it itself will
+also be cube.
+\end{claim}
+\begin{evidence}[Proof of IX.6]
+\label{ev:IX.6}
+If $n^2 = a^3$ then $n^2 \cdot n = a^3 \cdot n$ is cubed; by VIII.25
+$n$ is cube.
+\dependson{IX.6}{IX.3}
+\dependson{IX.6}{IX.5}
+\end{evidence}
+
+\begin{claim}[Proposition IX.7: Product of a composite with any number]
+\label{prop:IX.7}
+If a composite number by multiplying any number make some number,
+the product will be solid.
+\end{claim}
+\begin{evidence}[Proof of IX.7]
+\label{ev:IX.7}
+A composite has a factorisation $ab$; multiplying by $c$ gives the
+triple product $abc$, which is solid by definition (VII.17).
+\dependson{IX.7}{VII.17}
+\dependson{IX.7}{def:VII.13}
+\dependson{IX.7}{def:VII.17}
+\end{evidence}
+
+\begin{claim}[Proposition IX.8: Geometric progression starting from unit]
+\label{prop:IX.8}
+If as many numbers as we please beginning from a unit be in continued
+proportion, the third from the unit will be square, the fourth a
+cube, and so on.
+\end{claim}
+\begin{evidence}[Proof of IX.8]
+\label{ev:IX.8}
+The sequence $1, r, r^2, r^3, \dots$ has third term a square, fourth
+a cube, sixth both square and cube, by VIII.11 / VIII.12.
+\dependson{IX.8}{VIII.11}
+\dependson{IX.8}{VIII.12}
+\end{evidence}
+
+\begin{claim}[Proposition IX.9: Sixth term from unit is square and cube]
+\label{prop:IX.9}
+If as many numbers as we please beginning from a unit be in continued
+proportion, and the number after the unit be square, all the rest
+will also be square; and if the number after the unit be cube, all
+the rest will also be cube.
+\end{claim}
+\begin{evidence}[Proof of IX.9]
+\label{ev:IX.9}
+In $1, r, r^2, r^3, \dots$, if $r$ is square then every $r^k$ is
+square; if $r$ is cube then every $r^k$ is cube --- by VIII.22 /
+VIII.23 propagated through the sequence.
+\dependson{IX.9}{VIII.22}
+\dependson{IX.9}{VIII.23}
+\dependson{IX.9}{IX.8}
+\end{evidence}
+
+\begin{claim}[Proposition IX.10: Non-square first term keeps the sequence non-square]
+\label{prop:IX.10}
+If as many numbers as we please beginning from a unit be in continued
+proportion, and the number after the unit be not square, neither will
+any other be square except the third from the unit and all those
+which leave out one.
+\end{claim}
+\begin{evidence}[Proof of IX.10]
+\label{ev:IX.10}
+Squares in $1, r, r^2, \dots$ occur exactly at even powers; if $r$
+is not square, only $r^{2k}$ terms are square.
+\dependson{IX.10}{IX.8}
+\dependson{IX.10}{IX.9}
+\end{evidence}
+
+\begin{claim}[Proposition IX.11: Term divides later term iff exponents differ]
+\label{prop:IX.11}
+If as many numbers as we please beginning from a unit be in continued
+proportion, the less measures the greater according to some one of
+the numbers which have place among the proportional numbers.
+\end{claim}
+\begin{evidence}[Proof of IX.11]
+\label{ev:IX.11}
+$r^a \mid r^b$ iff $a \le b$, and the quotient is $r^{b-a}$ --- which
+is itself a term of the sequence.
+\dependson{IX.11}{def:VII.3}
+\dependson{IX.11}{IX.8}
+\end{evidence}
+
+\begin{claim}[Proposition IX.12: Prime divisor of last term divides second]
+\label{prop:IX.12}
+If as many numbers as we please beginning from a unit be in continued
+proportion, by whatever prime numbers the last is measured, the
+second from the unit will also be measured by the same.
+\end{claim}
+\begin{evidence}[Proof of IX.12]
+\label{ev:IX.12}
+A prime dividing $r^n$ must divide $r$ (Euclid's lemma, VII.30),
+which is the second term after the unit.
+\dependson{IX.12}{VII.30}
+\dependson{IX.12}{IX.11}
+\end{evidence}
+
+\begin{claim}[Proposition IX.13: Geometric progression from prime unit]
+\label{prop:IX.13}
+If as many numbers as we please beginning from a unit be in continued
+proportion, and the number after the unit be prime, the greatest will
+not be measured by any except those which have a place among the
+proportional numbers.
+\end{claim}
+\begin{evidence}[Proof of IX.13]
+\label{ev:IX.13}
+If $r$ is prime, the divisors of $r^n$ are exactly $1, r, r^2, \dots,
+r^n$ (Euclid's lemma).  These are exactly the prefix of the sequence.
+\dependson{IX.13}{VII.30}
+\dependson{IX.13}{IX.12}
+\end{evidence}
+
+\begin{claim}[Proposition IX.14: Unique prime factorisation precursor]
+\label{prop:IX.14}
+If a number be the least that is measured by prime numbers, it will
+not be measured by any other prime number except those originally
+measuring it.
+\end{claim}
+\begin{evidence}[Proof of IX.14]
+\label{ev:IX.14}
+A least common multiple of primes equals their product; any prime
+dividing the product divides one of the factors (VII.30), hence is
+one of the originals.  This is the kernel of unique factorisation.
+\dependson{IX.14}{VII.30}
+\dependson{IX.14}{VII.34}
+\end{evidence}
+
+\begin{claim}[Proposition IX.15: Three numbers in continued proportion, coprime extremes]
+\label{prop:IX.15}
+If three numbers in continued proportion be the least of those which
+have the same ratio with them, any two whatever added together will
+be prime to the remaining number.
+\end{claim}
+\begin{evidence}[Proof of IX.15]
+\label{ev:IX.15}
+For $a, b, c$ with $a : b = b : c$ in lowest terms: by VIII.3 the
+extremes are coprime; combining with VII.28 the sums $a+b$, $b+c$,
+$a+c$ are each coprime to the third term.
+\dependson{IX.15}{VII.28}
+\dependson{IX.15}{VIII.3}
+\end{evidence}
+
+\begin{claim}[Proposition IX.16: Coprime numbers and proportion]
+\label{prop:IX.16}
+If two numbers be prime to one another, the second will not be to
+any other number as the first is to the second.
+\end{claim}
+\begin{evidence}[Proof of IX.16]
+\label{ev:IX.16}
+If $a : b = b : c$ with $\gcd(a, b) = 1$, then $b^2 = ac$, forcing
+$a \mid b^2$ which (Euclid's lemma) forces $a \mid b$ -- contradicting
+coprimality unless $a = 1$.
+\dependson{IX.16}{VII.19}
+\dependson{IX.16}{VII.30}
+\end{evidence}
+
+\begin{claim}[Proposition IX.17: Coprime sequence and extension]
+\label{prop:IX.17}
+If as many numbers as we please be in continued proportion, and the
+extremes of them be prime to one another, the last will not be to
+any other number as the first is to the second.
+\end{claim}
+\begin{evidence}[Proof of IX.17]
+\label{ev:IX.17}
+Generalisation of IX.16: a coprime-extremes proportion cannot be
+extended further while remaining a proportion of integers in the
+same ratio.
+\dependson{IX.17}{VIII.3}
+\dependson{IX.17}{IX.16}
+\end{evidence}
+
+\begin{claim}[Proposition IX.18: Existence of a third proportional]
+\label{prop:IX.18}
+Given two numbers, to investigate whether it is possible to find a
+third proportional to them.
+\end{claim}
+\begin{evidence}[Proof of IX.18]
+\label{ev:IX.18}
+A third proportional to $a$, $b$ exists iff $b^2$ is divisible by
+$a$ (i.e.\ $b^2 / a$ is an integer); apply VII.19.
+\dependson{IX.18}{VII.19}
+\dependson{IX.18}{IX.16}
+\end{evidence}
+
+\begin{claim}[Proposition IX.19: Existence of a fourth proportional]
+\label{prop:IX.19}
+Given three numbers, to investigate when it is possible to find a
+fourth proportional to them.
+\end{claim}
+\begin{evidence}[Proof of IX.19]
+\label{ev:IX.19}
+A fourth proportional to $a$, $b$, $c$ exists iff $bc / a$ is an
+integer; otherwise no integer extends the proportion.
+\dependson{IX.19}{VII.19}
+\dependson{IX.19}{IX.18}
+\end{evidence}
+
+\begin{claim}[Proposition IX.20: There are infinitely many primes]
 \label{prop:IX.20}
 Prime numbers are more than any assigned multitude of prime numbers.
 \end{claim}
-\begin{evidence}[Proof sketch of IX.20]
+\begin{evidence}[Proof of IX.20]
 \label{ev:IX.20}
-The classic Euclid construction: multiply the assigned primes, add
-one, factor; any prime factor of the result is new. Uses VII.31 and
-basic divisibility from Book VII.
-\dependson{IX.20}{VII.1}
-\dependson{IX.20}{VII.2}
+Given primes $p_1, \dots, p_n$, form $N = p_1 p_2 \cdots p_n + 1$.
+By VII.31 $N$ has a prime divisor $q$.  If $q$ were one of the
+$p_i$, then $q$ would divide $N - p_1 \cdots p_n = 1$ (Common Notion
+3), which is impossible.  Hence $q$ is a new prime not in the
+original list; the list of primes admits no upper bound.
+\dependson{IX.20}{VII.31}
+\dependson{IX.20}{cn:3}
+\dependson{IX.20}{def:VII.11}
 \end{evidence}
 
-\begin{claim}[Proposition IX.36: Even perfect numbers]
+\begin{claim}[Proposition IX.21: Sum of evens is even]
+\label{prop:IX.21}
+If as many even numbers as we please be added together, the whole is
+even.
+\end{claim}
+\begin{evidence}[Proof of IX.21]
+\label{ev:IX.21}
+Each even number is divisible by 2; the sum is therefore divisible
+by 2 (Common Notion 2).
+\dependson{IX.21}{cn:2}
+\dependson{IX.21}{def:VII.6}
+\end{evidence}
+
+\begin{claim}[Proposition IX.22: Sum of even-many odd is even]
+\label{prop:IX.22}
+If as many odd numbers as we please be added together, and their
+multitude be even, the whole will be even.
+\end{claim}
+\begin{evidence}[Proof of IX.22]
+\label{ev:IX.22}
+Pair the odd summands: each pair has even sum (since odd + odd =
+even, by the definitions); the total of even-many pairs is even by
+IX.21.
+\dependson{IX.22}{IX.21}
+\dependson{IX.22}{def:VII.7}
+\end{evidence}
+
+\begin{claim}[Proposition IX.23: Sum of odd-many odd is odd]
+\label{prop:IX.23}
+If as many odd numbers as we please be added together, and their
+multitude be odd, the whole will also be odd.
+\end{claim}
+\begin{evidence}[Proof of IX.23]
+\label{ev:IX.23}
+Group all but one of the summands by pairs (sum of those is even,
+IX.22); add the remaining odd number; the result is even + odd =
+odd by Common Notion 2 and Definition VII.7.
+\dependson{IX.23}{IX.22}
+\dependson{IX.23}{def:VII.7}
+\end{evidence}
+
+\begin{claim}[Proposition IX.24: Difference of two evens is even]
+\label{prop:IX.24}
+If from an even number an even number be subtracted, the remainder
+will be even.
+\end{claim}
+\begin{evidence}[Proof of IX.24]
+\label{ev:IX.24}
+Two multiples of 2 differ by a multiple of 2 (Common Notion 3).
+\dependson{IX.24}{cn:3}
+\dependson{IX.24}{def:VII.6}
+\end{evidence}
+
+\begin{claim}[Proposition IX.25: Even minus odd is odd]
+\label{prop:IX.25}
+If from an even number an odd number be subtracted, the remainder
+will be odd.
+\end{claim}
+\begin{evidence}[Proof of IX.25]
+\label{ev:IX.25}
+$2k - (2m+1) = 2(k-m) - 1$, which is odd by Definition VII.7.
+\dependson{IX.25}{cn:3}
+\dependson{IX.25}{def:VII.7}
+\end{evidence}
+
+\begin{claim}[Proposition IX.26: Odd minus odd is even]
+\label{prop:IX.26}
+If from an odd number an odd number be subtracted, the remainder will
+be even.
+\end{claim}
+\begin{evidence}[Proof of IX.26]
+\label{ev:IX.26}
+$(2k+1) - (2m+1) = 2(k-m)$, even.
+\dependson{IX.26}{cn:3}
+\dependson{IX.26}{def:VII.6}
+\end{evidence}
+
+\begin{claim}[Proposition IX.27: Odd minus even is odd]
+\label{prop:IX.27}
+If from an odd number an even number be subtracted, the remainder
+will be odd.
+\end{claim}
+\begin{evidence}[Proof of IX.27]
+\label{ev:IX.27}
+$(2k+1) - 2m = 2(k-m) + 1$, odd.
+\dependson{IX.27}{cn:3}
+\dependson{IX.27}{def:VII.7}
+\end{evidence}
+
+\begin{claim}[Proposition IX.28: Odd times even is even]
+\label{prop:IX.28}
+If an odd number by multiplying an even number make some number, the
+product will be even.
+\end{claim}
+\begin{evidence}[Proof of IX.28]
+\label{ev:IX.28}
+$(2k+1) \cdot 2m = 2 m(2k+1)$, a multiple of 2.
+\dependson{IX.28}{IX.21}
+\dependson{IX.28}{def:VII.6}
+\end{evidence}
+
+\begin{claim}[Proposition IX.29: Odd times odd is odd]
+\label{prop:IX.29}
+If an odd number by multiplying an odd number make some number, the
+product will be odd.
+\end{claim}
+\begin{evidence}[Proof of IX.29]
+\label{ev:IX.29}
+$(2k+1)(2m+1) = 4km + 2k + 2m + 1$, which is odd (one more than even).
+\dependson{IX.29}{IX.23}
+\dependson{IX.29}{def:VII.7}
+\end{evidence}
+
+\begin{claim}[Proposition IX.30: Odd dividing an even number]
+\label{prop:IX.30}
+If an odd number measure an even number, it will also measure the
+half of it.
+\end{claim}
+\begin{evidence}[Proof of IX.30]
+\label{ev:IX.30}
+If $a$ (odd) divides $2b$, then since $\gcd(a, 2) = 1$, $a \mid b$
+by VII.24.
+\dependson{IX.30}{VII.24}
+\dependson{IX.30}{def:VII.6}
+\dependson{IX.30}{def:VII.7}
+\end{evidence}
+
+\begin{claim}[Proposition IX.31: Odd coprime to its double]
+\label{prop:IX.31}
+If an odd number be prime to any number, it will also be prime to
+the double of it.
+\end{claim}
+\begin{evidence}[Proof of IX.31]
+\label{ev:IX.31}
+$\gcd(a, n) = 1$ for $a$ odd implies $\gcd(a, 2n) = 1$ (since
+$\gcd(a, 2) = 1$); apply VII.24.
+\dependson{IX.31}{VII.24}
+\dependson{IX.31}{def:VII.7}
+\end{evidence}
+
+\begin{claim}[Proposition IX.32: Powers of 2 are even-times even]
+\label{prop:IX.32}
+Each of the numbers which are continually doubled beginning from a
+duad is even-times even only.
+\end{claim}
+\begin{evidence}[Proof of IX.32]
+\label{ev:IX.32}
+$2^n$ has no odd divisors greater than 1 (Euclid's lemma); hence its
+only factorisation is $2 \times 2^{n-1}$, even-times-even.
+\dependson{IX.32}{VII.30}
+\dependson{IX.32}{def:VII.8}
+\end{evidence}
+
+\begin{claim}[Proposition IX.33: Number whose half is odd]
+\label{prop:IX.33}
+If a number have its half odd, it is even-times odd only.
+\end{claim}
+\begin{evidence}[Proof of IX.33]
+\label{ev:IX.33}
+$n = 2k$ with $k$ odd is even-times-odd; it cannot be even-times-even
+because then its half would be even.
+\dependson{IX.33}{def:VII.6}
+\dependson{IX.33}{def:VII.9}
+\end{evidence}
+
+\begin{claim}[Proposition IX.34: Neither power of 2 nor twice-odd: both kinds]
+\label{prop:IX.34}
+If an even number be neither one of those which are doubled from a
+duad, nor have its half odd, it is both even-times even and
+even-times odd.
+\end{claim}
+\begin{evidence}[Proof of IX.34]
+\label{ev:IX.34}
+Such a number has the form $2^k m$ with $k \ge 2$ and $m$ odd, $m
+> 1$: it is even-times even ($2 \cdot 2^{k-1} m$) and even-times odd
+($2^k \cdot m$).
+\dependson{IX.34}{IX.32}
+\dependson{IX.34}{IX.33}
+\end{evidence}
+
+\begin{claim}[Proposition IX.35: Geometric series formula]
+\label{prop:IX.35}
+If as many numbers as we please be in continued proportion, and there
+be subtracted from the second and the last numbers equal to the
+first, then, as the excess of the second is to the first, so will the
+excess of the last be to all those before it.
+\end{claim}
+\begin{evidence}[Proof of IX.35]
+\label{ev:IX.35}
+For $a, ar, ar^2, \dots, ar^n$: the excess of the last over the
+first is $a(r^n - 1)$, and the sum of the rest is $a(1 + r + r^2 +
+\dots + r^{n-1}) = a (r^n - 1) / (r - 1)$; the ratio of excess to
+sum equals $(r - 1) = (ar - a) / a$, the excess of the second over
+the first divided by the first.
+\dependson{IX.35}{VII.11}
+\dependson{IX.35}{VII.19}
+\dependson{IX.35}{VIII.1}
+\end{evidence}
+
+\begin{claim}[Proposition IX.36: Even perfect number theorem]
 \label{prop:IX.36}
 If as many numbers as we please beginning from a unit be set out
-continuously in double proportion, until the sum of all becomes prime,
-and if the sum multiplied into the last make some number, the product
-will be perfect.
+continuously in double proportion, until the sum of all becomes
+prime, and if the sum multiplied into the last make some number, the
+product will be perfect.
 \end{claim}
-\begin{evidence}[Proof sketch of IX.36]
+\begin{evidence}[Proof of IX.36]
 \label{ev:IX.36}
-Apply the geometric-progression sum (Book VIII) and the definition of
-perfect number.
-\dependson{IX.36}{VIII.7}
+Let $s = 1 + 2 + 4 + \dots + 2^{n-1} = 2^n - 1$ be prime (a Mersenne
+prime); set $N = s \cdot 2^{n-1}$.  The proper divisors of $N$ are
+$1, 2, 4, \dots, 2^{n-1}, s, 2s, \dots, 2^{n-2}s$, whose sum is
+$(2^n - 1) + s(2^{n-1} - 1) = s + s(2^{n-1} - 1) = s \cdot 2^{n-1}
+= N$.  So $N$ equals the sum of its proper divisors and is perfect.
+\dependson{IX.36}{IX.35}
+\dependson{IX.36}{VII.34}
+\dependson{IX.36}{def:VII.11}
+\dependson{IX.36}{def:VII.22}
 \end{evidence}
-
-% TODO: All 36 propositions of Book IX.

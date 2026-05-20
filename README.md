@@ -6,23 +6,23 @@ This is the first **reproducibility demo** on the rrxiv corpus: every propositio
 
 ## Scope
 
-| Book | Subject | Claims encoded |
-| ---- | ------- | -------------- |
-| I    | Plane geometry, Pythagoras | full — 23 defs, 5 postulates, 5 common notions, 48 propositions |
-| II   | Geometric algebra | scaffolded — definitions + propositions stubbed |
-| III  | Circles            | scaffolded |
-| IV   | Inscription / circumscription | scaffolded |
-| V    | Eudoxean proportion | scaffolded |
-| VI   | Similar figures   | scaffolded |
-| VII  | Number theory (foundations) | scaffolded |
-| VIII | Continued proportion | scaffolded |
-| IX   | Number theory (advanced) | scaffolded |
-| X    | Incommensurables  | scaffolded |
-| XI   | Solid geometry    | scaffolded |
-| XII  | Method of exhaustion | scaffolded |
-| XIII | Platonic solids   | scaffolded — Prop. 13.18 is the headline claim |
+| Book | Subject | Status |
+| ---- | ------- | ------ |
+| I    | Plane geometry, Pythagoras | ✓ full — 23 defs, 5 postulates, 5 common notions, 48 propositions |
+| II   | Geometric algebra | ✓ full — 2 defs, 14 propositions (Heath-density proofs, 4 TikZ figures) |
+| III  | Circles            | ✓ full — 11 defs, 37 propositions (Heath-density, 3 TikZ figures including III.36 power-of-a-point) |
+| IV   | Inscription / circumscription | encoded in this version (see `paper/books/book04.tex`) |
+| V    | Eudoxean proportion | encoded — 18 defs, 25 propositions |
+| VI   | Similar figures   | encoded — 33 propositions |
+| VII  | Number theory (foundations) | encoded — 22 defs, 39 propositions |
+| VIII | Continued proportion | encoded — 27 propositions |
+| IX   | Number theory (advanced) | encoded — 36 propositions (IX.20 infinitude of primes, IX.36 perfect-number theorem) |
+| X    | Incommensurables  | encoded — 16 defs, 115 propositions (longest book) |
+| XI   | Solid geometry    | encoded — 28 defs, 39 propositions |
+| XII  | Method of exhaustion | encoded — 18 propositions (XII.10 cone-cylinder, XII.18 sphere-volume ratio) |
+| XIII | Platonic solids   | encoded — 5 defs, 18 propositions (XIII.18 enumerates the five Platonic solids) |
 
-Book I is fully encoded as a working demonstration. Books II–XIII are scaffolded with section headers and a few representative propositions each, so the structure is complete and the encoding can be filled in incrementally without breaking the build.
+Books I + II + III carry the full Heath-density proof prose; Books IV–XIII are encoded with statements + condensed proof sketches + the full dependency-edge DAG. The canonical instance lives at [rrxiv.com/papers/rrxiv:2605.00009](https://rrxiv.com/papers/rrxiv:2605.00009).
 
 ## Source
 
@@ -61,9 +61,10 @@ paper/
 
 ## Status
 
-- **Version**: v1 (Book I complete)
+- **Version**: v1
 - **Protocol version**: 0.1.0
 - **Licence**: CC-BY-4.0 (content) + MIT (build code)
+- **Canonical instance**: [rrxiv.com/papers/rrxiv:2605.00009](https://rrxiv.com/papers/rrxiv:2605.00009)
 
 ## Contribute
 
