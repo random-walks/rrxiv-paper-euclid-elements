@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this rrxiv encoding of Euclid's Elements, please cite as below."
+type: article
+title: "Euclid's Elements, encoded as an rrxiv paper"
+authors:
+  - name: "rrxiv Project"
+date-released: 2026-05-01
+license: CC-BY-4.0
+url: "https://github.com/random-walks/rrxiv-paper-euclid-elements"
+keywords:
+  - Euclid
+  - Elements
+  - geometry
+  - rrxiv
+  - reproducibility
+  - claim graph
+references:
+  - type: book
+    title: "The Thirteen Books of Euclid's Elements"
+    authors:
+      - family-names: "Heath"
+        given-names: "Thomas L."
+    year: 1908
+    publisher: "Cambridge University Press"
+    notes: "Public domain. The translations in this encoding follow Heath with light modernisation."

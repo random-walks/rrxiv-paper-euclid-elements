@@ -1,0 +1,57 @@
+% main.tex — Euclid's Elements, encoded as an rrxiv paper.
+%
+% Build with tectonic via ./scripts/build.sh.
+
+\documentclass{rrxiv}
+
+\rrxivid{rrxiv-paper-euclid-elements}
+\rrxivversion{v1}
+\rrxivprotocolversion{0.1.0}
+\rrxivlicense{CC-BY-4.0}
+\rrxivtopics{math.HO,math.MG,math.NT,history-of-mathematics,reproducibility}
+
+\title{Euclid's \emph{Elements}, encoded as an rrxiv paper}
+\author{rrxiv Project \\
+        \small {(translation after Heath, 1908; encoding new, CC-BY-4.0)}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We publish a complete, machine-readable rendering of Euclid's
+\emph{Elements} as an rrxiv paper. Every definition, postulate, common
+notion, and proposition is registered as an addressable rrxiv
+\texttt{claim}, and every proof is encoded as a sequence of explicit
+\texttt{depends\_on} edges to earlier claims. The result is the original
+geometric corpus, intact, but with its full reasoning DAG now queryable
+through the rrxiv API. This serves three purposes: (i)~it dogfoods the
+rrxiv schema on a finite, dependency-rich corpus; (ii)~it provides a
+working reproducibility demonstration --- every proposition is provable
+from claims that the rrxiv graph can enumerate; and (iii)~it gives
+agent harnesses a canonical proof corpus to retrieve over. Book I is
+fully encoded in this version (v1); Books II--XIII are scaffolded with
+representative propositions and will be filled in iteratively.
+\end{abstract}
+
+% ---- Front matter: postulates + common notions + Book I definitions ----
+\input{postulates}
+\input{common-notions}
+\input{definitions}
+
+% ---- Books ----
+\input{books/book01}
+\input{books/book02}
+\input{books/book03}
+\input{books/book04}
+\input{books/book05}
+\input{books/book06}
+\input{books/book07}
+\input{books/book08}
+\input{books/book09}
+\input{books/book10}
+\input{books/book11}
+\input{books/book12}
+\input{books/book13}
+
+\end{document}

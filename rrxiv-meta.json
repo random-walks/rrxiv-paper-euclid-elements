@@ -1,0 +1,34 @@
+{
+  "$comment": "Euclid's Elements as an rrxiv paper. The original work is in the public domain; the rrxiv encoding and modern rephrasing are released under CC-BY-4.0.",
+  "rrxiv_version": "0.1.0",
+  "id_slug": null,
+  "version": "v1",
+  "title": "Euclid's Elements, encoded as an rrxiv paper",
+  "authors": [
+    {
+      "name": "rrxiv Project",
+      "orcid": null,
+      "is_agent": false,
+      "affiliation": "rrxiv working group"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "topics": [
+    "math.HO",
+    "math.MG",
+    "math.NT",
+    "history-of-mathematics",
+    "reproducibility",
+    "example"
+  ],
+  "source": {
+    "format": "latex",
+    "uri": null
+  },
+  "based_on": {
+    "original_author": "Euclid of Alexandria",
+    "original_date_circa_bce": -300,
+    "translation_basis": "Heath, T.L. (1908), The Thirteen Books of Euclid's Elements (public domain)",
+    "encoding_notes": "Every definition, postulate, common notion, and proposition is registered as an rrxiv claim or scope. Proofs use \\dependson edges to make the proof DAG machine-readable."
+  }
+}

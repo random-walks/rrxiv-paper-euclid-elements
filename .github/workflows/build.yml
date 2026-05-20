@@ -1,0 +1,70 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      # Bring in rrxiv (schema + CLI source) as a sibling so the
+      # extract + verify scripts can resolve their paths.
+      - name: Check out rrxiv (schema + CLI)
+        uses: actions/checkout@v5
+        with:
+          repository: random-walks/rrxiv
+          path: ../rrxiv
+          ref: main
+
+      - name: Check out rrxiv-python (CLI)
+        uses: actions/checkout@v5
+        with:
+          repository: random-walks/rrxiv-python
+          path: ../rrxiv-python
+          ref: main
+
+      - name: Install tectonic
+        run: |
+          curl --proto '=https' --tlsv1.2 -fsSL https://drop-sh.fullyjustified.net | sh
+          sudo mv tectonic /usr/local/bin/
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          version: latest
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install jsonschema for verify
+        run: pip install jsonschema
+
+      - name: Build PDF
+        run: ./scripts/build.sh
+
+      - name: Extract CIR
+        run: ./scripts/extract-cir.sh
+
+      - name: Verify CIR against schema
+        run: ./scripts/verify.sh
+
+      - name: Upload artifacts
+        if: success()
+        uses: actions/upload-artifact@v5
+        with:
+          name: paper
+          path: |
+            build/main.pdf
+            build/main.cir.json
+            build/main.rrxiv.aux
+          retention-days: 30

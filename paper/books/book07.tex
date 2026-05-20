@@ -1,0 +1,35 @@
+% book07.tex — Book VII: Number theory foundations. Scaffolded.
+
+\section{Book VII --- Number Theory Foundations}
+\label{sec:book-VII}
+
+Book VII introduces unit, number, divisibility, and the Euclidean
+algorithm (VII.1, VII.2).
+
+\begin{claim}[Proposition VII.1: Euclidean algorithm correctness (relatively prime case)]
+\label{prop:VII.1}
+Two unequal numbers being set out, and the less being continually
+subtracted in turn from the greater, if the number which is left
+never measures the one before it until a unit is left, the original
+numbers will be prime to one another.
+\end{claim}
+\begin{evidence}[Proof sketch of VII.1]
+\label{ev:VII.1}
+By contradiction: any common measure would persist through the
+algorithm.
+\end{evidence}
+
+\begin{claim}[Proposition VII.2: Greatest common measure]
+\label{prop:VII.2}
+Given two numbers not prime to one another, to find their greatest
+common measure.
+\end{claim}
+\begin{evidence}[Proof sketch of VII.2]
+\label{ev:VII.2}
+The same algorithm as VII.1, terminating in the last non-unit
+remainder.
+\dependson{VII.2}{VII.1}
+\end{evidence}
+
+% TODO: All 39 propositions of Book VII. Definitions VII.1–VII.22
+% deserve their own \scope listing.
