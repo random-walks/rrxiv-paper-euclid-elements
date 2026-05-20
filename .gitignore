@@ -2,6 +2,13 @@
 build/*
 !build/.gitkeep
 
+# Flattened source — emitted by ``python3 ../../scripts/flatten-tex.py
+# paper/main.tex --out paper/main-flat.tex`` during the seed-build
+# pipeline (rrxiv parse needs a single-file .tex; flatten-tex.py
+# inlines every \input{}). Derived artefact; regenerate, don't commit.
+paper/main-flat.tex
+paper/main-flat.rrxiv.aux
+
 # Tectonic / LaTeX intermediate files. Kept out of source.
 *.aux
 *.log
