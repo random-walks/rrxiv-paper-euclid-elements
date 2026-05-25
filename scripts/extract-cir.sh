@@ -21,17 +21,23 @@ if [[ ! -f "$AUX" ]]; then
   exit 1
 fi
 
-# Resolve the rrxiv CLI. Order: project venv (uv) → uv tool → pip-installed.
+# Resolve the rrxiv CLI. Order:
+#   1. $RRXIV_PYTHON_REPO env var (CI sets this; respects any in-repo
+#      override).
+#   2. `rrxiv` on PATH (once published to PyPI, or a global uv install).
+#   3. Sibling checkout — the local-dev convention where paper repos sit
+#      next to rrxiv-python under one workspace dir.
 RRXIV_CMD=""
-if command -v rrxiv >/dev/null 2>&1; then
+if [[ -n "${RRXIV_PYTHON_REPO:-}" && -f "$RRXIV_PYTHON_REPO/pyproject.toml" ]]; then
+  RRXIV_CMD="uv run --project $RRXIV_PYTHON_REPO rrxiv"
+elif command -v rrxiv >/dev/null 2>&1; then
   RRXIV_CMD="rrxiv"
 elif command -v uv >/dev/null 2>&1; then
-  # Look for a sibling rrxiv-python checkout — this is the v0.x convention
-  # until rrxiv is published to PyPI.
   for sibling in \
     "$ROOT/../rrxiv-python" \
     "$ROOT/../../rrxiv-python" \
-    "$ROOT/../../repos/rrxiv-python"; do
+    "$ROOT/../../repos/rrxiv-python" \
+    "$ROOT/deps/rrxiv-python"; do
     if [[ -f "$sibling/pyproject.toml" ]]; then
       RRXIV_CMD="uv run --project $sibling rrxiv"
       break
@@ -47,12 +53,14 @@ if [[ -z "$RRXIV_CMD" ]]; then
   exit 127
 fi
 
-# `rrxiv parse` reads the .tex + the sidecar .rrxiv.aux + the standalone
-# meta and emits a CIR JSON document.
-$RRXIV_CMD parse \
-  --tex "$TEX" \
+# `rrxiv parse` reads the .tex + the sidecar .rrxiv.aux and emits a
+# CIR JSON document. The standalone rrxiv-meta.json is human-facing
+# metadata (slug, license, topics) — the v0.x parser pulls all of it
+# out of the .tex via the rrxiv.cls macros + the sidecar, so $META is
+# not currently passed to the CLI. Keep $META resolved above so future
+# tooling can wire it back in.
+$RRXIV_CMD parse "$TEX" \
   --sidecar "$AUX" \
-  --meta "$META" \
-  --out "$OUT"
+  --output "$OUT"
 
 echo "OK  $OUT"
