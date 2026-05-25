@@ -1,19 +1,29 @@
 {
-  "$comment": "Euclid's Elements as an rrxiv paper. The original work is in the public domain; the rrxiv encoding and modern rephrasing are released under CC-BY-4.0.",
+  "$comment": "Euclid's Elements as an rrxiv paper. The original work is in the public domain; the rrxiv encoding (claim graph, depends_on DAG, LaTeX wrapping) is released under CC-BY-4.0. v2 (Sprint 18, 2026-05-25) dogfoods RRP-0021 structured authorship: Euclid is the author, Heath is the translator we encoded, Blaise + Claude are the encoders. Previously the paper listed only the encoders, which mis-attributed two thousand years of authorship.",
   "rrxiv_version": "0.1.0",
-  "id_slug": null,
-  "version": "v1",
+  "id_slug": "rrxiv:2605.00009",
+  "version": "v2",
   "title": "Euclid's Elements, encoded as an rrxiv paper",
   "authors": [
     {
+      "name": "Euclid of Alexandria",
+      "role": "author"
+    },
+    {
+      "name": "Sir Thomas L. Heath",
+      "role": "translator"
+    },
+    {
       "name": "Blaise Albis-Burdige",
       "orcid": null,
-      "is_agent": false
+      "is_agent": false,
+      "role": "encoder"
     },
     {
       "name": "Claude",
       "is_agent": true,
-      "agent_handle": "agent:claude-opus-4.7"
+      "agent_handle": "agent:claude-opus-4.7",
+      "role": "agent"
     }
   ],
   "license": "CC-BY-4.0",
@@ -29,10 +39,25 @@
     "format": "latex",
     "uri": null
   },
-  "based_on": {
+  "embedded_from": {
     "original_author": "Euclid of Alexandria",
-    "original_date_circa_bce": -300,
-    "translation_basis": "Heath, T.L. (1908), The Thirteen Books of Euclid's Elements (public domain)",
-    "encoding_notes": "Every definition, postulate, common notion, and proposition is registered as an rrxiv claim or scope. Proofs use \\dependson edges to make the proof DAG machine-readable."
-  }
+    "original_work_title": "Στοιχεῖα (Elements)",
+    "original_work_year": -300,
+    "original_work_uri": "https://en.wikipedia.org/wiki/Euclid%27s_Elements",
+    "translation": {
+      "translator": "Sir Thomas L. Heath",
+      "year": 1908,
+      "license": "public-domain",
+      "source_uri": "https://archive.org/details/elementsofeuclid00eucl"
+    },
+    "encoding_note": "Every definition, postulate, common notion, and proposition is registered as an rrxiv claim or scope. Proofs use \\dependson edges to make the proof DAG machine-readable. Heath's English is lightly modernised in places where 1908 prose stalls a 2026 reader."
+  },
+  "versions": [
+    {
+      "version": "v1",
+      "paper_id": "rrxiv-paper-euclid-elements",
+      "submitted_at": "2026-05-20T12:00:00Z",
+      "notes": "Initial encoding (Sprint phase E). Mis-attributed the work to the encoders only; RRP-0021 in v2 corrects this by distinguishing roles."
+    }
+  ]
 }
