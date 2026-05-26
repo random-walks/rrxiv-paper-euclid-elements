@@ -1,8 +1,8 @@
 {
-  "$comment": "Euclid's Elements as an rrxiv paper. The original work is in the public domain; the rrxiv encoding (claim graph, depends_on DAG, LaTeX wrapping) is released under CC-BY-4.0. v2 (Sprint 18, 2026-05-25) dogfoods RRP-0021 structured authorship: Euclid is the author, Heath is the translator we encoded, Blaise + Claude are the encoders. Previously the paper listed only the encoders, which mis-attributed two thousand years of authorship.",
+  "$comment": "Euclid's Elements as an rrxiv paper. The original work is in the public domain; the rrxiv encoding (claim graph, depends_on DAG, LaTeX wrapping) is released under CC-BY-4.0. v5 (Sprint 26, 2026-05-26) restores the paper after the live v1 lost 465 claims and rendered a malformed author (`Claude {(translation after Heath, 1908; encoding new, CC-BY-4.0)}`). The repo had already been updated for RRP-0021 + RRP-0026 in Sprints 18 + 25 but never resubmitted; v5 is the catch-up build with the cleaned-up `\\author{}` line in main.tex matching this meta block byte-for-byte.",
   "rrxiv_version": "0.1.0",
-  "id_slug": "rrxiv:2605.00009",
-  "version": "v4",
+  "id_slug": "rrxiv:2605.00005",
+  "version": "v5",
   "title": "Euclid's Elements, encoded as an rrxiv paper",
   "authors": [
     {
@@ -76,6 +76,12 @@
       "paper_id": "rrxiv-paper-euclid-elements",
       "submitted_at": "2026-05-20T12:00:00Z",
       "notes": "Initial encoding (Sprint phase E). Mis-attributed the work to the encoders only; RRP-0021 in v2 corrects this by distinguishing roles."
+    },
+    {
+      "version": "v5",
+      "paper_id": "rrxiv:2605.00005",
+      "submitted_at": "2026-05-26T20:00:00Z",
+      "notes": "Sprint 26 catch-up rebuild. v2-v4 were authored in-repo but never resubmitted; the live v1 lost the 465-claim payload to a parser garble (the `\\author{}` line carried a trailing LaTeX comment that swallowed the second author and broke claim extraction). v5 cleans `\\author{}` to plain `\\and`-separated names matching this meta block, restoring full attribution + the complete claim graph."
     }
   ]
 }

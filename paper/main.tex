@@ -5,14 +5,17 @@
 \documentclass{rrxiv}
 
 \rrxivid{rrxiv-paper-euclid-elements}
-\rrxivversion{v1}
+\rrxivversion{v5}
 \rrxivprotocolversion{0.1.0}
 \rrxivlicense{CC-BY-4.0}
 \rrxivtopics{math.HO,math.MG,math.NT,history-of-mathematics,reproducibility}
 
 \title{Euclid's \emph{Elements}, encoded as an rrxiv paper}
-\author{Blaise Albis-Burdige \and Claude \\
-        \small {(translation after Heath, 1908; encoding new, CC-BY-4.0)}}
+% Structured authorship lives in rrxiv-meta.json (RRP-0021 + RRP-0026).
+% The parser merges that block onto these names by exact match. Keep
+% the names here byte-identical to rrxiv-meta.json `authors[].name`
+% so attribution doesn't drift across the build + parse boundary.
+\author{Euclid of Alexandria \and Sir Thomas L. Heath \and Blaise Albis-Burdige \and Claude Opus 4.7}
 \date{\today}
 
 \begin{document}
