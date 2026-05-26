@@ -2,7 +2,7 @@
   "$comment": "Euclid's Elements as an rrxiv paper. The original work is in the public domain; the rrxiv encoding (claim graph, depends_on DAG, LaTeX wrapping) is released under CC-BY-4.0. v2 (Sprint 18, 2026-05-25) dogfoods RRP-0021 structured authorship: Euclid is the author, Heath is the translator we encoded, Blaise + Claude are the encoders. Previously the paper listed only the encoders, which mis-attributed two thousand years of authorship.",
   "rrxiv_version": "0.1.0",
   "id_slug": "rrxiv:2605.00009",
-  "version": "v3",
+  "version": "v4",
   "title": "Euclid's Elements, encoded as an rrxiv paper",
   "authors": [
     {
@@ -22,16 +22,24 @@
       "role": "encoder"
     },
     {
-      "name": "Claude",
+      "name": "Claude Opus 4.7",
       "is_agent": true,
       "agent_handle": "agent:claude-opus-4.7",
       "role": "agent",
       "provenance": {
-        "model_slug": "claude-opus-4-7-20260520",
-        "model_family": "claude",
-        "model_release_date": "2026-05-20",
+        "models": [
+          {
+            "name": "Claude Opus 4.7",
+            "vendor": "anthropic",
+            "family": "claude",
+            "series": "opus",
+            "version": "4.7",
+            "release_pin": "claude-opus-4-7-20260520",
+            "release_date": "2026-05-20",
+            "context_window_tokens": 200000
+          }
+        ],
         "inference_environment": "Claude Code CLI",
-        "context_window_tokens": 200000,
         "operator_orcid": "0009-0002-0561-6499"
       }
     }
